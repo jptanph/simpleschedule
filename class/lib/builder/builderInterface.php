@@ -11,10 +11,10 @@ function usbuilder()
 }
 
 /**
- * @return common
+ * @return The object of common class defined in 'class/Common.php'
  */
 function common()
 {
-    include_once('common.php');
+    require_once('common.php');
     return getInstance('common');
 }

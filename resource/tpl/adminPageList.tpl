@@ -11,16 +11,12 @@
                                     <option value="Today">Today</option>
                                     <option value="Current Week">Current Week</option>
                                     <option value="Current Month" selected="selected">Current Month</option>
-                                    <option value="Last Month" >Last Month</option>
-                                    <option value="Current Quarter">Current Quarter</option>
-                                    <option value="Last Quarter">Last Quarter</option>
                                     <option value="Current Year">Current Year</option>
-                                    <option value="Last Year">Last Year</option>
                                     <option value="All">All</option>
                                 </select></td>
                             
-                            <td><span  class="title">Start Date:</span> <input type="text" value="1/1/2011" class="input_text" readonly="readonly" /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
-                            <td><span  class="title">End Date: </span><input type="text" value="1/19/2011" class="input_text" readonly="readonly" /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
+                            <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date"  /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
+                            <td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
                             
                         </tr>
                         <tr>
@@ -32,7 +28,7 @@
                                     
                                 </select></td>
                             
-                            <td colspan="2"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageContent.execSearch();" class="btn_nor_01 btn_width_st1" title="Search Keyword">Search</a><a href="#" class="add_link" title="Reset to default">Reset</a></td>
+                            <td colspan="2"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageContent.execSearch();" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#" class="add_link" title="Reset to default">Reset</a></td>
                             
                         
                         </tr>
@@ -52,16 +48,16 @@
                 </ul>
                 <ul class="row_2">
                     <li>
-                        <a href="#none" onclick="adminPageContent.deleteRow();" class="btn_nor_01 btn_width_st1" title="Delete selected schedule">Delete</a>
+                        <a href="#none" style="height:13px;"  onclick="adminPageContent.deleteRow();" class="btn_nor_01 btn_width_st1" title="Delete selected schedule">Delete</a>
                     </li>
                     <li class="show">
                         <label for="show_row">Show Rows</label>
-                        <select id="show_row">
-                            <option>10</option>
-                            <option selected="selected">20</option>
-                            <option>30</option>
-                            <option>50</option>
-                            <option>100</option>
+                        <select id="show_rows" onchange="adminPageContent.execSelectRow();" >
+                            <option value="10" <?php if($sRows=='10'){?>selected="selected"<?php }?>>10</option>
+                            <option value="20" <?php if($sRows=='20' || $sRows==''){?>selected="selected"<?php }?>>20</option>
+                            <option value="30" <?php if($sRows=='30'){?>selected="selected"<?php }?>>30</option>
+                            <option value="50" <?php if($sRows=='50'){?>selected="selected"<?php }?>>50</option>
+                            <option value="100" <?php if($sRows=='100'){?>selected="selected"<?php }?>>100</option>
                         </select>
                     </li>
                 </ul>
@@ -81,10 +77,10 @@
                 <th class="chk"><input onclick="adminPageContent.selectAll(this.id)" type="checkbox" title="" class="input_chk" id="<?php echo $sPrefix?>select_all"/></th>
                 <th>No.</th>
                 <th>
-                    <a href="<?php echo $sUrl?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
+                    <a href="<?php echo $sUrlList?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?><?php echo $sQryRow;?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
                 </th>              
-                <th><a href="<?php echo $sUrl?>&sort=end_day&type=<?php if($sSort!='end_day'){?>asc<?php }elseif($sSort=='end_day'){ echo $sSortType;}?>" class="<?php if($sSort=='end_day'){ echo $sSortType; }?>">Status</a></th>     
-                <th class="no_border"><a  href="<?php echo $sUrl?>&sort=start_day&type=<?php if($sSort!='start_day'){?>asc<?php }elseif($sSort=='start_day'){ echo $sSortType;}?>" class="<?php if($sSort=='start_day'){ echo $sSortType; }?>">Date</a></th> 
+                <th><a href="<?php echo $sUrlList?>&sort=end_day&type=<?php if($sSort!='end_day'){?>asc<?php }elseif($sSort=='end_day'){ echo $sSortType;}?><?php echo $sQryRow;?>" class="<?php if($sSort=='end_day'){ echo $sSortType; }?>">Status</a></th>     
+                <th class="no_border"><a  href="<?php echo $sUrlList?>&sort=start_day&type=<?php if($sSort!='start_day'){?>asc<?php }elseif($sSort=='start_day'){ echo $sSortType;}?><?php echo $sQryRow;?>" class="<?php if($sSort=='start_day'){ echo $sSortType; }?>">Date</a></th> 
             </tr>
             </thead>
             <tbody>
@@ -93,7 +89,7 @@
                 <tr onmouseover="this.className='over'" onmouseout="this.className=''">
                     <td><input type="checkbox" name="idx_val[]" title="" value="<?php echo $rows['idx'];?>" class="input_chk" /></td>
                     <td><?php echo $rows['row'];?></td>
-                    <td class="table_subtitle"><a href="plugin_scheduler_edit.html" title="Edit Schedule"><?php echo $rows['title'];?></a></td>
+                    <td class="table_subtitle"><a href="<?php echo $sUrlView?>&idx=<?php echo $rows['idx']; ?>" title="Edit Schedule"><?php echo $rows['title'];?></a></td>
                     <td>Expected</td>               
                     <td><?php echo $rows['start_day'];?> ~ <?php echo $rows['end_day'];?><!-- MM/DD/YYYY HH:mm ~ MM/DD/YYYY HH:mm --></td>
                             
@@ -120,10 +116,10 @@
                         <a href="#none" class="btn_nor_01 btn_width_st1" title="Apply selected action">Apply</a>    
                     </li>-->
                     <li>
-                        <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete selected schedule">Delete</a>
+                        <a href="#none" class="btn_nor_01 btn_width_st1" style="height:13px;" title="Delete selected schedule">Delete</a>
                     </li>
                     <li class="show">
-                        <a href="<?php echo $sUrlAdd; ?>" class="btn_nor_01 btn_width_st2" title="Add New Schedule">Add New Schedule</a>
+                        <a href="<?php echo $sUrlAdd; ?>" class="btn_nor_01 btn_width_st2" title="Add New Schedule" style="width:119px;height:13px">Add New Schedule</a>
                     </li>
                 </ul>
             </div>
@@ -138,6 +134,17 @@
                     Are you sure you want to delete the record? 
                     <br />
                     <br />
-                    <a class="btn_nor_01 btn_width_st1" href="#" style='cursor:pointer' title="Delete" onclick="adminPageList.deleteBtn()"> Delete <a/>
+                    <a class="btn_nor_01 btn_width_st1" href="#" style='cursor:pointer;' title="Delete" onclick="adminPageList.deleteBtn()"> Delete <a/>
                 </div>
-            </div>            
+            </div>     
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                   

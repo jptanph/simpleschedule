@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adminmenus>
     <menu name="Simple Schedule" param="SimpleschedulePageList">
-        <page lang="simpleschedule" param="SimpleschedulePageAdd"/>     
+        <page lang="simpleschedule" param="SimpleschedulePageAdd"/>
+        <page lang="simpleschedule" param="SimpleschedulePageView"/>         
         <page lang="simpleschedule" param="SimpleschedulePageSetup"/> 
     </menu>
 </adminmenus>

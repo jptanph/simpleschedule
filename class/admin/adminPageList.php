@@ -11,9 +11,11 @@ class adminPageList extends Controller_Admin
         $this->writeJs($sInitScript);
         /** usbuilder initializer.**/
 
-        $iLimit = 5;
+        $iLimit = (isset($aArgs['row'])) ? $aArgs['row'] : 20;
         $iPage =(isset($aArgs['page'])) ? $aArgs['page'] : '1';
         $iRow = ($iPage - 1) * $iLimit;
+
+        $sQryRow = isset($aArgs['row']) ? '&row=' . $aArgs['row'] : '';
 
         $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']) && isset($aArgs)) ?" ORDER BY " . $aArgs['sort'] . (($aArgs['type']=='des') ? ' desc ' : ' asc ') : 'ORDER BY end_day';
         $sLimit = ' LIMIT ' . ((isset($aArgs['page'])) ?  $iRow . ', ' . $iLimit : $iLimit);
@@ -22,15 +24,15 @@ class adminPageList extends Controller_Admin
         $aData = array();
         $model = new modelAdmin();
         $aList = $model->getList($sOrderBy,$sLimit);
-
-//         usbuilder()->vd($aList);
-//         return;
         $aCountList = $model->getCountList();
 
         $iResult = count($aCountList);
-        $sUrl = usbuilder()->getUrl('adminPageList');
+        $sUrlList = usbuilder()->getUrl('adminPageList');
         $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
+        $sUrlView = usbuilder()->getUrl('adminPageView');
         $incRow = 0;
+
+
 
         foreach($aList as $rows)
         {
@@ -55,16 +57,25 @@ class adminPageList extends Controller_Admin
 
         $sImagePath = '/_sdk/img/simpleschedule/';
         $this->importCss(__CLASS__);
+        $this->importCss('jqueryCalendar');
+
+        $this->importJs('jqueryCalendar');
+
         $this->importJs('adminPageContent');
 
         $this->assign('sSort',isset($aArgs['sort']) ? $aArgs['sort'] : '');
         $this->assign('sSortType',(!isset($aArgs['type']) || $aArgs['type']=='asc') ? 'des' : 'asc');
 
+        /** query strings**/
+        $this->assign('sQryRow',$sQryRow);
+
         $this->assign('sPrefix', $this->_sPrefix);
         $this->assign('sImagePath',$sImagePath);
         $this->assign('sPagination',usbuilder()->pagination($iResult, $iLimit));
-        $this->assign('sUrl',$sUrl);
+        $this->assign('sUrlList',$sUrlList);
         $this->assign('sUrlAdd',$sUrlAdd);
+        $this->assign('sUrlView',$sUrlView);
+        $this->assign('sRows',(isset($aArgs['row'])) ? $aArgs['row'] : '20' );
         $this->assign('sKeyword',$aArgs['keyword']);
         $this->assign('aList',$aData);
         $this->view(__CLASS__);

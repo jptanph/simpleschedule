@@ -17,6 +17,11 @@ class modelAdmin extends Model
     {
         $sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA;
         return $this->query($sSql);
+    }
 
+    public function getExpected()
+    {
+        $sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA;
+        return $this->query($sSql);
     }
 }

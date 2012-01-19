@@ -32,3 +32,28 @@
 .table_hor_03 td .non_able {display:block;color:#c30}
 .table_hor_03 td .row_split {display:block}
 .table_hor_03 td .row_split2 {display:block;margin-top:5px}
+
+
+
+/** =========================================for input form table================================================== **/
+.table_input_vr {width:100%;margin-bottom:33px;border:0;}
+.table_input_vr th {padding:9px 0;border:0;font-weight:normal;font-size:12px;text-align:left;vertical-align:top;color:#444;line-height:normal;}
+.table_input_vr td {padding:7px 0;border:0;color:#777;text-align:left;}
+.table_input_vr a {text-decoration:underline}
+.table_input_vr a img {padding:0 5px 0 5px;vertical-align:middle;}
+.table_input_vr p {margin-top:3px}
+.table_input_vr input {width:99%;padding-left:0;font-size:12px;}
+.table_input_vr input.fix {width:110px;height:17px;}
+.table_input_vr input.fix2 {width:335px;height:17px;}
+.select_option {float:left;width:120px;height:20px;margin-left:10px;border:solid 1px #CCC}
+.table_input_vr input.fix_size {width:43px;height:12px;}
+.table_input_vr tr td #textarea_memo{width:345px !important;min-width:345px;height:150px;resize:none}
+.table_input_vr select {float:left;width:120px;height:20px;}
+.table_input_vr .utc {display:inline-block;margin-left:4px;padding:0 5px;background:#ddd;font-style:italic;line-height:16px;vertical-align:middle}
+.table_input_vr .chk_group {position:relative;float:left;overflow:auto;min-width:264px;max-height:185px;padding:10px 17px 14px 17px;background:#fff;border:1px solid #dfdfde;}
+.table_input_vr .chk_group p {white-space:nowrap}
+.table_input_vr .content {display:block;}
+
+.table_input_vr .require_wrap {margin-top:10px}
+.table_input_vr .require_wrap .neccesary {float:left;margin-right:8px}
+.table_input_vr .require_wrap .chk_group {min-width:253px}

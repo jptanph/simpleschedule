@@ -29,6 +29,12 @@ class builderCore
         return self::$sModuleCode;
     }
 
+    /**
+     * Returns the script which set a action attribute for the form
+     * @param string $sFormName The name of the form
+     * @param string $sClassName The name of the class(target of action)
+     * @return string Scripts
+     */
     public function getFormAction($sFormName, $sClassName)
     {
         $aUrlInfo = $this->_getSpecifiedUrl($sClassName);
@@ -46,6 +52,10 @@ class builderCore
     {
         if (preg_match('/^admin/', $sClassName)) {
             $aUrlInfo = $this->_aBuilderUrlInfo['admin'];
+        } elseif (preg_match('/^front/', $sClassName)) {
+            $aUrlInfo = $this->_aBuilderUrlInfo['front'];
+            $aUrlInfo['url'] = '/';
+            $aUrlInfo['param'] = array('module' => '|Modulecode||Pageexec||Name|');
         } elseif (preg_match('/^api/', $sClassName)) {
             $aUrlInfo = $this->_aBuilderUrlInfo['api'];
         }
@@ -89,7 +99,7 @@ class builderCore
     }
 
     /**
-     * This returns the url from the class name
+     * Returns the url from the class name
      * @param string $sClassName the class name
      * @return string the Url
      */
@@ -122,6 +132,11 @@ class builderCore
         }
     }
 
+    /**
+     * Set a message, then it'll be displayed after the reload
+     * @param string $sResultMessage Messages
+     * @param string $sResultType success | warning
+     */
     public function message($sResultMessage, $sResultType)
     {
         $aMessage['result_message'] = $sResultMessage;
@@ -129,16 +144,34 @@ class builderCore
         $_SESSION['usbuilder']['function']['message'][] = $aMessage;
     }
 
+    /**
+     * @param array $aOption
+     */
     public function validator($aOption)
     {
         $_SESSION['usbuilder']['function']['validator'][] = $aOption;
     }
 
-    public function uipack($sName)
+    /**
+     * Call uipacks
+     * @param string $sName The name of uipack | plugin
+     * @param string $sParam the plugin name
+     */
+    public function uipack($sName, $sParam = null)
     {
-        $_SESSION['usbuilder']['uipack'][] = $sName;
+        if ($sName == 'plugin') {
+            $_SESSION['usbuilder']['uipackplugin'][] = $sParam;
+        } else {
+            $_SESSION['usbuilder']['uipack'][] = $sName;
+        }
     }
 
+    /**
+     * Returns the pagination(replace key)
+     * @param integer $iCount The result count
+     * @param integer $iRows The number of rows which you want to display in one pages
+     * @return string Pagination(replace key)
+     */
     public function pagination($iCount, $iRows)
     {
         $sReplaceKey = '{$usbuilder_pagination}';
