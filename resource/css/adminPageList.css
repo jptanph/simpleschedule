@@ -57,8 +57,11 @@
 .table_input_vr .require_wrap {margin-top:10px}
 .table_input_vr .require_wrap .neccesary {float:left;margin-right:8px}
 .table_input_vr .require_wrap .chk_group {min-width:253px}
-
 .select_warning{
-border:solid 2px #DC4E22;
+    border:solid 2 #DC4E22;
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=-0,color=#DC4E22) progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=2,color=#DC4E22) progid:DXImageTransform.Microsoft.dropshadow(OffX=-2, OffY=-1,color=#DC4E22)  progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=-1,color=#DC4E22)
+}
 
-filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=1, OffY=0,color=#DC4E22) progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=3,color=#DC4E22) progid:DXImageTransform.Microsoft.dropshadow(OffX=-3, OffY=-1,color=#DC4E22)  progid:DXImageTransform.Microsoft.dropshadow(OffX=3, OffY=-2,color=#DC4E22);
+.select_ok{
+    filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=0) 
+}

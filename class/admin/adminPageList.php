@@ -59,6 +59,9 @@ class adminPageList extends Controller_Admin
         $this->importCss(__CLASS__);
         $this->importCss('jqueryCalendar');
 
+
+
+
         $this->importJs('jqueryCalendar');
 
         $this->importJs('adminPageContent');
@@ -71,7 +74,7 @@ class adminPageList extends Controller_Admin
 
         $this->assign('sPrefix', $this->_sPrefix);
         $this->assign('sImagePath',$sImagePath);
-        $this->assign('sPagination',usbuilder()->pagination($iResult, $iLimit));
+        $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination($iResult, $iLimit));
         $this->assign('sUrlList',$sUrlList);
         $this->assign('sUrlAdd',$sUrlAdd);
         $this->assign('sUrlView',$sUrlView);

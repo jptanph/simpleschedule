@@ -2,7 +2,7 @@
 	<h3>Add New Schedule</h3>
 	<p class="require"><span class="neccesary">*</span> Required</p>
 	<!-- input area -->
-    <form id="<?php echo $sPrefix?>add_form" method="post" name="<?php echo $sPrefix?>add_form">
+    <form id="<?php echo $sPrefix?>add_form" class="<?php echo $sPrefix?>add_form" method="post" name="<?php echo $sPrefix?>add_form">
     	<table border="1" cellspacing="0" class="table_input_vr">
     	<colgroup>
     		<col width="80px" />
@@ -60,7 +60,7 @@
     		</td>
     	</tr>
     	</table>
-    
+        </form>
     	<script type="text/javascript">
     	//<![CDATA[
     		function toggle(no) {
@@ -85,4 +85,3 @@
     		<a href="#none" class="btn_apply" title="Save changes" onclick="adminPageAdd.execSave();">Save</a>
     		<a href="<?php echo $sUrl;?>" class="add_link" title="Return to Scheduler">Return to Scheduler</a>
     	</div>
-    </form>

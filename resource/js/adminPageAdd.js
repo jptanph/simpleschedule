@@ -22,13 +22,29 @@ var adminPageAdd = {
          }
          
          if(start_time.val() >= end_time.val()){
-             start_time.addClass('select_warning');
-             end_time.addClass('select_warning');
-
+             
+             if ($.browser.msie  && parseInt($.browser.version, 10) < 8) {
+                 start_time.removeClass('select_ok');
+                 end_time.removeClass('select_ok');
+                 start_time.addClass('select_warning');
+                 end_time.addClass('select_warning');
+             }else{
+                 start_time.css('border','solid 2px #DC4E22')
+                 end_time.css('border','solid 2px #DC4E22')
+             }          
              error += 1;
          }else{
-             $("#simpleschedule_start_time").css('border','1px solid #CCC');
-             $("#simpleschedule_end_time").css('border','1px solid #CCC');    
+             if ($.browser.msie  && parseInt($.browser.version, 10) < 8) {
+                 start_time.removeClass('select_warning');
+                 end_time.removeClass('select_warning');
+                 start_time.addClass('select_ok');
+                 end_time.addClass('select_ok');
+             }else{
+                 start_time.css('border','solid 1px #CCC')
+                 end_time.css('border','solid 1px #CCC')
+             }                      
+             $("#simpleschedule_start_time").css('border','inset 1px #CCC');
+             $("#simpleschedule_end_time").css('border','inset 1px  #CCC');    
          }
                  
          if(oValidator.formName.getMessage('simpleschedule_add_form') && error==0){
