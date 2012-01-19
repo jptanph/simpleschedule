@@ -54,7 +54,6 @@ var adminPageAdd = {
          popup.load('simpleschedule_google_map').skin('admin').layer({
              'title' : 'Google Map',
              'width' : 420,
-             'height':400,
              'classname': 'ly_set ly_editor'
          });
          googleMapApi.initialize('asd');

@@ -15,8 +15,8 @@
                                     <option value="All">All</option>
                                 </select></td>
                             
-                            <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>"/><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
-                            <td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
+                            <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>"/><a href="#"><label for="<?php echo $sPrefix ?>start_date" style="cursor:pointer;"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
+                            <td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" /><a href="#"><label for="<?php echo $sPrefix ?>end_date" style="cursor:pointer;"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></label></td>
                             
                         </tr>
                         <tr>

@@ -32,7 +32,8 @@ var googleMapApi = {
         /** Listen to an event everytime the user click  the map to change the marker position **/
         google.maps.event.addListener(map,'click',function(event){
             googleMapApi.setMarkerLocation(event.latLng)
-            googleMapApi.infoWindow.close()
+            googleMapApi.infoWindow.close();
+            
         })
 
         /** Listen to an event everytime the user click  the new location on the map to change the marker position **/  
@@ -52,28 +53,28 @@ var googleMapApi = {
 
         /** Send an ajax request to index to separate latitude and longitude **/
         $.ajax({
+            type:'post',
             dataType : 'json',
             url : usbuilder.getUrl('apiGoogleMap'),
             data :{
-                sRequestType : 'getLatLng',
                 fLatLng : ""+location+""
             },success:function(serverResponse){
-                googleMapApi.decodeLatitudeLongitude(serverResponse.fLatitude,serverResponse.fLongitude)
+                googleMapApi.decodeLatitudeLongitude(serverResponse.Data.fLatitude,serverResponse.Data.fLongitude)
             }
         })
     
     },getCurrentLocation : function(){
-        if($("#pg_scheduleradv_lat").val()!='' && $("#pg_scheduleradv_lng").val()!=''){
+        if($("#pg_scheduleradv_lat").val()!='' && $("#pg_scheduleradv_lng").val()!='' && $("#pg_scheduleradv_lat").val() != undefined &&  $("#pg_scheduleradv_lng").val() !=undefined){
                 initLat = $("#pg_scheduleradv_lat").val()
                 initLng = $("#pg_scheduleradv_lng").val()
                 initialLocation = new google.maps.LatLng(initLat,initLng);
                 googleMapApi.setMarkerLocation(initialLocation)
                 
       }else{
-      
+
           if(navigator.geolocation){
                 this.browserSupportFlag = true;  
-                
+
                 navigator.geolocation.getCurrentPosition(function(position) {
                 
                 this.initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
@@ -85,6 +86,7 @@ var googleMapApi = {
 
                 });
           }else if (google.gears) {
+
                 this.browserSupportFlag = true;
                 var geo = google.gears.factory.create('beta.geolocation');
                 geo.getCurrentPosition(function(position) {
@@ -112,14 +114,15 @@ var googleMapApi = {
         map.setCenter(this.initialLocation);
     
     },decodeLatitudeLongitude : function(fLat,fLng){
+
         var lat = parseFloat(fLat);
         var lng = parseFloat(fLng);
         var latlng = new google.maps.LatLng(lat, lng);
-        
         this.geocoder.geocode({'latLng': latlng}, function(results, status) {
+
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[2]) {
-              var html = "<p class='window_info'><b>Address :</b> "+results[0].formatted_address+"</p>";
+              var html = "<br /><p class='window_info'><b>Address :</b> "+results[0].formatted_address+"</p>";
               googleMapApi.infoWindow.setContent(html);
               googleMapApi.infoWindow.open(googleMapApi.map, googleMapApi.marker);
               $("#pg_scheduleradv_hlocation").val(results[0].formatted_address)
@@ -208,6 +211,7 @@ var googleMapApi = {
         $("#pg_scheduleradv_location").val('')
         $("#pg_scheduleradv_location").val($("#pg_scheduleradv_hlocation").val());
         $("#pg_scheduleradv_init_gmap").remove()
+        popup.close("simpleschedule_google_map")
     
     }, viewFrontMap : function(url,initLat,initLng){
     

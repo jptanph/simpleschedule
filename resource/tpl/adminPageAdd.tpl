@@ -50,7 +50,7 @@
     		</td>
     	</tr>
     	<tr><th><label for="textarea_memo">Title</label></th><td><span class="neccesary">*</span><input fw-filter="isFill" fw-label="<?php echo $sPrefix?>title" id="<?php echo $sPrefix?>title" name="title" type="text" value="" class="fix2"  /></td></tr>
-    	<tr><th><label for="textarea_memo">Location</label></th><td><span class="neccesary">&nbsp;&nbsp;</span><input type="text" value="" class="fix2"  />
+    	<tr><th><label for="textarea_memo">Location</label></th><td><span class="neccesary">&nbsp;&nbsp;</span><input type="text" value="" id="pg_scheduleradv_location" class="fix2" readonly="true" />
     	<a href="#none" onclick="adminPageAdd.execGMAP();" title="Google Map Location"><img src="/_sdk/img/simpleschedule/u89_original.gif"  /></a>
     	</td></tr>
     	<tr>
@@ -88,8 +88,14 @@
 
         <div id="<?php echo $sPrefix?>google_map" style='display:none;'>
             <div class="admin_popup_contents">
-                <center></center>
+                <center><input type="text" name="search_map" style="margin:0 0 15px 0;width:345px;border:solid 1px #CCCCCC;padding: 0 2px 0 2px"> <a class="btn_nor_01 btn_width_st1" href="#none" title="Delete" style="margin:0 0 15px 0;" onclick="adminPageContent.execDelete()"> Search <a/></center>
+                <input type="hidden" id="pg_scheduleradv_lat">
+                <input type="hidden" id="pg_scheduleradv_lng">
+                <input type="hidden" id="pg_scheduleradv_hlocation">
+
                 <div id="sdk_scheduleradv_gmap" style="height:320px;width:420px;border:solid 1px gray;"></div>
+                 <center><a class="btn_nor_01 btn_width_st1" href="#none" title="Select" style="margin:15px 0 0 0;width:100px" onclick="googleMapApi.selectLocation()"> Select Location<a/></center>
+
             </div>
         </div>
 

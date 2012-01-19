@@ -11,6 +11,6 @@ class apiGoogleMap extends Controller_Api
         $aExp = explode(',',$latLng);
         $aLatLngHandler['fLatitude'] = $aExp[0];
         $aLatLngHandler['fLongitude'] = $aExp[1];
-        usbuilder()->vd(json_encode($aLatLngHandler));
+        return $aLatLngHandler;
     }
 }

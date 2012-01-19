@@ -65,3 +65,5 @@
 .select_ok{
     filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=0, OffY=0) 
 }
+
+.window_info{color:#333333;font-family:Helvetica;font-size:11px;text-decoration:none;}
