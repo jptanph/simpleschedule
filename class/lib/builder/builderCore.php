@@ -14,6 +14,8 @@ class builderCore
     {
         $this->_setModuleCode($sAppId);
         $this->_aBuilderUrlInfo = $aArgs['usbuilder']['url_info'];
+        $this->_aBuilderUrlInfo['front']['url'] = '/';
+        $this->_aBuilderUrlInfo['front']['param'] = array('module' => '|Modulecode||Pageexec||Name|');
 
         $sInitScript = $this->_getInitScript($aArgs);
         return $sInitScript;
@@ -54,8 +56,6 @@ class builderCore
             $aUrlInfo = $this->_aBuilderUrlInfo['admin'];
         } elseif (preg_match('/^front/', $sClassName)) {
             $aUrlInfo = $this->_aBuilderUrlInfo['front'];
-            $aUrlInfo['url'] = '/';
-            $aUrlInfo['param'] = array('module' => '|Modulecode||Pageexec||Name|');
         } elseif (preg_match('/^api/', $sClassName)) {
             $aUrlInfo = $this->_aBuilderUrlInfo['api'];
         }
@@ -188,16 +188,17 @@ class builderCore
             		sModuleCode : '" . $this->getModuleCode() . "',
             		_aBuilderUrlInfo : {
             			'admin' : {
-            				'url' : '" . $aArgs['usbuilder']['url_info']['admin']['url'] . "',
-            				'param' : $.parseJSON('" . json_encode($aArgs['usbuilder']['url_info']['admin']['param']) . "')
+            				'url' : '" . $this->_aBuilderUrlInfo['admin']['url'] . "',
+            				'param' : $.parseJSON('" . json_encode($this->_aBuilderUrlInfo['admin']['param']) . "')
+            			},
+            			'front' : {
+            				'url' : '" . $this->_aBuilderUrlInfo['front']['url'] . "',
+            				'param' : $.parseJSON('" . json_encode($this->_aBuilderUrlInfo['front']['param']) . "')
             			},
             			'api' : {
-            				'url' : '" . $aArgs['usbuilder']['url_info']['api']['url'] . "',
-            				'param' : '" . $aArgs['usbuilder']['url_info']['api']['param'] . "'
+            				'url' : '" . $this->_aBuilderUrlInfo['api']['url'] . "',
+            				'param' : '" . $this->_aBuilderUrlInfo['api']['param'] . "'
             			}
-            		},
-            		_getUrl : function(sClassName) {
-            			alert(this._aBuilderUrlInfo.toSource());
             		},
                     _replaceAllInfo: function(sClassName, sText) {
                         aInfo = sClassName.match(/[A-Z][a-z]+/gm);
@@ -220,9 +221,12 @@ class builderCore
                     },
             		_getSpecifiedUrl : function(sClassName) {
                         pattAdmin = /^admin/;
+                        pattFront = /^front/;
                         pattApi = /^api/;
             			if (pattAdmin.test(sClassName)) {
                             aUrlInfo = this._aBuilderUrlInfo['admin'];
+                        } else if (pattFront.test(sClassName)) {
+                            aUrlInfo = this._aBuilderUrlInfo['front'];
                         } else if (pattApi.test(sClassName)) {
                             aUrlInfo = this._aBuilderUrlInfo['api'];
                         }
