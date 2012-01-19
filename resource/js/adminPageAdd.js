@@ -51,10 +51,13 @@ var adminPageAdd = {
              document.simpleschedule_add_form.submit();
          }
      },execGMAP : function(){
-         popup.load('simplesample_google_map').skin('admin').layer({
+         popup.load('simpleschedule_google_map').skin('admin').layer({
              'title' : 'Google Map',
-             'width' : 260,
+             'width' : 420,
+             'height':400,
              'classname': 'ly_set ly_editor'
          });
+         googleMapApi.initialize('asd');
+
      }
 }

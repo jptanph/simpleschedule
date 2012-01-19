@@ -86,8 +86,11 @@
     		<a href="<?php echo $sUrl;?>" class="add_link" title="Return to Scheduler">Return to Scheduler</a>
     	</div>
 
-        <div id="<?php echo $sPrefix?>google_map" style='display:none'>
+        <div id="<?php echo $sPrefix?>google_map" style='display:none;'>
             <div class="admin_popup_contents">
-        	    <div>asdasds</div>
-        	</div>
+                <center></center>
+                <div id="sdk_scheduleradv_gmap" style="height:320px;width:420px;border:solid 1px gray;"></div>
+            </div>
         </div>
+
+
