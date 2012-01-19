@@ -1,4 +1,5 @@
 <?php
+
 require_once('builder/builderInterface.php');
 class adminPageList extends Controller_Admin
 {
@@ -6,6 +7,7 @@ class adminPageList extends Controller_Admin
 
     protected function run($aArgs)
     {
+
         /** usbuilder initializer.**/
         $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
         $this->writeJs($sInitScript);
@@ -32,8 +34,6 @@ class adminPageList extends Controller_Admin
         $sUrlView = usbuilder()->getUrl('adminPageView');
         $incRow = 0;
 
-
-
         foreach($aList as $rows)
         {
            $aData[] = array(
@@ -59,11 +59,8 @@ class adminPageList extends Controller_Admin
         $this->importCss(__CLASS__);
         $this->importCss('jqueryCalendar');
 
-
-
-
         $this->importJs('jqueryCalendar');
-
+        $this->importJs('jqueryShiftCheckbox');
         $this->importJs('adminPageContent');
 
         $this->assign('sSort',isset($aArgs['sort']) ? $aArgs['sort'] : '');
@@ -71,14 +68,16 @@ class adminPageList extends Controller_Admin
 
         /** query strings**/
         $this->assign('sQryRow',$sQryRow);
-
+        $this->assign('iResult',$iResult);
+        $this->assign('sFirstDay',($aArgs['start_date']) ? $aArgs['start_date'] : date("Y/m/") . '01');
+        $this->assign('sLastDay',($aArgs['end_date']) ? $aArgs['end_date'] : date("Y/m/t"));
         $this->assign('sPrefix', $this->_sPrefix);
         $this->assign('sImagePath',$sImagePath);
         $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination($iResult, $iLimit));
         $this->assign('sUrlList',$sUrlList);
         $this->assign('sUrlAdd',$sUrlAdd);
         $this->assign('sUrlView',$sUrlView);
-        $this->assign('sRows',(isset($aArgs['row'])) ? $aArgs['row'] : '20' );
+        $this->assign('sRows',(isset($aArgs['row'])) ? $aArgs['row'] : '20');
         $this->assign('sKeyword',$aArgs['keyword']);
         $this->assign('aList',$aData);
         $this->view(__CLASS__);

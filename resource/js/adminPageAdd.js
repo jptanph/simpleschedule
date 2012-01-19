@@ -50,5 +50,11 @@ var adminPageAdd = {
          if(oValidator.formName.getMessage('simpleschedule_add_form') && error==0){
              document.simpleschedule_add_form.submit();
          }
+     },execGMAP : function(){
+         popup.load('simplesample_google_map').skin('admin').layer({
+             'title' : 'Google Map',
+             'width' : 260,
+             'classname': 'ly_set ly_editor'
+         });
      }
 }

@@ -15,8 +15,8 @@
                                     <option value="All">All</option>
                                 </select></td>
                             
-                            <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date"  /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
-                            <td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
+                            <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>"/><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
+                            <td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" /><a href="#"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></td>
                             
                         </tr>
                         <tr>
@@ -41,7 +41,7 @@
                 <ul class="row_1">
                     
                     <li class="comment">
-                        <a href="#" class="all selected" title="Show all posts">All(10)</a>
+                        <a href="<?php echo $sUrlList;?>" class="all selected" title="Show all posts">All(<?php echo $iResult;?>)</a>
                         <a href="#" title="Show Expected Schedule only">Expected(7)</a>
                         <a href="#" title="Show Finished Schedule only">Finished(3)</a>
                     </li>                   
@@ -116,7 +116,7 @@
                         <a href="#none" class="btn_nor_01 btn_width_st1" title="Apply selected action">Apply</a>    
                     </li>-->
                     <li>
-                        <a href="#none" class="btn_nor_01 btn_width_st1" style="height:13px;" title="Delete selected schedule">Delete</a>
+                        <a href="#none" class="btn_nor_01 btn_width_st1" style="height:13px;" onclick="adminPageContent.deleteRow();"  title="Delete selected schedule">Delete</a>
                     </li>
                     <li class="show">
                         <a href="<?php echo $sUrlAdd; ?>" class="btn_nor_01 btn_width_st2" title="Add New Schedule" style="width:119px;height:13px">Add New Schedule</a>
@@ -134,7 +134,7 @@
                     Are you sure you want to delete the record? 
                     <br />
                     <br />
-                    <a class="btn_nor_01 btn_width_st1" href="#" style='cursor:pointer;' title="Delete" onclick="adminPageList.deleteBtn()"> Delete <a/>
+                    <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContent.execDelete()"> Delete <a/>
                 </div>
             </div>     
             
