@@ -46,8 +46,7 @@ var googleMapApi = {
 
 
     },setMarkerLocation : function(location){
-
-        googleMapApi.animateMarker();
+    	googleMapApi.animateMarker();
         marker.setPosition(location);
         map.setCenter(location)
 
@@ -142,9 +141,9 @@ var googleMapApi = {
           $("#pg_scheduleradv_lng").val('')
           $("#pg_scheduleradv_search_result").remove()
           $("#pg_scheduleradv_search_result").remove()
-          $("body").append("<div id='pg_scheduleradv_search_result' title='Search Result'></div>");
+
           var searchResult = '';
-          var address = $("#pg_scheduleradv_search_box").val();
+          var address = $("#map_search_address").val();
           
           if($.trim(address)==''){
             $("#pg_scheduleradv_search_box").css('border','solid 2px #dc4e22');
@@ -152,32 +151,57 @@ var googleMapApi = {
             $("#pg_scheduleradv_search_box").css('border','solid 1px #CCCCCC');
             this.geocoder.geocode( { 'address': address}, function(results, status) {
                 
-                searchResult+="<div id='rec-result' style='overflow:auto;max-height:200px;border:solid 1px #CCCCCC;margin-top:3%;background-color:whitesmoke'>"
-                searchResult+="<div style='margin:3%'>";
-                searchResult +="<table cellpadding='3' cellspacing='3'>"        
+//                searchResult+="<div id='rec-result' style='overflow:auto;max-height:200px;border:solid 1px #CCCCCC;margin-top:3%;background-color:whitesmoke'>"
+//                searchResult+="<div style='margin:3%'>";
+//                searchResult +="<table cellpadding='3' cellspacing='3'>"        
+//                    if(status=='ZERO_RESULTS'){
+//                        searchResult +="<tr><td>No address found.</td></tr>"
+//                        hasSelect = '';
+//                        
+//                    }else{
+
+                
+                    searchResult="";
+                    
+                    searchResult +="<div class='search_result'>\n";
+                    searchResult +=" <span class='search_title'>Map Search Result</span>\n";
+                    searchResult +="<ul class='search_location' style='"+((results.length<=5) ? '' : 'height:110px')+"'>\n";
+                    
                     if(status=='ZERO_RESULTS'){
-                        searchResult +="<tr><td>No address found.</td></tr>"
-                        hasSelect = '';
-                        
+                        searchResult += "<li><center><b>No result.</b></center></li>\n";
                     }else{
-                        for(i = 0; i<results.length;i++){
-                            searchResult += "<tr><td style=\"font-size:11px;font:bold\"><label><input type='radio' name='pg_scheduleradv_searchradio' style='border:solid 1px whitesmoke;' value='"+results[i].formatted_address+"'> <i>"+results[i].formatted_address+"</i></label></td></tr>";
-                        }
-                        hasSelect = "<span class='btn_u'><input type='button' class='btn_nor_01_c btn_width_st1_c' onclick='googleMapApi.selectResultLocation()' value='Select' id='' /></span>";
+	                    for(i = 0; i<results.length;i++){
+	                    	ltLg = "'"+results[i].geometry.location+"'";
+	                    	
+	                    	var oldLtLg = ltLg.replace("'(",'');
+	                    	var newLtLg = oldLtLg.replace(")'",'');
+	                    	
+	                    	strLtLg = new String(newLtLg)
+	                    	arrLtLg = strLtLg.split(',');
+	                    	//alert(arrLtLg[0])
+	                       searchResult += "<li><span class='span_btn'><input type='radio' id='search_id"+i+"' name='search_result_val[]' value='"+results[i].formatted_address+"' class='radio_btn' /></span><label for='search_id"+i+"' onclick='googleMapApi.viewMapSearch("+arrLtLg[0]+","+arrLtLg[1]+")' class='search_address'>"+results[i].formatted_address+"</label></li>\n";
+	                       //searchResult += "<li><span class='span_btn'><input type='radio' id='search_id"+i+"' name='search_result_val[]' value='"+results[i].formatted_address+"' class='radio_btn' /></span><label for='search_id"+i+"' onclick='googleMapApi.viewMapSearch("+arrLtLg[0]+","+arrLtLg[1]+")' class='search_address'>"+results[i].formatted_address+"</label></li>\n";
+		                    
+	                    }                       
                     }
-                searchResult +="</table>"
-                searchResult +="</div>"
-                searchResult +="</div>";
-                searchResult +="<div class='submit' align='center'><br />"
-                searchResult +="<span id='gmap-error' style='color:red'></span><br />"
-                searchResult +="<input  type='hidden' value='' id='map_address'/>"
-                searchResult +=hasSelect
-                searchResult +="&nbsp;&nbsp;<span class='btn_u'><input type='button' class='btn_nor_01_c btn_width_st1_c'  value='Close'  onClick=Plugin_Scheduleradv_Setup.closeBox('#pg_scheduleradv_search_result') /></span>"
-                searchResult +="</div>"
-                $("#pg_scheduleradv_search_result").html(searchResult);
-                $("#pg_scheduleradv_search_result").dialog({
-                    width:450
-                });
+                    searchResult +="</ul>\n";
+                    searchResult +="</div>\n";   
+                    $("#search_result_area").html(searchResult);                    
+//                        hasSelect = "<span class='btn_u'><input type='button' class='btn_nor_01_c btn_width_st1_c' onclick='googleMapApi.selectResultLocation()' value='Select' id='' /></span>";
+//                    }
+//                searchResult +="</table>"
+//                searchResult +="</div>"
+//                searchResult +="</div>";
+//                searchResult +="<div class='submit' align='center'><br />"
+//                searchResult +="<span id='gmap-error' style='color:red'></span><br />"
+//                searchResult +="<input  type='hidden' value='' id='map_address'/>"
+//                searchResult +=hasSelect
+//                searchResult +="&nbsp;&nbsp;<span class='btn_u'><input type='button' class='btn_nor_01_c btn_width_st1_c'  value='Close'  onClick=Plugin_Scheduleradv_Setup.closeBox('#pg_scheduleradv_search_result') /></span>"
+//                searchResult +="</div>"
+//                $("#pg_scheduleradv_search_result").html(searchResult);
+//                $("#pg_scheduleradv_search_result").dialog({
+//                    width:450
+//                });
                 
             }); 
         }
@@ -207,9 +231,8 @@ var googleMapApi = {
             marker.setAnimation(google.maps.Animation.DROP)
         }   
     },selectLocation : function(){
-    
-        $("#pg_scheduleradv_location").val('')
-        $("#pg_scheduleradv_location").val($("#pg_scheduleradv_hlocation").val());
+        $("#location").val('')
+        $("#location").val($("#pg_scheduleradv_hlocation").val());
         $("#pg_scheduleradv_init_gmap").remove()
         popup.close("simpleschedule_google_map")
     
@@ -255,6 +278,10 @@ var googleMapApi = {
           google.maps.event.addListener(marker,'click',function(){
                 googleMapApi.infoWindow.open(map,marker)
           })
+  },viewMapSearch : function(lt,lg){
+	  
+	  this.decodeLatitudeLongitude(lt,lg)
+	  // this.setMarkerLocation("('"+parseFloat(lt)+"','"+parseFloat(lg)+"')");
   }
     
 }

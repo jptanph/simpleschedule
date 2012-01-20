@@ -49,11 +49,13 @@ class adminPageList extends Controller_Admin
                 'end_day' => $rows['end_day'],
                 'end_time' => $rows['end_time'],
                 'is_recursive' => $rows['is_recursive'],
-                'date_created' => $rows['date_created']
+                'date_created' => $rows['date_created'],
+                'start_date' => $rows['start_date'],
+                'end_date' => $rows['end_date'],
+           		'status' => ((strtotime($rows['status_date'])<=strtotime($rows['date_now'])) ? 'Finished' : 'Expected')
            );
            $incRow++;
         }
-
 
         $sImagePath = '/_sdk/img/simpleschedule/';
         $this->importCss(__CLASS__);

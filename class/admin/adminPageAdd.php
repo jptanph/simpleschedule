@@ -7,7 +7,6 @@ class adminPageAdd extends Controller_Admin
 
     protected function run($aArgs)
     {
-
          $this->_sPrefix = 'simpleschedule_';
          /** usbuilder initializer.**/
         $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);

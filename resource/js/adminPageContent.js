@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $('.input_chk').shiftcheckbox();
-    options = { 'years_between' : [2000,2030],'format' : 'yyyy/mm/dd' };
+    var options = { 'years_between' : [2000,2030],'format' : 'yyyy/mm/dd' };
     $("#simpleschedule_start_date, #simpleschedule_end_date").BuilderCalendar(options);
 });
 var adminPageContent = {
@@ -50,6 +50,7 @@ var adminPageContent = {
         var show_rows = $("#show_rows");
         window.location.href=usbuilder.getUrl('adminPageList') + '&row='+show_rows.val();
     },execDelete : function(){
+        
         var options  = {
             url :usbuilder.getUrl("apiDeleteContent"),
             type:'post',

@@ -1,14 +1,15 @@
 $(document).ready(function(){
     options = { 'years_between' : [2000,2030],'format' : 'yyyy/mm/dd' };
-    $("#simpleschedule_start_date, #simpleschedule_end_date").BuilderCalendar(options);
+    $("#start_date, #end_date").BuilderCalendar(options);
 });
 
 var adminPageAdd = {
      execSave : function(){
-         var start_date = $("#simpleschedule_start_date");
-         var end_date = $("#simpleschedule_end_date");
-         var start_time = $("#simpleschedule_start_time");         
-         var end_time = $("#simpleschedule_end_time");
+         
+         var start_date = $("#start_date");
+         var end_date = $("#end_date");
+         var start_time = $("#start_time");         
+         var end_time = $("#end_time");
          var error = 0;
 
          
@@ -48,9 +49,29 @@ var adminPageAdd = {
          }
                  
          if(oValidator.formName.getMessage('simpleschedule_add_form') && error==0){
-             document.simpleschedule_add_form.submit();
+             
+             var options  = {
+                     url :usbuilder.getUrl("apiValidateSave"),
+                     type:'post',
+                     dataType:'json',
+                     data : {
+                         start_date : start_date.val(),
+                         start_time : start_time.val(),
+                         end_date : end_date.val(),
+                         end_time : end_time.val()
+                     },success : function(server_response){
+                         if(server_response.Data==0){
+                             document.simpleschedule_add_form.submit();
+                         }else{
+                             oValidator.generalPurpose.getMessage(false, "There is a conflict in the schedule.");
+                         }
+                     }
+                 }    
+                 $.ajax(options); 
+             
          }
      },execGMAP : function(){
+    	 $(".search_result").remove();
          popup.load('simpleschedule_google_map').skin('admin').layer({
              'title' : 'Google Map',
              'width' : 420,

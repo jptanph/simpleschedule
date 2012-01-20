@@ -9,7 +9,13 @@ class modelAdmin extends Model
 {
     public function getList($sOrderBy,$sLimit)
     {
-        $sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " $sOrderBy $sLimit";
+        $sSql = "SELECT
+        *,
+        DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y-%m-%d %H:00:00') as status_date,
+		DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') as date_now,        
+        DATE_FORMAT(DATE_ADD(start_day,INTERVAL start_time HOUR),'%Y/%m/%d %H:00') as start_date,
+        DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d %H:00') as end_date
+        FROM " . SIMPLESCHEDULE_DATA . " $sOrderBy $sLimit";
         return $this->query($sSql);
     }
 
@@ -27,11 +33,15 @@ class modelAdmin extends Model
 
     public function insertRecord($aData)
     {
+        //UNIX_TIMESTAMP(NOW()))
+
         $sSql = " INSERT INTO " . SIMPLESCHEDULE_DATA .
-        "(title,start_day,start_time,end_day,end_time)
+        "(title,memo,map_location,start_day,start_time,end_day,end_time)
         VALUES
         (
         '{$aData['title']}',
+        '{$aData['memo']}',
+        '{$aData['location']}',
         '{$aData['start_date']}',
         '{$aData['start_time']}',
         '{$aData['end_date']}',
@@ -40,12 +50,22 @@ class modelAdmin extends Model
 
         return $this->query($sSql);
 
-        //UNIX_TIMESTAMP(NOW()))
     }
 
     public function execDelete($iIdx)
     {
         $sSql = "DELETE FROM " . SIMPLESCHEDULE_DATA . " WHERE idx = " . $iIdx;
         $this->query($sSql);
+    }
+
+    public function execCheckSave()
+    {
+        $sSql = "SELECT
+        DATE_ADD(start_day,INTERVAL start_time HOUR) as start_date,
+        DATE_ADD(end_day,INTERVAL end_time HOUR) as end_date,
+        start_time as start_time,
+        end_time as end_time
+        FROM ". SIMPLESCHEDULE_DATA;
+        return $this->query($sSql);
     }
 }
