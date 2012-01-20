@@ -49,7 +49,7 @@ var adminPageAdd = {
          }
                  
          if(oValidator.formName.getMessage('simpleschedule_add_form') && error==0){
-             
+             $("#validation_message").hide();
              var options  = {
                      url :usbuilder.getUrl("apiValidateSave"),
                      type:'post',

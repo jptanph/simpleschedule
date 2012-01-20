@@ -81,7 +81,7 @@ class adminPageList extends Controller_Admin
         $this->assign('sImagePath',$sImagePath);
         $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination($iResult, $iLimit));
         $this->assign('sUrlList',$sUrlList);
-        $this->assign('	',$aArgs['field_search']);
+        $this->assign('sFieldSearch',$aArgs['field_search']);
         $this->assign('sUrlAdd',$sUrlAdd);
         $this->assign('sUrlView',$sUrlView);
         $this->assign('sRows',(isset($aArgs['row'])) ? $aArgs['row'] : '20');

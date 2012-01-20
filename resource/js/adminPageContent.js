@@ -41,7 +41,7 @@ var adminPageContent = {
         }
         
     },execSearch : function(){
-        
+        popup.close("simplesample_delete_popup");
         var keyword = $("#keyword");
         var start_date = $("#simpleschedule_start_date");
         var end_date = $("#simpleschedule_end_date");
@@ -50,7 +50,7 @@ var adminPageContent = {
         window.location.href = usbuilder.getUrl('adminPageList') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val();
         
     },execSelectRow : function(){
-        
+        popup.close("simplesample_delete_popup");
         var show_rows = $("#show_rows");
         window.location.href=usbuilder.getUrl('adminPageList') + '&row='+show_rows.val();
     },execDelete : function(){
@@ -72,14 +72,15 @@ var adminPageContent = {
         popup.close("simplesample_delete_popup");
         
     },execDateRange : function(){
-    	var date_range = $("#date_range");
+        popup.close("simplesample_delete_popup");
+    	var date_range = ($("#date_range").val()==undefined) ? 'currentMonth' : $("#date_range").val();
     	
         var options  = {
             url :usbuilder.getUrl("apiDateRange"),
             type:'post',
             dataType:'json',
             data : {
-            	requestDate : date_range.val()
+            	requestDate : date_range
             },success : function(server_response){
             	$("#simpleschedule_start_date").val(server_response.Data.sDate)
             	$("#simpleschedule_end_date").val(server_response.Data.eDate)
@@ -87,6 +88,12 @@ var adminPageContent = {
         }
             
         $.ajax(options);
+    },execReset : function(){
+        popup.close("simplesample_delete_popup");
+    	$("#keyword").val('');
+    	$("select#date_range").val('currentMonth');
+    	$("select#field_type_search").val('title')
+    	this.execDateRange();
     }
         
 }
