@@ -68,6 +68,17 @@ class modelAdmin extends Model
         FROM ". SIMPLESCHEDULE_DATA;
         return $this->query($sSql);
     }
+
+    public function execCheckUpdate($idx)
+    {
+		$sSql = "SELECT
+		DATE_ADD(start_day,INTERVAL start_time HOUR) as start_date,
+		DATE_ADD(end_day,INTERVAL end_time HOUR) as end_date,
+		start_time as start_time,
+		end_time as end_time 
+		FROM ". SIMPLESCHEDULE_DATA . " WHERE psd_idx != $idx";
+		return $this->query($sSql);		
+    }
     
     public function execDateRange()
     {

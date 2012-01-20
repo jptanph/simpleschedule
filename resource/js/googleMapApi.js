@@ -31,7 +31,8 @@ var googleMapApi = {
 
         /** Listen to an event everytime the user click  the map to change the marker position **/
         google.maps.event.addListener(map,'click',function(event){
-            googleMapApi.setMarkerLocation(event.latLng)
+
+            googleMapApi.setMarkerLocation(event.latLng);
             googleMapApi.infoWindow.close();
             
         })
@@ -280,8 +281,31 @@ var googleMapApi = {
           })
   },viewMapSearch : function(lt,lg){
 	  
-	  this.decodeLatitudeLongitude(lt,lg)
-	  // this.setMarkerLocation("('"+parseFloat(lt)+"','"+parseFloat(lg)+"')");
+	  var geocoder  = new google.maps.Geocoder();
+	  var map;
+	  var infowindow = new google.maps.InfoWindow();
+	  var marker;
+
+		var lat = parseFloat(lt);
+		var lng = parseFloat(lg);
+		var latlng = new google.maps.LatLng(lat, lng);
+		geocoder.geocode({'latLng': latlng}, function(results, status) {
+		  if (status == google.maps.GeocoderStatus.OK) {
+		    if (results[1]) {
+		        map = new google.maps.Map(document.getElementById("sdk_scheduleradv_gmap"), myOptions);  
+		      map.setZoom(11);
+		      marker = new google.maps.Marker({
+		          position: latlng,
+		          map: map
+		      });
+		      infowindow.setContent(results[1].formatted_address);
+		      infowindow.open(map, marker);
+		    }
+		  } else {
+		    alert("Geocoder failed due to: " + status);
+		  }
+		});
+
   }
     
 }

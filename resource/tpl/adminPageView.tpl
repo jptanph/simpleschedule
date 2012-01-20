@@ -84,7 +84,7 @@
 	//]]>
 	</script>
 	<div class="tbl_lb_wide_btn">
-		<a href="#none" class="btn_apply" title="Save changes" onclick="adminPageAdd.execSave();">Save</a>
+		<a href="#none" class="btn_apply" title="Save changes" onclick="adminPageView.execUpdate();">Save</a>
 		<a href="<?php echo $sUrl;?>" class="add_link" title="Return to Scheduler">Return to Scheduler</a>
 	</div>
 

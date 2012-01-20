@@ -24,7 +24,7 @@ class apiValidateSave extends Controller_Api
             	($sStartDate>=$rows['start_date'] && $sEndDate<= $rows['end_date'])
             	|| ($sStartDate<=$rows['start_date'] && $sEndDate>= $rows['end_date'])
             	|| ($sStartDate<=$rows['end_date'] && $sEndDate>=$rows['start_date'])
-            	)
+            )
             {
             	if(
             		($aArgs['start_time']>=$rows['start_time'] && $aArgs['end_time']<=$rows['end_time'])

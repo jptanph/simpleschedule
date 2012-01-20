@@ -20,6 +20,7 @@ class adminPageView extends Controller_Admin
          $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
 
          $this->importCss('adminPageList');
+         $this->importJs(__CLASS__);
          $this->assign('sUrl',$sUrl);
          $this->assign('sUrlAdd',$sUrlAdd);
          $this->assign('aResult',$aResult);
