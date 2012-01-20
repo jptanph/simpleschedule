@@ -89,4 +89,24 @@ class modelAdmin extends Model
     	$sSql  = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00')";
     	return $this->query($sSql);
     }
+    
+    public function execViewRecord($iIdx)
+    {
+
+		$aData = array();
+		$sSql = "SELECT 
+		idx,
+		title,
+		memo,
+		map_location,
+		latitude,
+		longitude,
+		start_time,
+		end_time,
+		DATE_FORMAT(start_day,'%Y/%m/%d') as start_day,
+		DATE_FORMAT(end_day,'%Y/%m/%d') as end_day 
+		FROM " . SIMPLESCHEDULE_DATA . " WHERE idx = " . $iIdx;		
+		return $this->query($sSql);
+		
+    }
 }
