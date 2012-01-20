@@ -68,4 +68,25 @@ class modelAdmin extends Model
         FROM ". SIMPLESCHEDULE_DATA;
         return $this->query($sSql);
     }
+    
+    public function execDateRange()
+    {
+    	$sSql = "SELECT 
+    	DATE_FORMAT(MIN(start_day),'%Y/%m/%d') as min_sday,
+    	DATE_FORMAT(MAX(end_day),'%Y/%m/%d') AS max_eday 
+    	FROM " . SIMPLESCHEDULE_DATA;
+    	return $this->query($sSql,'row');
+    }
+    
+    public function execGetExpected()
+    {
+    	$sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00')";
+    	return $this->query($sSql);
+    }
+    
+    public function execGetFinished()
+    {
+    	$sSql  = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00')";
+    	return $this->query($sSql);
+    }
 }

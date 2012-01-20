@@ -6,13 +6,13 @@
                 <tr>
                     <td><span  class="title">Show by</span></td>
                     <td>
-                        <select class="optionbox">
+                        <select class="optionbox" id="date_range" onchange="adminPageContent.execDateRange();">
                             <option value="Customized Search">Customized Search</option>
-                            <option value="Today">Today</option>
-                            <option value="Current Week">Current Week</option>
-                            <option value="Current Month" selected="selected">Current Month</option>
-                            <option value="Current Year">Current Year</option>
-                            <option value="All">All</option>
+                            <option value="today" <?php if($sDateRange=='today'){?> selected="selected" <?php }?>>Today</option>
+                            <option value="currentWeek" <?php if($sDateRange=='currentWeek'){?> selected="selected" <?php }?>>Current Week</option>
+                            <option value="currentMonth"  <?php if($sDateRange=='currentMonth' || $sDateRange==''){?> selected="selected" <?php }?>>Current Month</option>
+                            <option value="currentYear" <?php if($sDateRange=='currentYear'){?> selected="selected" <?php }?>>Current Year</option>
+                            <option value="all" <?php if($sDateRange=='all'){?> selected="selected" <?php }?>>All</option>
                         </select>
                     </td>
                     <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>"/><a href="#"><label for="<?php echo $sPrefix ?>start_date" style="cursor:pointer;"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
@@ -21,9 +21,9 @@
             <tr>
                 <td><span  class="title">Search Keyword</span></td>
                 <td>
-                    <select class="optionbox">
-                            <option value="Memo">Memo</option>
-                            <option value="Title" selected="selected">Title</option>
+                    <select class="optionbox" id="field_type_search">
+                        <option value="memo" <?php if($sFieldSearch=='memo'){?> selected=="selected" <?php } ?>>Memo</option>
+                        <option value="title" <?php if($sFieldSearch=='' || $sFieldSearch=='title'){?> selected="selected" <?php } ?>>Title</option>
                     </select></td>
                 <td colspan="2"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageContent.execSearch();" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#" class="add_link" title="Reset to default">Reset</a></td>
             </tr>
@@ -35,8 +35,8 @@
     <ul class="row_1">
         <li class="comment">
             <a href="<?php echo $sUrlList;?>" class="all selected" title="Show all posts">All(<?php echo $iResult;?>)</a>
-            <a href="#" title="Show Expected Schedule only">Expected(7)</a>
-            <a href="#" title="Show Finished Schedule only">Finished(3)</a>
+            <a href="#" title="Show Expected Schedule only">Expected(<?php echo $iExpected;?>)</a>
+            <a href="#" title="Show Finished Schedule only">Finished(<?php echo $iFinished;?>)</a>
         </li>
     </ul>
     <ul class="row_2">

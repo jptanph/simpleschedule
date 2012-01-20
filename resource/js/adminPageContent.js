@@ -43,7 +43,11 @@ var adminPageContent = {
     },execSearch : function(){
         
         var keyword = $("#keyword");
-        window.location.href = usbuilder.getUrl('adminPageList') + '&keyword=' +keyword.val();
+        var start_date = $("#simpleschedule_start_date");
+        var end_date = $("#simpleschedule_end_date");
+        var date_range = $("#date_range");
+        var field_search = $("#field_type_search");
+        window.location.href = usbuilder.getUrl('adminPageList') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val();
         
     },execSelectRow : function(){
         
@@ -67,6 +71,22 @@ var adminPageContent = {
         $.ajax(options);
         popup.close("simplesample_delete_popup");
         
+    },execDateRange : function(){
+    	var date_range = $("#date_range");
+    	
+        var options  = {
+            url :usbuilder.getUrl("apiDateRange"),
+            type:'post',
+            dataType:'json',
+            data : {
+            	requestDate : date_range.val()
+            },success : function(server_response){
+            	$("#simpleschedule_start_date").val(server_response.Data.sDate)
+            	$("#simpleschedule_end_date").val(server_response.Data.eDate)
+            }
+        }
+            
+        $.ajax(options);
     }
         
 }

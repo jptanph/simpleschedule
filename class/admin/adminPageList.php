@@ -71,12 +71,17 @@ class adminPageList extends Controller_Admin
         /** query strings**/
         $this->assign('sQryRow',$sQryRow);
         $this->assign('iResult',$iResult);
+        
         $this->assign('sFirstDay',($aArgs['start_date']) ? $aArgs['start_date'] : date("Y/m/") . '01');
         $this->assign('sLastDay',($aArgs['end_date']) ? $aArgs['end_date'] : date("Y/m/t"));
         $this->assign('sPrefix', $this->_sPrefix);
+        $this->assign('iFinished',count($model->execGetFinished()));
+        $this->assign('iExpected',count($model->execGetExpected()));
+        $this->assign('sDateRange',$aArgs['date_range']);        
         $this->assign('sImagePath',$sImagePath);
         $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination($iResult, $iLimit));
         $this->assign('sUrlList',$sUrlList);
+        $this->assign('	',$aArgs['field_search']);
         $this->assign('sUrlAdd',$sUrlAdd);
         $this->assign('sUrlView',$sUrlView);
         $this->assign('sRows',(isset($aArgs['row'])) ? $aArgs['row'] : '20');
