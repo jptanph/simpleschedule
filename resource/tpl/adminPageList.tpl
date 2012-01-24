@@ -35,8 +35,8 @@
     <ul class="row_1">
         <li class="comment">
             <a href="<?php echo $sUrlList;?>" class="all selected" title="Show all posts">All(<?php echo $iResult;?>)</a>
-            <a href="#" title="Show Expected Schedule only">Expected(<?php echo $iExpected;?>)</a>
-            <a href="#" title="Show Finished Schedule only">Finished(<?php echo $iFinished;?>)</a>
+            <a href="<?php echo $sUrlList;?>&show=expected" title="Show Expected Schedule only">Expected(<?php echo $iExpected;?>)</a>
+            <a href="<?php echo $sUrlList;?>&show=finished" title="Show Finished Schedule only">Finished(<?php echo $iFinished;?>)</a>
         </li>
     </ul>
     <ul class="row_2">

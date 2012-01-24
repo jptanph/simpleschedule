@@ -33,11 +33,14 @@ class adminPageList extends Controller_Admin
 					  AND " . $aArgs['field_search'] . " LIKE '%".$aArgs['keyword']."'" 
 					: 
 					'';
+		$sShow = (isset($aArgs['show'])) ? $aArgs['show'] : '';
+		$sShowType = $this->_showType($sShow);
+
 		
         $this->_sPrefix = 'simpleschedule_';
         $aData = array();
         $model = new modelAdmin();
-        $aList = $model->getList($sOrderBy,$sLimit,$sSearchWhere);
+        $aList = $model->getList($sOrderBy,$sLimit,$sSearchWhere,$sShowType);
         $aCountList = $model->getCountList();
 
         $iResult = count($aCountList);
@@ -100,5 +103,18 @@ class adminPageList extends Controller_Admin
         $this->assign('sKeyword',$aArgs['keyword']);
         $this->assign('aList',$aData);
         $this->view(__CLASS__);
+    }
+    
+    private function _showType($sViewType)
+    {
+    	$sSqlViewType = '';
+    	if($sViewType=='finished'){
+    		$sSqlViewType = " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') ";
+    	}elseif($sViewType=='expected'){
+    		$sSqlViewType = " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') ";
+    	}else{
+    		$sSqlViewType = '';
+    	}
+    	return $sSqlViewType;
     }
 }
