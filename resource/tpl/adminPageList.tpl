@@ -80,7 +80,7 @@
 <?php if($aList){ ?>
     <?php foreach($aList as $rows){ ?>
     <tr onmouseover="this.className='over'" onmouseout="this.className=''">
-        <td><input type="checkbox" name="idx_val[]" title="" value="<?php echo $rows['idx'];?>" class="input_chk" /></td>
+        <td><input onclick="adminPageContent.checkThis()" type="checkbox" name="idx_val[]" title="" value="<?php echo $rows['idx'];?>" class="input_chk" /></td>
         <td><?php echo $rows['row'];?></td>
         <td class="table_subtitle"><a href="<?php echo $sUrlView?>&idx=<?php echo $rows['idx']; ?>" title="Edit Schedule"><?php echo $rows['title'];?></a></td>
         <td><?php echo $rows['status'];?></td>

@@ -11,7 +11,9 @@ var adminPageContent = {
         $("input[name='idx_val[]']").each(function(index,value){
             $(this).attr('checked',is_checked);
         });
-        
+        if($("input[name='idx_val[]']:checked").length==0){
+            popup.close("simplesample_delete_popup");
+        }
     },deleteRow : function(){    
         var is_checked = $("input[name='idx_val[]']:checked").length;
         
@@ -110,8 +112,8 @@ var adminPageContent = {
             	$("#simpleschedule_end_date").val(server_response.Data.eDate)
             }
         }
-            
         $.ajax(options);
+        
     },execReset : function(){
         
         popup.close("simplesample_delete_popup");
@@ -121,7 +123,12 @@ var adminPageContent = {
     	this.execDateRange();
     	
     },customSearch : function(){
+        popup.close("simplesample_delete_popup");
     	$("select#date_range").val('customSearch');
-    }
-        
+    },checkThis : function(){
+       if($("input[name='idx_val[]']:checked").length==0){
+           popup.close("simplesample_delete_popup");
+       }
+       
+    }        
 }

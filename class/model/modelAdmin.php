@@ -35,7 +35,7 @@ class modelAdmin extends Model
     public function insertRecord($aData)
     {
         $sSql = " INSERT INTO " . SIMPLESCHEDULE_DATA .
-        "(title,memo,map_location,start_day,start_time,end_day,end_time)
+        "(title,memo,map_location,start_day,start_time,end_day,end_time,date_created)
         VALUES
         (
         '{$aData['title']}',
@@ -44,7 +44,8 @@ class modelAdmin extends Model
         '{$aData['start_date']}',
         '{$aData['start_time']}',
         '{$aData['end_date']}',
-        '{$aData['end_time']}'
+        '{$aData['end_time']}',
+        UNIX_TIMESTAMP(NOW())
         )";
 
         return $this->query($sSql);
