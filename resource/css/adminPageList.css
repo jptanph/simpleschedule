@@ -71,7 +71,7 @@
 .search_result .search_title{display:block;text-align:left;height:25px !important;font-size:13px;font-family:verdana;padding:15px 0 0 5px;font-weight:bold;}
 .search_result .search_location{display:inline-block;width:100%;margin:0;padding:0;border:solid 1px #CCC;overflow:auto;background:whitesmoke;}
 .search_result .search_location li{display:inline-block;margin:0 !important;padding:5px 0 2px 5px !important;text-align:middle !important;word-wrap: break-word;width:390px;}
-.search_result .search_location li .span_btn .radio_btn{width:10px !important;border:solid 1px white;margin:0 4px 0 1px;}
+.search_result .search_location li .span_btn .radio_btn{width:10px !important;border:solid 1px whitesmoke;margin:0 4px 0 1px;}
 .search_result .search_location li .search_address{margin:0 9px 0 1px;width:350px}
 .search_result .search_location li .span_btn{}
 

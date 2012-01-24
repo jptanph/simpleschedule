@@ -50,7 +50,7 @@ class adminPageList extends Controller_Admin
             $sSE = $aArgs['sort'];
         }
 
-        $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']) && isset($aArgs)) ?" ORDER BY " . $sSE . (($aArgs['type']=='des') ? ' desc ' : ' asc ') : ' ORDER BY start_day ';
+        $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']) && isset($aArgs)) ?" ORDER BY " . $sSE . (($aArgs['type']=='des') ? ' desc ' : ' asc ') : ' ORDER BY date_created DESC ';
         $sLimit = ' LIMIT ' . ((isset($aArgs['page'])) ?  $iRow . ', ' . $iLimit : $iLimit);
 		$sSearchWhere = (isset($aArgs['keyword']) &&
 					isset($aArgs['start_date']) &&
