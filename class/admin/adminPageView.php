@@ -1,4 +1,5 @@
 <?php
+
 require_once('builder/builderInterface.php');
 
 class adminPageView extends Controller_Admin
@@ -8,17 +9,18 @@ class adminPageView extends Controller_Admin
      protected function run($aArgs)
      {
          $this->_sPrefix = 'simpleschedule_';
+
          /** usbuilder initializer.**/
          $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
          $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'add_form','adminExecUpdate');
          $this->writeJs($sInitScript);
          $this->writeJs($sFormScript);
          /** usbuilder initializer.**/
+
          usbuilder()->validator(array('form' => $this->_sPrefix . 'edit_form'));
 
          $model = new modelAdmin();
          $aResult = $model->execViewRecord($aArgs['idx']);
-
 
          $sImagePath = '/_sdk/img/simpleschedule/';
          $sUrl = usbuilder()->getUrl('adminPageList');
