@@ -3,10 +3,11 @@
 <p class="require"><span class="neccesary">*</span> Required</p>
 <!-- input area -->
 <?php foreach($aResult as $rows){?>
-<form id="<?php echo $sPrefix?>add_form" method="POST" class="<?php echo $sPrefix?>add_form" name="<?php echo $sPrefix?>add_form">
+<form id="<?php echo $sPrefix?>add_form" method="POST" class="<?php echo $sPrefix?>edit_form" name="<?php echo $sPrefix?>edit_form">
 
     <input type="hidden" value="<?php echo $rows['latitude'];?>" id="pg_scheduleradv_lat">
     <input type="hidden" value="<?php echo $rows['longitude'];?>" id="pg_scheduleradv_lng">
+    <input type="hidden" value="<?php echo $rows['idx']; ?>" id="idx">
 
 	<table border="1" cellspacing="0" class="table_input_vr">
 	<colgroup>
@@ -67,7 +68,7 @@
 	</table>
     </form>
 	<?php }?>
-	
+
 	<div class="tbl_lb_wide_btn">
 		<a href="#none" class="btn_apply" title="Save changes" onclick="adminPageView.execUpdate();">Save</a>
 		<a href="<?php echo $sUrl;?>" class="add_link" title="Return to Scheduler">Return to Scheduler</a>

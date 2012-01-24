@@ -16,7 +16,6 @@ class modelAdmin extends Model
         DATE_FORMAT(DATE_ADD(start_day,INTERVAL start_time HOUR),'%Y/%m/%d %H:00') as start_date,
         DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d %H:00') as end_date
         FROM " . SIMPLESCHEDULE_DATA . " $sShowType $sSearchWhere $sOrderBy $sLimit";
-//         usbuilder()->vd($sSql);
         return $this->query($sSql);
     }
 
@@ -77,7 +76,8 @@ class modelAdmin extends Model
 		DATE_ADD(end_day,INTERVAL end_time HOUR) as end_date,
 		start_time as start_time,
 		end_time as end_time
-		FROM ". SIMPLESCHEDULE_DATA . " WHERE psd_idx != $idx";
+		FROM ". SIMPLESCHEDULE_DATA . " WHERE idx != $idx";
+
 		return $this->query($sSql);
     }
 
@@ -124,5 +124,22 @@ class modelAdmin extends Model
 		DATE_FORMAT(end_day,'%Y/%m/%d') as end_day
 		FROM " . SIMPLESCHEDULE_DATA . " WHERE idx = " . $iIdx;
 		return $this->query($sSql);
+    }
+
+    public function execUpdate($aData)
+    {
+       $sSql = "UPDATE  " . SIMPLESCHEDULE_DATA . "
+           SET
+           title = '" . $aData['title'] . "',
+           memo = '" . $aData['memo'] . "',
+           map_location = '" . $aData['location'] . "',
+           latitude = '" . $aData['latitude'] . "',
+           longitude = '" . $aData['longitude'] . "',
+           start_day = '" . $aData['start_day'] . "',
+           start_time = '" . $aData['start_time'] . "',
+           end_day = '" . $aData['end_day'] . "',
+           end_time = '" . $aData['end_time'] . "'
+       ";
+       $this->query($sSql);
     }
 }

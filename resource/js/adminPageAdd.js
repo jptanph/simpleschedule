@@ -71,6 +71,7 @@ var adminPageAdd = {
              
          }
      },execGMAP : function(){
+         
     	 $(".search_result").remove();
          popup.load('simpleschedule_google_map').skin('admin').layer({
              'title' : 'Google Map',
@@ -78,5 +79,6 @@ var adminPageAdd = {
              'classname': 'ly_set ly_editor'
          });
          googleMapApi.initialize('asd');
+         
      }
 }

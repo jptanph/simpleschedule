@@ -25,7 +25,5 @@ class adminExecSave extends Controller_AdminExec
         }
         $sJsMove = usbuilder()->jsMove($sUrl);
         $this->writeJS($sJsMove);
-
-
     }
 }
