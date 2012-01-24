@@ -21,11 +21,23 @@ class adminPageList extends Controller_Admin
 
         $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']) && isset($aArgs)) ?" ORDER BY " . $aArgs['sort'] . (($aArgs['type']=='des') ? ' desc ' : ' asc ') : 'ORDER BY end_day';
         $sLimit = ' LIMIT ' . ((isset($aArgs['page'])) ?  $iRow . ', ' . $iLimit : $iLimit);
-
+		$sSearchWhere = (isset($aArgs['keyword']) && 
+					isset($aArgs['start_date']) && 
+					isset($aArgs['end_date']) && 
+					isset($aArgs['field_search'])) ? 
+					" WHERE
+					  ((DATE_FORMAT( start_day,  '%Y/%m/%d' ) >= '" . $aArgs['start_date'] . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  <= '" . $aArgs['end_date'] . "')
+						OR
+					  (DATE_FORMAT( start_day,  '%Y/%m/%d' ) <= '" . $aArgs['start_date'] . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  >= '" . $aArgs['start_date']."')
+					  )
+					  AND " . $aArgs['field_search'] . " LIKE '%".$aArgs['keyword']."'" 
+					: 
+					'';
+		
         $this->_sPrefix = 'simpleschedule_';
         $aData = array();
         $model = new modelAdmin();
-        $aList = $model->getList($sOrderBy,$sLimit);
+        $aList = $model->getList($sOrderBy,$sLimit,$sSearchWhere);
         $aCountList = $model->getCountList();
 
         $iResult = count($aCountList);
