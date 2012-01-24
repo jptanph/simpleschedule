@@ -7,7 +7,7 @@
                     <td><span  class="title">Show by</span></td>
                     <td>
                         <select class="optionbox" id="date_range" onchange="adminPageContent.execDateRange();">
-                            <option value="Customized Search">Customized Search</option>
+                            <option value="customSearch">Customized Search</option>
                             <option value="today" <?php if($sDateRange=='today'){?> selected="selected" <?php }?>>Today</option>
                             <option value="currentWeek" <?php if($sDateRange=='currentWeek'){?> selected="selected" <?php }?>>Current Week</option>
                             <option value="currentMonth"  <?php if($sDateRange=='currentMonth' || $sDateRange==''){?> selected="selected" <?php }?>>Current Month</option>
@@ -15,8 +15,8 @@
                             <option value="all" <?php if($sDateRange=='all'){?> selected="selected" <?php }?>>All</option>
                         </select>
                     </td>
-                    <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>"/><a href="#"><label for="<?php echo $sPrefix ?>start_date" style="cursor:pointer;"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
-                <td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" /><a href="#"><label for="<?php echo $sPrefix ?>end_date" style="cursor:pointer;"><img src="<?php echo $sImagePath;?>calendar_icon.png" /></a></label></td>
+                    <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>" onclick="adminPageContent.customSearch()" title="Start Date"/><a href="#"><label for="<?php echo $sPrefix ?>start_date" style="cursor:pointer;"><img  title="Start Date" src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
+               		<td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" onclick="adminPageContent.customSearch()" title="End Date" /><a href="#"><label for="<?php echo $sPrefix ?>end_date" style="cursor:pointer;"><img  title="End Date" src="<?php echo $sImagePath;?>calendar_icon.png" /></a></label></td>
             </tr>
             <tr>
                 <td><span  class="title">Search Keyword</span></td>
@@ -25,7 +25,7 @@
                         <option value="memo" id="1" <?php if($sFieldSearch=='memo'){?> selected=="selected" <?php } ?>>Memo</option>
                         <option value="title" id="2" <?php if($sFieldSearch=='' || $sFieldSearch=='title'){?> selected="selected" <?php } ?>>Title</option>
                     </select></td>
-                <td colspan="2"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageContent.execSearch();" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#none" onclick="adminPageContent.execReset();" class="add_link" title="Reset to default">Reset</a></td>
+                <td colspan="2"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageContent.execSearch('<?php echo $sQryShow?>');" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#none" onclick="adminPageContent.execReset();" class="add_link" title="Reset to default">Reset</a></td>
             </tr>
         </table>
     </td>
@@ -45,7 +45,7 @@
         </li>
         <li class="show">
             <label for="show_row">Show Rows</label>
-            <select id="show_rows" onchange="adminPageContent.execSelectRow();" >
+            <select id="show_rows" onchange="adminPageContent.execSelectRow('<?php echo $sQryShow.$sQrySEDate.$sQryKeyword.$sQryFieldSearch.$sQryDateRange.$sQrySort;?>');" >
                 <option value="10" <?php if($sRows=='10'){?>selected="selected"<?php }?>>10</option>
                 <option value="20" <?php if($sRows=='20' || $sRows==''){?>selected="selected"<?php }?>>20</option>
                 <option value="30" <?php if($sRows=='30'){?>selected="selected"<?php }?>>30</option>
@@ -70,10 +70,10 @@
     <th class="chk"><input onclick="adminPageContent.selectAll(this.id)" type="checkbox" title="" class="input_chk" id="<?php echo $sPrefix?>select_all"/></th>
     <th>No.</th>
     <th>
-        <a href="<?php echo $sUrlList?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?><?php echo $sQryRow;?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
+        <a href="<?php echo $sUrlList?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch;?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
     </th>
-    <th><a href="<?php echo $sUrlList?>&sort=end_day&type=<?php if($sSort!='end_day'){?>asc<?php }elseif($sSort=='end_day'){ echo $sSortType;}?><?php echo $sQryRow;?>" class="<?php if($sSort=='end_day'){ echo $sSortType; }?>">Status</a></th>
-    <th class="no_border"><a  href="<?php echo $sUrlList?>&sort=start_day&type=<?php if($sSort!='start_day'){?>asc<?php }elseif($sSort=='start_day'){ echo $sSortType;}?><?php echo $sQryRow;?>" class="<?php if($sSort=='start_day'){ echo $sSortType; }?>">Date</a></th>
+    <th><a href="<?php echo $sUrlList?>&sort=end_day&type=<?php if($sSort!='end_day'){?>asc<?php }elseif($sSort=='end_day'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch;?>" class="<?php if($sSort=='end_day'){ echo $sSortType; }?>">Status</a></th>
+    <th class="no_border"><a  href="<?php echo $sUrlList?>&sort=start_day&type=<?php if($sSort!='start_day'){?>asc<?php }elseif($sSort=='start_day'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch;?>" class="<?php if($sSort=='start_day'){ echo $sSortType; }?>">Date</a></th>
 </tr>
 </thead>
 <tbody>

@@ -40,19 +40,42 @@ var adminPageContent = {
             });
         }
         
-    },execSearch : function(){
+    },execSearch : function(sQryStr){
         popup.close("simplesample_delete_popup");
         var keyword = $("#keyword");
         var start_date = $("#simpleschedule_start_date");
         var end_date = $("#simpleschedule_end_date");
         var date_range = $("#date_range");
         var field_search = $("#field_type_search");
-        window.location.href = usbuilder.getUrl('adminPageList') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val();
+        var error = 0;
+        if($.trim(start_date.val())==''){
+        	start_date.css('border','solid 2px #DC4E22');
+        	error += 1;
+        }else{
+        	start_date.css('border','solid 1px #CCC');
+        }
         
-    },execSelectRow : function(){
+        if($.trim(end_date.val())==''){
+        	end_date.css('border','solid 2px #DC4E22');
+        	error += 1;
+        }else{
+        	end_date.css('border','solid 1px #CCC');
+        }
+        
+        if(Date.parse(start_date.val()) > Date.parse(end_date.val()) ){
+        	start_date.css('border','solid 2px #DC4E22');
+        	end_date.css('border','solid 2px #DC4E22');
+        	error += 1;
+        }
+        
+       if(error==0){
+    	   window.location.href = usbuilder.getUrl('adminPageList') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val()+sQryStr;
+       }
+       
+    },execSelectRow : function($sQryStr){
         popup.close("simplesample_delete_popup");
         var show_rows = $("#show_rows");
-        window.location.href=usbuilder.getUrl('adminPageList') + '&row='+show_rows.val();
+        window.location.href=usbuilder.getUrl('adminPageList') + '&row='+show_rows.val()+$sQryStr;
     },execDelete : function(){
         
         var options  = {
@@ -72,6 +95,7 @@ var adminPageContent = {
         popup.close("simplesample_delete_popup");
         
     },execDateRange : function(){
+       
         popup.close("simplesample_delete_popup");
     	var date_range = ($("#date_range").val()==undefined) ? 'currentMonth' : $("#date_range").val();
     	
@@ -89,11 +113,15 @@ var adminPageContent = {
             
         $.ajax(options);
     },execReset : function(){
+        
         popup.close("simplesample_delete_popup");
     	$("#keyword").val('');
     	$("select#date_range").val('currentMonth');
     	$("select#field_type_search").val('title')
     	this.execDateRange();
+    	
+    },customSearch : function(){
+    	$("select#date_range").val('customSearch');
     }
         
 }

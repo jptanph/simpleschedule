@@ -11,17 +11,18 @@ class modelAdmin extends Model
     {
         $sSql = "SELECT
         *,
+		DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') as date_now,
         DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y-%m-%d %H:00:00') as status_date,
-		DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') as date_now,        
         DATE_FORMAT(DATE_ADD(start_day,INTERVAL start_time HOUR),'%Y/%m/%d %H:00') as start_date,
         DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d %H:00') as end_date
         FROM " . SIMPLESCHEDULE_DATA . " $sShowType $sSearchWhere $sOrderBy $sLimit";
+//         usbuilder()->vd($sSql);
         return $this->query($sSql);
     }
 
-    public function getCountList()
+    public function getCountList($sSearchWhere,$sShowType)
     {
-        $sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA;
+        $sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " $sShowType $sSearchWhere";
         return $this->query($sSql);
     }
 
@@ -33,8 +34,6 @@ class modelAdmin extends Model
 
     public function insertRecord($aData)
     {
-        //UNIX_TIMESTAMP(NOW()))
-
         $sSql = " INSERT INTO " . SIMPLESCHEDULE_DATA .
         "(title,memo,map_location,start_day,start_time,end_day,end_time)
         VALUES
@@ -49,7 +48,6 @@ class modelAdmin extends Model
         )";
 
         return $this->query($sSql);
-
     }
 
     public function execDelete($iIdx)
@@ -75,37 +73,42 @@ class modelAdmin extends Model
 		DATE_ADD(start_day,INTERVAL start_time HOUR) as start_date,
 		DATE_ADD(end_day,INTERVAL end_time HOUR) as end_date,
 		start_time as start_time,
-		end_time as end_time 
+		end_time as end_time
 		FROM ". SIMPLESCHEDULE_DATA . " WHERE psd_idx != $idx";
-		return $this->query($sSql);		
+		return $this->query($sSql);
     }
-    
+
     public function execDateRange()
     {
-    	$sSql = "SELECT 
+    	$sSql = "SELECT
     	DATE_FORMAT(MIN(start_day),'%Y/%m/%d') as min_sday,
-    	DATE_FORMAT(MAX(end_day),'%Y/%m/%d') AS max_eday 
+    	DATE_FORMAT(MAX(end_day),'%Y/%m/%d') AS max_eday
     	FROM " . SIMPLESCHEDULE_DATA;
     	return $this->query($sSql,'row');
     }
-    
+
     public function execGetExpected()
     {
     	$sSql = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00')";
     	return $this->query($sSql);
     }
-    
+
     public function execGetFinished()
     {
     	$sSql  = "SELECT * FROM " . SIMPLESCHEDULE_DATA . " WHERE DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00')";
     	return $this->query($sSql);
     }
-    
+
+    public function execGetTotalRecord()
+    {
+    	$sSql  = "SELECT * FROM " . SIMPLESCHEDULE_DATA;
+    	return $this->query($sSql);
+    }
+
     public function execViewRecord($iIdx)
     {
-
 		$aData = array();
-		$sSql = "SELECT 
+		$sSql = "SELECT
 		idx,
 		title,
 		memo,
@@ -115,9 +118,8 @@ class modelAdmin extends Model
 		start_time,
 		end_time,
 		DATE_FORMAT(start_day,'%Y/%m/%d') as start_day,
-		DATE_FORMAT(end_day,'%Y/%m/%d') as end_day 
-		FROM " . SIMPLESCHEDULE_DATA . " WHERE idx = " . $iIdx;		
+		DATE_FORMAT(end_day,'%Y/%m/%d') as end_day
+		FROM " . SIMPLESCHEDULE_DATA . " WHERE idx = " . $iIdx;
 		return $this->query($sSql);
-		
     }
 }
