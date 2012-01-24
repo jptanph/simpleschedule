@@ -3,6 +3,9 @@
 <p class="require"><span class="neccesary">*</span> Required</p>
 <!-- input area -->
 <form id="<?php echo $sPrefix?>add_form" method="POST" class="<?php echo $sPrefix?>add_form" name="<?php echo $sPrefix?>add_form">
+	<input type="hidden" name="lg_field" id="lg_field">
+	<input type="hidden" name="lt_field" id="lt_field">
+
 	<table border="1" cellspacing="0" class="table_input_vr">
 	<colgroup>
 		<col width="80px" />
@@ -107,4 +110,5 @@
             <center><a class="btn_nor_01 btn_width_st1" href="#none" title="Select" style="margin:15px 0 0 0;width:100px" onclick="googleMapApi.selectLocation()"> Select Location</a></center>
         </div>
     </div>
+
 

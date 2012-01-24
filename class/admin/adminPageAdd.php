@@ -24,11 +24,9 @@ class adminPageAdd extends Controller_Admin
 
         $this->externalJS("http://maps.google.com/maps/api/js?sensor=true");
         $this->externalJS("http://code.google.com/apis/gears/gears_init.js");
-
+        $this->importjs('googleMapApi');
         $this->importJs('jqueryCalendar');
-        $this->importJs('googleMapApi');
         $this->importJs(__CLASS__);
-
         $this->assign('sDate',date('Y/m/d'));
         $this->assign('sPrefix',$this->_sPrefix);
         $this->assign('sUrl',$sUrl);

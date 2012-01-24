@@ -25,6 +25,7 @@ class adminPageList extends Controller_Admin
         $sQryDateRange = (isset($aArgs['date_range'])) ? "&date_range=" . $aArgs['date_range'] : '';
         $sQryFieldSearch = (isset($aArgs['field_search'])) ? "&field_search=".$aArgs['field_search'] : '';
         $sQrySort = (isset($aArgs['sort']) &&  isset($aArgs['type'])) ? "&sort=".$aArgs['sort']."&type=".$aArgs['type'] : '';
+        $sQryPage = (isset($aArgs['page'])) ? "&page=".$aArgs['page'] : '';
         /** query string generator here.**/
 
         $sHasWhere = isset($aArgs['show']) ? '' :  ' WHERE ';
@@ -121,6 +122,7 @@ class adminPageList extends Controller_Admin
         $this->assign('sQryDateRange',$sQryDateRange);
         $this->assign('sQryFieldSearch',$sQryFieldSearch);
         $this->assign('sQrySort',$sQrySort);
+        $this->assign('sQryPage',$sQryPage);
         /** query strings assigns.**/
 
         $this->assign('sFirstDay',($aArgs['start_date']) ? $aArgs['start_date'] : date("Y/m/") . '01');

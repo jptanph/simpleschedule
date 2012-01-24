@@ -70,10 +70,10 @@
     <th class="chk"><input onclick="adminPageContent.selectAll(this.id)" type="checkbox" title="" class="input_chk" id="<?php echo $sPrefix?>select_all"/></th>
     <th>No.</th>
     <th>
-        <a href="<?php echo $sUrlList?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch;?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
+        <a href="<?php echo $sUrlList?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch.$sQryPage;?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
     </th>
-    <th><a href="<?php echo $sUrlList?>&sort=end_day&type=<?php if($sSort!='end_day'){?>asc<?php }elseif($sSort=='end_day'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch;?>" class="<?php if($sSort=='end_day'){ echo $sSortType; }?>">Status</a></th>
-    <th class="no_border"><a  href="<?php echo $sUrlList?>&sort=start_day&type=<?php if($sSort!='start_day'){?>asc<?php }elseif($sSort=='start_day'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch;?>" class="<?php if($sSort=='start_day'){ echo $sSortType; }?>">Date</a></th>
+    <th><a href="<?php echo $sUrlList?>&sort=end_day&type=<?php if($sSort!='end_day'){?>asc<?php }elseif($sSort=='end_day'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch.$sQryPage;?>" class="<?php if($sSort=='end_day'){ echo $sSortType; }?>">Status</a></th>
+    <th class="no_border"><a  href="<?php echo $sUrlList?>&sort=start_day&type=<?php if($sSort!='start_day'){?>asc<?php }elseif($sSort=='start_day'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch.$sQryPage;?>" class="<?php if($sSort=='start_day'){ echo $sSortType; }?>">Date</a></th>
 </tr>
 </thead>
 <tbody>

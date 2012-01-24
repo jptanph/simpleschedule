@@ -1,9 +1,13 @@
 
-<h3>Add New Schedule</h3>
+<h3>Edit Schedule</h3>
 <p class="require"><span class="neccesary">*</span> Required</p>
 <!-- input area -->
 <?php foreach($aResult as $rows){?>
 <form id="<?php echo $sPrefix?>add_form" method="POST" class="<?php echo $sPrefix?>add_form" name="<?php echo $sPrefix?>add_form">
+
+    <input type="hidden" value="<?php echo $rows['latitude'];?>" id="pg_scheduleradv_lat">
+    <input type="hidden" value="<?php echo $rows['longitude'];?>" id="pg_scheduleradv_lng">
+
 	<table border="1" cellspacing="0" class="table_input_vr">
 	<colgroup>
 		<col width="80px" />
@@ -52,7 +56,7 @@
 	</tr>
 	<tr><th><label for="textarea_memo">Title</label></th><td><span class="neccesary">*</span><input fw-filter="isFill" fw-label="<?php echo $sPrefix?>title" id="<?php echo $sPrefix?>title" name="title" type="text" value="<?php echo $rows['title']?>" class="fix2"  /></td></tr>
 	<tr><th><label for="textarea_memo">Location</label></th><td><span class="neccesary">&nbsp;&nbsp;</span><input type="text" value="<?php echo $rows['map_location']?>" id="location" name="location" class="fix2" readonly="true" />
-	<a href="#none" onclick="adminPageAdd.execGMAP();" title="Google Map Location"><img src="/_sdk/img/simpleschedule/u89_original.gif"  /></a>
+	<a href="#none" onclick="adminPageView.execGMAP();" title="Google Map Location"><img src="/_sdk/img/simpleschedule/u89_original.gif"  /></a>
 	</td></tr>
 	<tr>
 		<th><label for="textarea_memo">Memo</label></th>
@@ -63,26 +67,7 @@
 	</table>
     </form>
 	<?php }?>
-	<script type="text/javascript">
-	//<![CDATA[
-		function toggle(no) {
-		  var obj = document.getElementById('item' + no);
-		  if (obj.style.display == '' || !obj.style.display) obj.style.display = 'none';
-		  else obj.style.display = '';
-		}
-	//]]>
-	</script>
-
-
-	<!-- // input area -->
-
-	<script type="text/javascript">
-	//<![CDATA[
-	function chk_validate (){
-		document.getElementById('module_label_wrap').className='warn_border';
-	}
-	//]]>
-	</script>
+	
 	<div class="tbl_lb_wide_btn">
 		<a href="#none" class="btn_apply" title="Save changes" onclick="adminPageView.execUpdate();">Save</a>
 		<a href="<?php echo $sUrl;?>" class="add_link" title="Return to Scheduler">Return to Scheduler</a>
@@ -91,21 +76,12 @@
     <div id="<?php echo $sPrefix?>google_map" style='display:none;'>
         <div class="admin_popup_contents">
             <center><input type="text" name="map_search_address" id="map_search_address" style="margin:0 0 15px 0;width:345px;border:solid 1px #CCCCCC;padding: 0 2px 0 2px"> <a class="btn_nor_01 btn_width_st1" href="#none" title="Search Map" style="margin:0 0 15px 0;" onclick="googleMapApi.searchGeoAddress()"> Search </a></center>
-            <input type="hidden" id="pg_scheduleradv_lat">
-            <input type="hidden" id="pg_scheduleradv_lng">
-            <input type="hidden" id="pg_scheduleradv_hlocation">
-            <div id="sdk_scheduleradv_gmap" style="height:320px;width:420px;border:solid 1px gray;"></div>
+            <input type="hidden" id="pg_scheduleradv_lat" />
+            <input type="hidden" id="pg_scheduleradv_lng" />
+            <input type="hidden" id="pg_scheduleradv_hlocation"/>
+            <div id="sdk_scheduleradv_gmap" style="height:320px ;width:420px;border:solid 1px gray;"></div>
 
             <div id="search_result_area"></div>
-            <!--
-            <div class="search_result">
-                <span class="search_title">Search Result</span>
-                <ul class="search_location">
-                    <li><input type="radio" class="radio_btn" /><span><label>asdfasd</label></span></li>
-                    <li><input type="radio" class="radio_btn" /><span><label>asdfasd</label></span></li>
-                </ul>
-            </div>
-            -->
             <center><a class="btn_nor_01 btn_width_st1" href="#none" title="Select" style="margin:15px 0 0 0;width:100px" onclick="googleMapApi.selectLocation()"> Select Location</a></center>
         </div>
     </div>

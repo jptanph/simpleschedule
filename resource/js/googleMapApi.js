@@ -28,7 +28,7 @@ var googleMapApi = {
         /** Instantiate map,marker object **/
         map = new google.maps.Map(document.getElementById("sdk_scheduleradv_gmap"), myOptions);
         marker = new google.maps.Marker({map:map})
-
+        
 
         /** Listen to an event everytime the user click  the map to change the marker position **/
         google.maps.event.addListener(map,'click',function(event){
@@ -246,6 +246,9 @@ var googleMapApi = {
         $("#location").val('')
         $("#location").val($("#pg_scheduleradv_hlocation").val());
         $("#pg_scheduleradv_init_gmap").remove()
+        $("#lt_field").val($("#pg_scheduleradv_lat").val());
+        $("#lg_field").val($("#pg_scheduleradv_lng").val());
+       
         popup.close("simpleschedule_google_map")
     
     }, viewFrontMap : function(url,initLat,initLng){

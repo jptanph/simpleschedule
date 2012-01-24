@@ -35,12 +35,14 @@ class modelAdmin extends Model
     public function insertRecord($aData)
     {
         $sSql = " INSERT INTO " . SIMPLESCHEDULE_DATA .
-        "(title,memo,map_location,start_day,start_time,end_day,end_time,date_created)
+        "(title,memo,map_location,latitude,longitude,start_day,start_time,end_day,end_time,date_created)
         VALUES
         (
         '{$aData['title']}',
         '{$aData['memo']}',
         '{$aData['location']}',
+        '{$aData['lt_field']}',
+        '{$aData['lg_field']}',
         '{$aData['start_date']}',
         '{$aData['start_time']}',
         '{$aData['end_date']}',
