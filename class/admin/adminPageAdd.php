@@ -15,9 +15,7 @@ class adminPageAdd extends Controller_Admin
         $this->writeJs($sFormScript);
         /** usbuilder initializer.**/
 
-
         usbuilder()->validator(array('form' => $this->_sPrefix . 'add_form'));
-
         $sImagePath = '/_sdk/img/simpleschedule/';
         $sUrl = usbuilder()->getUrl('adminPageList');
         $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
