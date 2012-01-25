@@ -1,6 +1,10 @@
+
 jQuery(document).ready(function($){
+    
     frontPageSimpleSchedule.initCalendar();
+
 });
+
 var frontPageSimpleSchedule = {
     initCalendar : function(month,year){
         //sdk_simpleschedule_Front.latestIdx = 0;       
@@ -25,7 +29,6 @@ var frontPageSimpleSchedule = {
         //$(".sdk_simpleschedule_output").empty();
         
         /** Declare PLUGIN.post data for sending request to the index.**/
-        var pNode = $("#PLUGIN_Scheduleradv");
         var options = {
                 url :usbuilder.getUrl("apiFrontSimpleScheduleCalendar"),
                 type:'post',
@@ -105,7 +108,7 @@ var frontPageSimpleSchedule = {
                                                 totSchedule = "<div class='sdk_simpleschedule_taskcount'><p class='sdk_simpleschedule_count'>"+( (value.sSchedInfo[k]['totalSchedule']==0) ? '' : value.sSchedInfo[k]['totalSchedule'])+"</p></div>"
                                             }
                                         }
-                                        calendar += "<td align='center' valign='middle' height='20px'><a href='#' class='"+isToday+"' onclick=\"sdk_simpleschedule_Front.viewSchedule('"+currentDate+"-"+filterDay+"') ; return false\">"+day+" "+totSchedule+"</a></td>\n";
+                                        calendar += "<td align='center' valign='middle' height='20px'><a href='#none' class='"+isToday+"' onclick=\"frontPageSimpleSchedule.viewSchedule('"+currentDate+"-"+filterDay+"') ; return false\">"+day+" "+totSchedule+"</a></td>\n";
                                     }
                                 }   
 
@@ -122,5 +125,50 @@ var frontPageSimpleSchedule = {
         }
         $.ajax(options)
         
+    },viewSchedule : function(sDate){
+        var sHtml = '';
+        var options = {
+            url :usbuilder.getUrl("apiFrontViewSchedule"),
+            type:'post',
+            dataType:'json',
+            data : {
+                sSchedDate:sDate
+            },success : function(requestContent){
+                sHtml += "<div class='sdk_simpleschedule_overlay1'>";
+                sHtml += "<div class='sdk_simpleschedule_overlay2'>";
+                sHtml += "<a href='#none' class='sdk_simpleschedule_closetask' onclick='PG_Scheduleradv_Front.closeSchedule()'> close </a>";
+                sHtml +="<div class='sdk_simpleschedule_task'>";
+                
+                if(requestContent.Data==''){
+                    sHtml +="<strong class='sdk_simpleschedule_taskdate'>";
+                    sHtml +="<label>You have no schedule for this day.</label>";
+                    sHtml +="</strong>";
+                }else{
+                $.each(requestContent.Data,function(index,value){
+                   
+                    if(value.map_location=='' && value.memo==''){
+                        sHtml +="<a style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+"' ><strong class='sdk_simpleschedule_taskdate'>";
+                        sHtml +="<label>";
+                        
+                        
+                        
+                        
+                        
+                        sHtml +="</label>";
+                        sHtml +="</strong><span class='sdk_simpleschedule_tasktitle'><label>"+value.title+"</label></span></a>";    
+                    
+                    }
+                       
+                });
+                }
+                sHtml +="</div>";
+                sHtml += "</div>";
+                sHtml += "</div>";
+                
+                $(".sdk_simpleschedule_overlaycontainer").html(sHtml);
+            }
+        }
+        $.ajax(options)
     }
+    
 }

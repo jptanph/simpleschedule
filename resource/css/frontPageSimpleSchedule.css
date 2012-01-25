@@ -83,13 +83,13 @@ a.sdk_simpleschedule_prev, a.sdk_simpleschedule_next {float:left;height:30px;dis
 
 .sdk_simpleschedule_task {*margin:-3px 0 -3px 0;}
 
-.sdk_simpleschedule_overlay1 {position:absolute;display:inline-block;width:260px;padding-top:3px;background: url(../images/blue/scheduler_overlay.gif) left top no-repeat;display:inline-block;z-index: 3000 !important}
-.sdk_simpleschedule_overlay2 {position:absolute;display:inline-block;width:260px;padding-bottom:10px;background: url(../images/blue/scheduler_overlay.gif) left bottom no-repeat;display:inline-block;z-index: 3000 !important}
+.sdk_simpleschedule_overlay1 {position:absolute;display:inline-block;width:260px;padding-top:3px;background: url(/_sdk/img/simpleschedule/blue/scheduler_overlay.gif) left top no-repeat;display:inline-block;z-index: 3000 !important}
+.sdk_simpleschedule_overlay2 {position:absolute;display:inline-block;width:260px;padding-bottom:10px;background: url(/_sdk/img/simpleschedule/blue/scheduler_overlay.gif) left bottom no-repeat;display:inline-block;z-index: 3000 !important}
 
-.sdk_simpleschedule_closetask {float:right;width:40px;margin-right:10px;font:10px arial;color: #027EC4 !important;background: url(../images/blue/btn_x_hover.jpg) no-repeat right 2px;text-decoration:underline !important;}
-.sdk_simpleschedule_closetask:hover {background: url(../images/blue/btn_x.jpg) no-repeat right 2px;}
+.sdk_simpleschedule_closetask {float:right;width:40px;margin-right:10px;font:10px arial;color: #027EC4 !important;background: url(/_sdk/img/simpleschedule/blue/btn_x_hover.jpg) no-repeat right 2px;text-decoration:underline !important;}
+.sdk_simpleschedule_closetask:hover {background: url(/_sdk/img/simpleschedule/blue/btn_x.jpg) no-repeat right 2px;}
 .sdk_simpleschedule_task {clear:right;}
-.sdk_simpleschedule_taskdate {margin-left:10px;padding:0 5px 0 10px;font:bold 11px arial;color:#666;background:url(../images/blue/scheduler_bluearrow.gif) left no-repeat;}
+.sdk_simpleschedule_taskdate {margin-left:10px;padding:0 5px 0 10px;font:bold 11px arial;color:#666;background:url(/_sdk/img/simpleschedule/blue/scheduler_bluearrow.gif) left no-repeat;}
 .sdk_simpleschedule_tasktitle {font:bold 11px arial;color:#333;}
 .sdk_simpleschedule_task  .sdk_simpleschedule_taskcontent {width:200px;margin:3px 25px 10px 20px;font:11px arial;color:#444;}
 /*.map {display:inline-block;width:238px;height:200px;margin-top:10px;border:solid 1px #9d9d9d;}*/
