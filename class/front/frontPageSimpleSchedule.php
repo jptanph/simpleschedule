@@ -27,8 +27,10 @@ class frontPageSimpleSchedule extends Controller_Front
         $sHtml .= "    </div>";
         $sHtml .= "    <div class='{$this->_sHtmlPrefix}overlaycontainer'>";
         $sHtml .= "    </div>";
-        $sHtml .= "    <input type='text' value='{$sServerUrl}' name='sServerUrl' id='sServerUrl'>";
+        $sHtml .= "    <input type='hidden' value='' name='sServerUrl' id='sServerUrl'>";
+        $sHtml .= "<div id='areas'></div>";
         $this->importCss(__CLASS__);
+        $this->importJs(__CLASS__);
         $this->assign('simpleschedule',$sHtml);
     }
 }
