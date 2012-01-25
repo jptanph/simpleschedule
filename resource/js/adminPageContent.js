@@ -81,7 +81,7 @@ var adminPageContent = {
     },execDelete : function(){
         
         var options  = {
-            url :usbuilder.getUrl("apiDeleteContent"),
+            url :usbuilder.getUrl("apiAdminDeleteContent"),
             type:'post',
             dataType:'json',
             data : {
@@ -102,7 +102,7 @@ var adminPageContent = {
     	var date_range = ($("#date_range").val()==undefined) ? 'currentMonth' : $("#date_range").val();
     	
         var options  = {
-            url :usbuilder.getUrl("apiDateRange"),
+            url :usbuilder.getUrl("apiAdminDateRange"),
             type:'post',
             dataType:'json',
             data : {
