@@ -73,7 +73,6 @@
         <a href="#none" class="btn_apply" title="Save changes" onclick="adminPageView.execUpdate();">Save</a>
         <a href="<?php echo $sUrl;?>" class="add_link" title="Return to Scheduler">Return to Scheduler</a>
     </div>
-
     <div id="<?php echo $sPrefix?>google_map" style='display:none;'>
         <div class="admin_popup_contents">
             <center><input type="text" name="map_search_address" id="map_search_address" style="margin:0 0 15px 0;width:345px;border:solid 1px #CCCCCC;padding: 0 2px 0 2px"> <a class="btn_nor_01 btn_width_st1" href="#none" title="Search Map" style="margin:0 0 15px 0;" onclick="googleMapApi.searchGeoAddress()"> Search </a></center>
@@ -81,7 +80,6 @@
             <input type="hidden" id="pg_scheduleradv_lng" />
             <input type="hidden" id="pg_scheduleradv_hlocation"/>
             <div id="sdk_scheduleradv_gmap" style="height:320px ;width:420px;border:solid 1px gray;"></div>
-
             <div id="search_result_area"></div>
             <center><a class="btn_nor_01 btn_width_st1" href="#none" title="Select" style="margin:15px 0 0 0;width:100px" onclick="googleMapApi.selectLocation()"> Select Location</a></center>
         </div>
