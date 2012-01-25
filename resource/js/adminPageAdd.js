@@ -22,7 +22,7 @@ var adminPageAdd = {
              end_date.css('border','1px solid #CCC');    
          }
          
-         if(start_time.val() >= end_time.val()){
+         if(parseInt(start_time.val()) >= parseInt(end_time.val())){
              
              if ($.browser.msie  && parseInt($.browser.version, 10) < 8) {
                  start_time.removeClass('select_ok');

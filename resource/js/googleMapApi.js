@@ -246,7 +246,7 @@ var googleMapApi = {
     
           var latLng = new google.maps.LatLng(initLat,initLng);
 
-          var myOptions = {
+          var myOptionsFront = {
                 zoom: 14,
                 zoomControl : true,
                 center:latLng,
@@ -255,7 +255,7 @@ var googleMapApi = {
                 },mapTypeId: google.maps.MapTypeId.ROADMAP
           }
 
-          map = new google.maps.Map(document.getElementById("sdk_scheduleradv_gmap"), myOptions);
+          map = new google.maps.Map(document.getElementById("sdk_scheduleradv_gmap"), myOptionsFront);
           marker = new google.maps.Marker({map:map})
           marker.setPosition(latLng);
           googleMapApi.decodeLatitudeLongitude(initLat,initLng)
@@ -279,7 +279,7 @@ var googleMapApi = {
           });
           
           google.maps.event.addListener(marker,'click',function(){
-                googleMapApi.infoWindow.open(map,marker)
+                googleMapApi.infoWindow.open(map,marker);
           });
   }
     
