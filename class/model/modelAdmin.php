@@ -135,11 +135,11 @@ class modelAdmin extends Model
            map_location = '" . $aData['location'] . "',
            latitude = '" . $aData['latitude'] . "',
            longitude = '" . $aData['longitude'] . "',
-           start_day = '" . $aData['start_day'] . "',
+           start_day = '" . $aData['start_date'] . "',
            start_time = '" . $aData['start_time'] . "',
-           end_day = '" . $aData['end_day'] . "',
+           end_day = '" . $aData['end_date'] . "',
            end_time = '" . $aData['end_time'] . "'
        ";
-       $this->query($sSql);
+       return $this->query($sSql);
     }
 }

@@ -12,7 +12,7 @@ class adminPageView extends Controller_Admin
 
          /** usbuilder initializer.**/
          $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-         $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'add_form','adminExecUpdate');
+         $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'edit_form','adminExecUpdate');
          $this->writeJs($sInitScript);
          $this->writeJs($sFormScript);
          /** usbuilder initializer.**/

@@ -12,7 +12,6 @@ var adminPageView = {
         var start_time = $("#start_time");         
         var end_time = $("#end_time");
         var error = 0;
-
         
         if(Date.parse(start_date.val()) > Date.parse(end_date.val())){
             start_date.css('border','solid 2px #DC4E22');
