@@ -6,8 +6,11 @@ jQuery(document).ready(function($){
 });
 
 var frontPageSimpleSchedule = {
+    latestIdx : 0,
+    isViewed : 0,
+    listViewIdx:0,        
     initCalendar : function(month,year){
-        //sdk_simpleschedule_Front.latestIdx = 0;       
+        frontPageSimpleSchedule.latestIdx = 0;       
         /** Declare default variables **/
         var pgPfxId = "#sdk_simpleschedule_";
         var pgPfxClass = ".sdk_simpleschedule_";
@@ -136,7 +139,7 @@ var frontPageSimpleSchedule = {
             },success : function(requestContent){
                 sHtml += "<div class='sdk_simpleschedule_overlay1'>";
                 sHtml += "<div class='sdk_simpleschedule_overlay2'>";
-                sHtml += "<a href='#none' class='sdk_simpleschedule_closetask' onclick='PG_Scheduleradv_Front.closeSchedule()'> close </a>";
+                sHtml += "<a href='#none' class='sdk_simpleschedule_closetask' onclick='frontPageSimpleSchedule.closeSchedule()'> close </a>";
                 sHtml +="<div class='sdk_simpleschedule_task'>";
                 
                 if(requestContent.Data==''){
@@ -160,7 +163,7 @@ var frontPageSimpleSchedule = {
                         sHtml +="</strong><span class='sdk_simpleschedule_tasktitle'><label>"+value.title+"</label></span></a>";    
                     
                     }else{
-                        sHtml +="<a href='#none' style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+" onmouseup='PG_Scheduleradv_Front.viewList("+value.idx+") ; return false'><strong class='sdk_simpleschedule_taskdate'>";
+                        sHtml +="<a href='#none' style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+"' onmouseup='frontPageSimpleSchedule.viewList("+value.idx+")'><strong class='sdk_simpleschedule_taskdate'>";
                         if( value.end_time < 10){
                             sHtml += '0'+value.end_time+":00";
                          }else{
@@ -181,6 +184,45 @@ var frontPageSimpleSchedule = {
             }
         }
         $.ajax(options)
+    },viewList : function(idx){
+        var sHtml = '';
+        if(idx==this.latestIdx){                
+            // $("#pg_scheduleradv_schedInfo"+this.latestIdx).show();
+        }else{
+            $("#sdk_simpleschedule_gmap").remove();
+            $("#sdk_simpleschedule_schedInfo"+this.latestIdx).empty();
+
+            var options = {
+               url : usbuilder.getUrl('apiFrontViewInfo'),
+               data : {
+                  idx : idx
+               },
+               dataType : 'json',
+               type : 'post',
+               success : function(requestContent){
+                  $.each(requestContent.Data,function(index,value){
+                      sHtml += "<p class='sdk_simpleschedule_taskcontent' id='sdk_simpleschedule_task"+value.idx+"'>";
+                          if(value.memo){
+                              sHtml += "<label>"+value.memo+"</label>";
+                          }else{
+                              sHtml += "";
+                          }
+                          
+                      sHtml += "</p>";
+                  });
+                  $(".sdk_simpleschedule_taskcontent").remove();
+                  $("#sdk_simpleschedule_schedInfo"+idx).html(sHtml)
+               }
+            }
+            $.ajax(options);
+        }
+        this.latestIdx= idx;
+    },closeSchedule: function(){
+        this.latestIdx = 0;     
+        $(".sdk_simpleschedule_overlay1").remove()
+    },closeList : function(idx){
+        this.latestIdx = 0;     
+        $("#sdk_simpleschedule_schedInfo"+idx).hide();
     }
     
 }

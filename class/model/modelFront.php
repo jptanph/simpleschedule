@@ -24,4 +24,10 @@ class modelFront extends Model
         $sSql = "SELECT * FROM  ". SIMPLESCHEDULE_DATA . "  WHERE (date(start_day) <= '{$sSchedDate}') AND (date(end_day) >= '{$sSchedDate}') ORDER BY start_time DESC";
         return $this->query($sSql);
     }
+
+    public function execViewInfo($iIdx)
+    {
+        $sSql = "SELECT idx, title,map_location,memo,latitude,longitude FROM "  . SIMPLESCHEDULE_DATA . " WHERE idx = $iIdx";
+        return $this->query($sSql);
+    }
 }
