@@ -1,0 +1,107 @@
+@charset "utf-8";
+
+/* plugin reset */
+#sdk_simpleschedule_holder * {padding:0; margin:0;}
+#sdk_simpleschedule_holder, #sdk_simpleschedule_holder th, #sdk_simpleschedule_holder td, #sdk_simpleschedule_holder textarea, #sdk_simpleschedule_holder h1, #sdk_simpleschedule_holder h2, #sdk_simpleschedule_holder h3, #sdk_simpleschedule_holder h4, #sdk_simpleschedule_holder h5, #sdk_simpleschedule_holder h6 {font-family:tahoma, Verdana, sans-serif;font-size:11px}
+#sdk_simpleschedule_holder th, #sdk_simpleschedule_holder td, #sdk_simpleschedule_holder textarea {line-height:14px}
+#sdk_simpleschedule_holder {margin:0;padding:0}
+#sdk_simpleschedule_holder img, #sdk_simpleschedule_holder fieldset {border:0} 
+#sdk_simpleschedule_holder li {list-style:none;}
+#sdk_simpleschedule_holder select, #sdk_simpleschedule_holder input {font-family:verdana; color:#000; font-size:1.00em}
+#sdk_simpleschedule_holderaddress, #sdk_simpleschedule_holder em {font-style:normal}
+#sdk_simpleschedule_holder button  {border:none; background:none; cursor:pointer}
+#sdk_simpleschedule_holder hr, #sdk_simpleschedule_holder legend {display:none}
+#sdk_simpleschedule_holder p, #sdk_simpleschedule_holder h1, #sdk_simpleschedule_holder  h2, #sdk_simpleschedule_holder h3, #sdk_simpleschedule_holder h4, #sdk_simpleschedule_holder h5, #sdk_simpleschedule_holder h6, #sdk_simpleschedule_holder form, #sdk_simpleschedule_holder input, #sdk_simpleschedule_holder ul, #sdk_simpleschedule_holder li, #sdk_simpleschedule_holder dl, #sdk_simpleschedule_holder dt, #sdk_simpleschedule_holder dd {margin:0; padding:0}
+/* #pg_scheduler_holder a img {vertical-align:top} */
+#sdk_simpleschedule_holder a:link {text-decoration:none}
+#sdk_simpleschedule_holder a:visited {text-decoration:none}
+#sdk_simpleschedule_holder a:hover {text-decoration:none}
+
+/*td {width:34px !important;} */
+/* plugin container */
+#sdk_simpleschedule_holder  #sdk_simpleschedule_container {display:inline-block;padding:0; margin:0;}
+#sdk_simpleschedule_holder  #sdk_simpleschedule_container {width:260px;padding-top:5px;background:url(/_sdk/img/simpleschedule/blue/scheduler_bg.gif) left top no-repeat;}
+#sdk_simpleschedule_holder  #sdk_simpleschedule_container #sdk_simpleschedule_expand {float:left;width:260px;padding-bottom:15px;background:url(../images/blue/scheduler_bg_expand.gif) left bottom no-repeat;}
+
+/* plugin title */
+
+#sdk_simpleschedule_holder  h3.sdk_simpleschedule_title {margin-bottom:5px;margin-left:9px;margin-right:5px;padding-right:10px;font-weight:bold;font-size:12px;font-family:Tahoma, Geneva, sans-serif;color:#fff;line-height:25px;display:inline-block}
+#sdk_simpleschedule_holder .sdk_simpleschedule_title strong {padding-right:10px;background:url(../images/blue/scheduler_arrow.gif) right no-repeat;}
+
+/* date container */
+.sdk_simpleschedule_output {float:left;clear:left;margin-top:15px !important;margin-left:10px !important;display:inline}
+#sdk_simpleschedule_container > .sdk_simpleschedule_output {float:left;clear:left;margin-top:15px !important;margin-left:13px !important;display:inline}
+.sdk_simpleschedule_output  p.sdk_simpleschedule_control {float:left;width:175px;margin-left:32px !important;display:inline}
+
+/* loader container */
+
+.sdk_simpleschedule_overlay3 {width:240px;margin:10px 0 0 !important;padding:10px 0 0 0 !important;background:url(../images/pg_scheduler_overlay.gif) left top no-repeat;display:inline-block;}
+.sdk_simpleschedule_overlay4 {width:240px;padding:0 0 10px 0!important;background:url(../images/pg_scheduler_overlay.gif) right bottom no-repeat;display:inline-block;}
+
+.sdk_simpleschedule_loader {margin: 0 auto !important;height:48px;background: url(../images/loader_gray.gif) no-repeat center center;}
+
+/* IE6, IE7*/
+.sdk_simpleschedule_overlay3 { margin-left: 10px\9 !important; margin-bottom: -15px\9 !important;}
+
+/* IE8, IE9 */
+.sdk_simpleschedule_overlay3  {margin-left: 0\0/ !important;} /* must go at the END of all rules */
+
+/* date */
+.sdk_simpleschedule_date {float:left;font:bold 24px arial;color:#3468b6;}
+a.sdk_simpleschedule_prev, a.sdk_simpleschedule_next {float:left;height:30px;display:inline-block;}
+.sdk_simpleschedule_output a.sdk_simpleschedule_prev img, .sdk_simpleschedule_output a.sdk_simpleschedule_next img {margin:10px 16px 0 16px !important;}
+
+
+/* days */
+.sdk_simpleschedule_days {float:left;width:240px;height:119px;margin-top:14px !important;margin-left:2px !important}
+.sdk_simpleschedule_days  td {float:left;width:33px;height:19px;display:inline;text-align:center;}
+.sdk_simpleschedule_days  td a {color:#333}
+.sdk_simpleschedule_dotw {width:240px;height:17px;}
+.sdk_simpleschedule_dotw td {font-size:8px !important;font-family:?Myriad Pro?, Arial, Helvetica, Tahoma, sans-serif !important;color:#cc0000;text-transform:uppercase;border-top:1px solid #cecece;border-bottom:1px solid #cecece;}
+.sdk_simpleschedule_week1, .sdk_simpleschedule_week2, .sdk_simpleschedule_week3, .sdk_simpleschedule_week4, .sdk_simpleschedule_week5 {height:19px;}
+.sdk_simpleschedule_week1 td, .sdk_simpleschedule_week2 td, .sdk_simpleschedule_week3 td, .sdk_simpleschedule_week4 td, .sdk_simpleschedule_week5 td {font-size:12px !important;font-family:?Myriad Pro?, Arial, Helvetica, Tahoma, sans-serif !important;color:#333;border-bottom:1px solid #e7e7e7;}
+
+/* day controllers */
+.sdk_simpleschedule_current {position:relative;width:18px;height:15px;border:2px solid #7da8eb;font:12px arial;color:#333;display:inline-block}
+.sdk_simpleschedule_off {width:18px;height:15px;border:2px solid #fff;font:12px arial;color:#333;display:inline-block}
+.sdk_simpleschedule_on {position:relative;width:18px;height:15px;border:1px solid #fff;font:12px arial;color:#333;display:inline-block;word-spacing:-1px;}
+.sdk_simpleschedule_red {color:#cc0000;}
+
+#sdk_simpleschedule_holder .sdk_simpleschedule_taskcount {position:absolute;top:-1px;left:20px;width:8px;height:8px;font:bold 8px arial;color:#cc0000;text-align:center;}
+#sdk_simpleschedule_holder .sdk_simpleschedule_count {margin-top:1px;font:bold 8px arial !important;color:#cc0000 !important} 
+.sdk_simpleschedule_overlaycontainer {clear:left;float:left;position:relative;}
+
+/* ie 7 */
+.sdk_simpleschedule_overlay1 {margin-top:-5px\9;} 
+
+/* IE8, IE9 */
+.sdk_simpleschedule_overlay1  {margin-top: 0\0/;} /* must go at the END of all rules */
+
+
+/* \*/
+* html  .sdk_simpleschedule_overlay1 {margin-top:-5px;height:3px;}
+
+/* */
+
+
+/* ie 7 */
+
+.sdk_simpleschedule_task {*margin:-3px 0 -3px 0;}
+
+.sdk_simpleschedule_overlay1 {position:absolute;display:inline-block;width:260px;padding-top:3px;background: url(../images/blue/scheduler_overlay.gif) left top no-repeat;display:inline-block;z-index: 3000 !important}
+.sdk_simpleschedule_overlay2 {position:absolute;display:inline-block;width:260px;padding-bottom:10px;background: url(../images/blue/scheduler_overlay.gif) left bottom no-repeat;display:inline-block;z-index: 3000 !important}
+
+.sdk_simpleschedule_closetask {float:right;width:40px;margin-right:10px;font:10px arial;color: #027EC4 !important;background: url(../images/blue/btn_x_hover.jpg) no-repeat right 2px;text-decoration:underline !important;}
+.sdk_simpleschedule_closetask:hover {background: url(../images/blue/btn_x.jpg) no-repeat right 2px;}
+.sdk_simpleschedule_task {clear:right;}
+.sdk_simpleschedule_taskdate {margin-left:10px;padding:0 5px 0 10px;font:bold 11px arial;color:#666;background:url(../images/blue/scheduler_bluearrow.gif) left no-repeat;}
+.sdk_simpleschedule_tasktitle {font:bold 11px arial;color:#333;}
+.sdk_simpleschedule_task  .sdk_simpleschedule_taskcontent {width:200px;margin:3px 25px 10px 20px;font:11px arial;color:#444;}
+/*.map {display:inline-block;width:238px;height:200px;margin-top:10px;border:solid 1px #9d9d9d;}*/
+.schedule-info {display:none;}
+
+
+.window_info{
+    padding:0;
+    font-size:11px !important;font-family:arial !important;
+}
