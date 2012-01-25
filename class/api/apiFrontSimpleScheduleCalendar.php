@@ -73,8 +73,6 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 				$todayDate = $today."-".$iDay;
 
 				$aSelectDay = $model->execGetDays($todayDate);
-// 				$sqlSelectDay = "SELECT COUNT(psd_idx) as total_schedule FROM ". $this->pgSAC->pgScheduleradvData . " WHERE (date(psd_start_day) <= '$todayDate') AND (date(psd_end_day) >= '$todayDate') ORDER BY psd_start_day desc";
-// 				$aSelectDay = $this->utilDb->query($sqlSelectDay,'rows');
 
 				/** Stores the total schedule in an array and passed on request in JSON Format **/
 				foreach($aSelectDay as $val){
@@ -109,6 +107,6 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 			"sSchedInfo"=>$aSchedule
 		);
 		/** Returns a callback of the date information requested **/
-		echo $aDays;
+		return $aDays;
     }
 }

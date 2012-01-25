@@ -13,7 +13,6 @@ class frontPageSimpleSchedule extends Controller_Front
         $sHtml = '';
         $sHtml .= "<div id='{$this->_sHtmlPrefix}holder'>";
         $sHtml .= "<div id='{$this->_sHtmlPrefix}container'>";
-        $sHtml .= " <h3 class='{$this->_sHtmlPrefix}title'><strong>{$sModuleTitle}</strong></h3>";
         $sHtml .= "    <div id='{$this->_sHtmlPrefix}calendar'></div>";
         $sHtml .= "    <div id='{$this->_sHtmlPrefix}expand'>";
         $sHtml .= "    <div class='pg_scheduleradv_overlay3'>";
@@ -27,8 +26,6 @@ class frontPageSimpleSchedule extends Controller_Front
         $sHtml .= "    </div>";
         $sHtml .= "    <div class='{$this->_sHtmlPrefix}overlaycontainer'>";
         $sHtml .= "    </div>";
-        $sHtml .= "    <input type='hidden' value='' name='sServerUrl' id='sServerUrl'>";
-        $sHtml .= "<div id='areas'></div>";
         $this->importCss(__CLASS__);
         $this->importJs(__CLASS__);
         $this->assign('simpleschedule',$sHtml);

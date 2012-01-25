@@ -20,25 +20,20 @@
 /*td {width:34px !important;} */
 /* plugin container */
 #sdk_simpleschedule_holder  #sdk_simpleschedule_container {display:inline-block;padding:0; margin:0;}
-#sdk_simpleschedule_holder  #sdk_simpleschedule_container {width:260px;padding-top:5px;background:url(/_sdk/img/simpleschedule/blue/scheduler_bg.gif) left top no-repeat;}
-#sdk_simpleschedule_holder  #sdk_simpleschedule_container #sdk_simpleschedule_expand {float:left;width:260px;padding-bottom:15px;background:url(/_sdk/img/simpleschedule/blue/scheduler_bg_expand.gif) left bottom no-repeat;}
-
-/* plugin title */
-
-#sdk_simpleschedule_holder  h3.sdk_simpleschedule_title {margin-bottom:5px;margin-left:9px;margin-right:5px;padding-right:10px;font-weight:bold;font-size:12px;font-family:Tahoma, Geneva, sans-serif;color:#fff;line-height:25px;display:inline-block}
-#sdk_simpleschedule_holder .sdk_simpleschedule_title strong {padding-right:10px;background:url(../images/blue/scheduler_arrow.gif) right no-repeat;}
+#sdk_simpleschedule_holder  #sdk_simpleschedule_container {width:260px;padding-top:5px;}
+#sdk_simpleschedule_holder  #sdk_simpleschedule_container #sdk_simpleschedule_expand {float:left;width:260px;padding-bottom:15px;}
 
 /* date container */
-.sdk_simpleschedule_output {float:left;clear:left;margin-top:15px !important;margin-left:10px !important;display:inline}
+.sdk_simpleschedule_output {float:left;clear:left;margin-top:2px !important;margin-left:10px !important;display:inline}
 #sdk_simpleschedule_container > .sdk_simpleschedule_output {float:left;clear:left;margin-top:15px !important;margin-left:13px !important;display:inline}
 .sdk_simpleschedule_output  p.sdk_simpleschedule_control {float:left;width:175px;margin-left:32px !important;display:inline}
 
 /* loader container */
 
-.sdk_simpleschedule_overlay3 {width:240px;margin:10px 0 0 !important;padding:10px 0 0 0 !important;background:url(/_sdk/img/simpleschedule/pg_scheduler_overlay.gif) left top no-repeat;display:inline-block;}
+.sdk_simpleschedule_overlay3 {width:240px;margin:10px 0 0 !important;padding:10px 0 0 0 !important;background:url(../images/pg_scheduler_overlay.gif) left top no-repeat;display:inline-block;}
 .sdk_simpleschedule_overlay4 {width:240px;padding:0 0 10px 0!important;background:url(../images/pg_scheduler_overlay.gif) right bottom no-repeat;display:inline-block;}
 
-.sdk_simpleschedule_loader {margin: 0 auto !important;height:48px;background: url(/_sdk/img/simpleschedule/loader_gray.gif) no-repeat center center;}
+.sdk_simpleschedule_loader {margin: 0 auto !important;height:48px;background: url(../images/loader_gray.gif) no-repeat center center;}
 
 /* IE6, IE7*/
 .sdk_simpleschedule_overlay3 { margin-left: 10px\9 !important; margin-bottom: -15px\9 !important;}
