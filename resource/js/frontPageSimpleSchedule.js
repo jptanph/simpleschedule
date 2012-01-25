@@ -150,14 +150,26 @@ var frontPageSimpleSchedule = {
                         sHtml +="<a style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+"' ><strong class='sdk_simpleschedule_taskdate'>";
                         sHtml +="<label>";
                         
-                        
-                        
-                        
-                        
+                         if( value.start_time < 10){
+                            sHtml += '0'+value.start_time+":00";
+                         }else{
+                            sHtml += value.start_time+":00";                             
+                         }
+                               
                         sHtml +="</label>";
                         sHtml +="</strong><span class='sdk_simpleschedule_tasktitle'><label>"+value.title+"</label></span></a>";    
                     
+                    }else{
+                        sHtml +="<a href='#none' style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+" onmouseup='PG_Scheduleradv_Front.viewList("+value.idx+") ; return false'><strong class='sdk_simpleschedule_taskdate'>";
+                        if( value.end_time < 10){
+                            sHtml += '0'+value.end_time+":00";
+                         }else{
+                            sHtml += value.end_time+":00";                             
+                         }
+                        sHtml += "</strong><span class='sdk_simpleschedule_tasktitle'>"+value.title+"</span></a>";
+                        
                     }
+                    sHtml += "<div id='sdk_simpleschedule_schedInfo"+value.idx+"' class='inf'></div>";
                        
                 });
                 }
