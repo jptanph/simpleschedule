@@ -109,7 +109,7 @@ class adminPageList extends Controller_Admin
 
         $this->importJs('jqueryCalendar');
         $this->importJs('jqueryShiftCheckbox');
-        $this->importJs('adminPageContent');
+        $this->importJs(__CLASS__);
 
         $this->assign('sSort',isset($aArgs['sort']) ? $aArgs['sort'] : '');
         $this->assign('sSortType',(!isset($aArgs['type']) || $aArgs['type']=='asc') ? 'des' : 'asc');
