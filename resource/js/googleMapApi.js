@@ -59,16 +59,6 @@ var googleMapApi = {
         loc = loc.split(',')
 
         googleMapApi.decodeLatitudeLongitude(loc[0],loc[1]);
-//        $.ajax({
-//            type:'post',
-//            dataType : 'json',
-//            url : usbuilder.getUrl('apiGoogleMap'),
-//            data :{
-//                fLatLng : ""+location+""
-//            },success:function(serverResponse){
-//                googleMapApi.decodeLatitudeLongitude(serverResponse.Data.fLatitude,serverResponse.Data.fLongitude)
-//            }
-//        })
     
     },getCurrentLocation : function(){
         if($("#pg_scheduleradv_lat").val()!='' && $("#pg_scheduleradv_lng").val()!='' && $("#pg_scheduleradv_lat").val() != undefined &&  $("#pg_scheduleradv_lng").val() !=undefined){
@@ -163,16 +153,6 @@ var googleMapApi = {
             $("#pg_scheduleradv_search_box").css('border','solid 1px #CCCCCC');
             this.geocoder.geocode( { 'address': address}, function(results, status) {
                 
-//                searchResult+="<div id='rec-result' style='overflow:auto;max-height:200px;border:solid 1px #CCCCCC;margin-top:3%;background-color:whitesmoke'>"
-//                searchResult+="<div style='margin:3%'>";
-//                searchResult +="<table cellpadding='3' cellspacing='3'>"        
-//                    if(status=='ZERO_RESULTS'){
-//                        searchResult +="<tr><td>No address found.</td></tr>"
-//                        hasSelect = '';
-//                        
-//                    }else{
-
-                
                     searchResult="";
                     
                     searchResult +="<div class='search_result'>\n";
@@ -190,7 +170,7 @@ var googleMapApi = {
 	                    	
 	                    	strLtLg = new String(newLtLg)
 	                    	arrLtLg = strLtLg.split(',');
-	                    	//alert(arrLtLg[0])
+
 	                       searchResult += "<li><span class='span_btn'><input type='radio' id='search_id"+i+"' name='search_result_val[]' value='"+results[i].formatted_address+"' class='radio_btn' /></span><label for='search_id"+i+"' onmouseup='googleMapApi.viewMapSearch("+arrLtLg[0]+","+arrLtLg[1]+")' class='search_address'>"+results[i].formatted_address+"</label></li>\n";
 	                       //searchResult += "<li><span class='span_btn'><input type='radio' id='search_id"+i+"' name='search_result_val[]' value='"+results[i].formatted_address+"' class='radio_btn' /></span><label for='search_id"+i+"' onclick='googleMapApi.viewMapSearch("+arrLtLg[0]+","+arrLtLg[1]+")' class='search_address'>"+results[i].formatted_address+"</label></li>\n";
 		                    
@@ -199,21 +179,7 @@ var googleMapApi = {
                     searchResult +="</ul>\n";
                     searchResult +="</div>\n";   
                     $("#search_result_area").html(searchResult);                    
-//                        hasSelect = "<span class='btn_u'><input type='button' class='btn_nor_01_c btn_width_st1_c' onclick='googleMapApi.selectResultLocation()' value='Select' id='' /></span>";
-//                    }
-//                searchResult +="</table>"
-//                searchResult +="</div>"
-//                searchResult +="</div>";
-//                searchResult +="<div class='submit' align='center'><br />"
-//                searchResult +="<span id='gmap-error' style='color:red'></span><br />"
-//                searchResult +="<input  type='hidden' value='' id='map_address'/>"
-//                searchResult +=hasSelect
-//                searchResult +="&nbsp;&nbsp;<span class='btn_u'><input type='button' class='btn_nor_01_c btn_width_st1_c'  value='Close'  onClick=Plugin_Scheduleradv_Setup.closeBox('#pg_scheduleradv_search_result') /></span>"
-//                searchResult +="</div>"
-//                $("#pg_scheduleradv_search_result").html(searchResult);
-//                $("#pg_scheduleradv_search_result").dialog({
-//                    width:450
-//                });
+
                 
             }); 
         }
@@ -251,10 +217,35 @@ var googleMapApi = {
        
         popup.close("simpleschedule_google_map")
     
-    }, viewFrontMap : function(url,initLat,initLng){
+    },viewMapSearch : function(lt,lg){
+        for(sa in map){
+            document.writeln(sa+"<br />");
+        }
+        var geocoder  = new google.maps.Geocoder();
+        var map;
+        var infowindow = new google.maps.InfoWindow();
+        var marker;
+        var myOptions = {
+                zoom: 14,
+                panControl : true,
+                zoomControl : true,
+                zoomControlOptions : {
+                style : google.maps.ZoomControlStyle.LARGE
+                },mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+          var lat = parseFloat(lt);
+          var lng = parseFloat(lg);
+          var latlng = new google.maps.LatLng(lat, lng);
+          
+          marker = new google.maps.Marker({map:map})
+          geocoder.geocode({'latLng': latlng}, function(results, status) {
+              googleMapApi.setMarkerLocation(results[0].geometry.location);
+          });
+
+    }, viewFrontMap : function(initLat,initLng){
     
           var latLng = new google.maps.LatLng(initLat,initLng);
-          var sServerUrl = url;
+
           var myOptions = {
                 zoom: 14,
                 zoomControl : true,
@@ -263,7 +254,6 @@ var googleMapApi = {
                     style : google.maps.ZoomControlStyle.SMALL
                 },mapTypeId: google.maps.MapTypeId.ROADMAP
           }
-         
 
           map = new google.maps.Map(document.getElementById("sdk_scheduleradv_gmap"), myOptions);
           marker = new google.maps.Marker({map:map})
@@ -271,70 +261,26 @@ var googleMapApi = {
           googleMapApi.decodeLatitudeLongitude(initLat,initLng)
          
           google.maps.event.addListener(map,'click',function(event){
+              
                 googleMapApi.animateMarker();
                 marker.setPosition(event.latLng);
-                map.setCenter(event.latLng)
+                map.setCenter(event.latLng);
                 
-                /**  Thi will work on the builder front. **/
-                var pNode = $("#PLUGIN_Scheduleradv");
-                var mData = { url : sServerUrl,
-                    frontRequestType : 'getLatLng',
-                    fLatLng : ""+event.latLng+""
-                }       
-                            
-                PLUGIN.post(pNode, mData , 'custom' , 'json', function (serverResponse){
-                    googleMapApi.decodeLatitudeLongitude(serverResponse.fLatitude,serverResponse.fLongitude)
-                })          
-                            
+                ltLg = "'"+event.latLng+"'";
                 
-                googleMapApi.infoWindow.close()
-          }) 
+                var oldLtLg = ltLg.replace("'(",'');
+                var newLtLg = oldLtLg.replace(")'",'');
+                
+                var strLtLg = new String(newLtLg)
+                var arrLtLg = strLtLg.split(',');
+
+                googleMapApi.decodeLatitudeLongitude(arrLtLg[0],arrLtLg[1])
+                googleMapApi.infoWindow.close();
+          });
           
           google.maps.event.addListener(marker,'click',function(){
                 googleMapApi.infoWindow.open(map,marker)
-          })
-  },viewMapSearch : function(lt,lg){
-	  for(sa in map){
-	      document.writeln(sa+"<br />");
-	  }
-	  var geocoder  = new google.maps.Geocoder();
-	  var map;
-	  var infowindow = new google.maps.InfoWindow();
-	  var marker;
-      var myOptions = {
-              zoom: 14,
-              panControl : true,
-              zoomControl : true,
-              zoomControlOptions : {
-              style : google.maps.ZoomControlStyle.LARGE
-              },mapTypeId: google.maps.MapTypeId.ROADMAP
-          }
-		var lat = parseFloat(lt);
-		var lng = parseFloat(lg);
-		var latlng = new google.maps.LatLng(lat, lng);
-		
-        marker = new google.maps.Marker({map:map})
-		geocoder.geocode({'latLng': latlng}, function(results, status) {
-	    googleMapApi.setMarkerLocation(results[0].geometry.location);
-		    
-//		  if (status == google.maps.GeocoderStatus.OK) {
-//		      
-//		    if (results[1]) {
-//		        map = new google.maps.Map(document.getElementById("sdk_scheduleradv_gmap"), myOptions);  
-//		      map.setZoom(11);
-//		      marker = new google.maps.Marker({
-//		          position: latlng,
-//		          map: map
-//		      });
-//		      marker.setPosition(results[0].geometry.location);
-//		      infowindow.setContent(results[1].formatted_address);
-//		      infowindow.open(map, marker);
-//		    }
-//		  } else {
-//		    alert("Geocoder failed due to: " + status);
-//		  }
-		});
-
+          });
   }
     
 }

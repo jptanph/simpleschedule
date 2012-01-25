@@ -208,10 +208,20 @@ var frontPageSimpleSchedule = {
                               sHtml += "";
                           }
                           
+                          if(value.map_location){
+                              sHtml += "<div style='text-align:center;'>";
+                              sHtml += "<div id='sdk_scheduleradv_gmap' style='width:230px; height:210px;border:1px solid #CCCCCC;margin:0 auto;'></div>";
+                              sHtml += " </div>";
+                          }
+                          
                       sHtml += "</p>";
+                     
+                      $(".sdk_simpleschedule_taskcontent").remove();
+                      $("#sdk_simpleschedule_schedInfo"+idx).html(sHtml);
+                      googleMapApi.viewFrontMap(value.latitude,value.longitude);
                   });
-                  $(".sdk_simpleschedule_taskcontent").remove();
-                  $("#sdk_simpleschedule_schedInfo"+idx).html(sHtml)
+
+                  
                }
             }
             $.ajax(options);

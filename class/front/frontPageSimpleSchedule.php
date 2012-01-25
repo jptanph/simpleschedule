@@ -26,6 +26,7 @@ class frontPageSimpleSchedule extends Controller_Front
         $sHtml .= "    </div>";
         $sHtml .= "    <div class='{$this->_sHtmlPrefix}overlaycontainer'>";
         $sHtml .= "    </div>";
+        $this->importJs('googleMapApi');
         $this->importCss(__CLASS__);
         $this->importJs(__CLASS__);
         $this->assign('simpleschedule',$sHtml);
