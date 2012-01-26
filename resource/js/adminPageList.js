@@ -16,30 +16,37 @@ var adminPageList = {
         }
     },deleteRow : function(){    
         var is_checked = $("input[name='idx_val[]']:checked").length;
+        var total_schedule = $('#total_schedule');
         
-        if(is_checked==0){
-        
-            oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
-        
+        if(parseInt(total_schedule.val())==0){
+            
+            oValidator.generalPurpose.getMessage(false, "No record(s) to delete.");
+
         }else{
+            if(is_checked==0){
             
-            adminPageList.arrayIdx.splice(0,adminPageList.arrayIdx.length);
+                oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
             
-            $("input[name='idx_val[]']").each(function(index,value){
-                iIdx = $(this).attr("value");
-                if($(this).is(":checked")==true){
-                    if($.inArray(value.value,adminPageList.arrayIdx)==-1){
-                        adminPageList.arrayIdx.push(iIdx);
+            }else{
+                
+                adminPageList.arrayIdx.splice(0,adminPageList.arrayIdx.length);
+                
+                $("input[name='idx_val[]']").each(function(index,value){
+                    iIdx = $(this).attr("value");
+                    if($(this).is(":checked")==true){
+                        if($.inArray(value.value,adminPageList.arrayIdx)==-1){
+                            adminPageList.arrayIdx.push(iIdx);
+                        }
                     }
-                }
-            });
-            
-            $("#validation_message").hide();
-            popup.load('simplesample_delete_popup').skin('admin').layer({
-                'title' : 'Delete',
-                'width' : 260,
-                'classname': 'ly_set ly_editor'
-            });
+                });
+                
+                $("#validation_message").hide();
+                popup.load('simplesample_delete_popup').skin('admin').layer({
+                    'title' : 'Delete',
+                    'width' : 260,
+                    'classname': 'ly_set ly_editor'
+                });
+            }
         }
         
     },execSearch : function(sQryStr){
@@ -89,7 +96,7 @@ var adminPageList = {
             },success : function(server_response){
                 
                oValidator.generalPurpose.getMessage(true, "Deleted successfully");
-               window.location.href=usbuilder.getUrl('adminPagelist'); 
+               window.location.href=usbuilder.getUrl('adminPageList'); 
             }
         }
         

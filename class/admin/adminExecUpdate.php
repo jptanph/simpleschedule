@@ -14,7 +14,7 @@ class adminExecUpdate extends Controller_AdminExec
         if($bIsUpdate===false){
             usbuilder()->message('Saved failed!', 'warning');
         }else{
-            usbuilder()->message('Saved succesfully.', 'success');
+            usbuilder()->message('Saved succesfully!', 'success');
         }
         $sJsMove = usbuilder()->jsMove($sUrl . '&idx=' . $aArgs['idx']);
         $this->writeJS($sJsMove);

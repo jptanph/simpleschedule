@@ -127,3 +127,4 @@
         <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageList.execDelete()"> Delete <a/>
     </div>
 </div>
+<input type="hidden" id="total_schedule" value="<?php echo $iResult;?>">

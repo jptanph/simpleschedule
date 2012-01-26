@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <lang>
     <menu>  
-        <var name="simpleschedule">Simples Shedule Add</var>
+        <var name="simpleschedule">Simple Schedule Add</var>
         <mostbutton>
-            <var param="SimpleschedulePageList">Add New Contents</var>
+            <var param="SimpleschedulePageList">Add New Schedule</var>
         </mostbutton>
     </menu>
+    
     <var name="lang">subject</var>
     <var name="name">Subject</var>
 </lang>
