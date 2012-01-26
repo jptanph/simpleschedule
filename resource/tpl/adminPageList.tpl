@@ -25,7 +25,7 @@
                         <option value="memo" id="1" <?php if($sFieldSearch=='memo'){?> selected=="selected" <?php } ?>>Memo</option>
                         <option value="title" id="2" <?php if($sFieldSearch=='' || $sFieldSearch=='title'){?> selected="selected" <?php } ?>>Title</option>
                     </select></td>
-                <td colspan="2"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageList.execSearch('<?php echo $sQryShow?>');" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#none" onclick="adminPageList.execReset();" class="add_link" title="Reset to default">Reset</a></td>
+                <td colspan="2"><input type="hidden" value="init" id="search" name="search"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageList.execSearch('<?php echo $sQryShow?>');" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#none" onclick="adminPageList.execReset();" class="add_link" title="Reset to default">Reset</a></td>
             </tr>
         </table>
     </td>

@@ -129,6 +129,7 @@ var frontPageSimpleSchedule = {
         $.ajax(options)
         
     },viewSchedule : function(sDate){
+        this.latestIdx = 0;
         var sHtml = '';
         var options = {
             url :usbuilder.getUrl("apiFrontViewSchedule"),

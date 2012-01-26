@@ -51,25 +51,25 @@ var adminPageView = {
         if(oValidator.formName.getMessage('simpleschedule_add_form') && error==0){
             $("#validation_message").hide();
             var options  = {
-                    url :usbuilder.getUrl("apiAdminValidateUpdate"),
-                    type:'post',
-                    dataType:'json',
-                    data : {
-                        idx : idx.val(),
-                        start_date : start_date.val(),
-                        start_time : start_time.val(),
-                        end_date : end_date.val(),
-                        end_time : end_time.val()
-                    },success : function(server_response){
-                        if(server_response.Data==0){
-                            document.simpleschedule_edit_form.submit();
-                        }else{
-                            oValidator.generalPurpose.getMessage(false, "There is a conflict in the schedule.");
-                        }
+                url :usbuilder.getUrl("apiAdminValidateUpdate"),
+                type:'post',
+                dataType:'json',
+                data : {
+                    idx : idx.val(),
+                    start_date : start_date.val(),
+                    start_time : start_time.val(),
+                    end_date : end_date.val(),
+                    end_time : end_time.val()
+                },success : function(server_response){
+                    if(server_response.Data==0){
+                        document.simpleschedule_edit_form.submit();
+                    }else{
+                        oValidator.generalPurpose.getMessage(false, "There is a conflict in the schedule.");
                     }
-                }    
-                $.ajax(options); 
+                }
+             }
             
+             $.ajax(options); 
         }
 		
 	},execGMAP : function(){

@@ -23,7 +23,24 @@ class adminPageList extends Controller_Admin
 
         /** FOR PAGE REDIRECTION (IF THE FOLLOWING VARIABLES BELOW IS INVALID.).**/
             $sRedirect =  usbuilder()->jsMove($sUrlList);
-
+            if(isset($aArgs['search'])){
+                if($aArgs['search']!=='init'){
+                    $this->writeJs($sRedirect);
+                    $iQryStrStatus +=1;
+                }else{
+                    if(
+                        !isset($aArgs['keyword']) ||
+                        !isset($aArgs['start_date']) ||
+                        !isset($aArgs['end_date']) ||
+                        !isset($aArgs['date_range']) ||
+                        !isset($aArgs['field_search'])
+                    )
+                    {
+                        $this->writeJs($sRedirect);
+                        $iQryStrStatus +=1;
+                    }
+                }
+            }
             /** for FIELD SEARCH **/
             if(isset($aArgs['field_search']))
             {
@@ -161,6 +178,7 @@ class adminPageList extends Controller_Admin
         }
 
         $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']) && isset($aArgs)) ?" ORDER BY " . $sSE . (($aArgs['type']=='des') ? ' desc ' : ' asc ') : ' ORDER BY date_created DESC ';
+
         $sLimit = ' LIMIT ' . ((isset($aArgs['page'])) ?  $iRow . ', ' . $iLimit : $iLimit);
 		$sSearchWhere = (
             isset($aArgs['keyword']) &&
