@@ -80,6 +80,7 @@ var adminPageAdd = {
              'classname': 'ly_set ly_editor'
          });
          googleMapApi.initialize('asd');
+         $(".search_result").remove()
          
      }
 }

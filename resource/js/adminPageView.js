@@ -12,7 +12,7 @@ var adminPageView = {
         var start_time = $("#start_time");         
         var end_time = $("#end_time");
         var error = 0;
-        
+        popup.close('simpleschedule_google_map');
         if(Date.parse(start_date.val()) > Date.parse(end_date.val())){
             start_date.css('border','solid 2px #DC4E22');
             end_date.css('border','solid 2px #DC4E22');    
@@ -22,7 +22,7 @@ var adminPageView = {
             end_date.css('border','1px solid #CCC');    
         }
         
-        if(start_time.val() >= end_time.val()){
+        if(parseInt(start_time.val()) >= parseInt(end_time.val())){
             
             if ($.browser.msie  && parseInt($.browser.version, 10) < 8) {
                 start_time.removeClass('select_ok');
@@ -79,7 +79,7 @@ var adminPageView = {
             'width' : 420,
             'classname': 'ly_set ly_editor'
         });
-
+        
        googleMapApi.initialize('asd');
 	}
 

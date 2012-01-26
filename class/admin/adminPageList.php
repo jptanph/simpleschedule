@@ -1,4 +1,5 @@
 <?php
+
 require_once('builder/builderInterface.php');
 
 class adminPageList extends Controller_Admin
@@ -22,20 +23,6 @@ class adminPageList extends Controller_Admin
 
         /** FOR PAGE REDIRECTION (IF THE FOLLOWING VARIABLES BELOW IS INVALID.).**/
             $sRedirect =  usbuilder()->jsMove($sUrlList);
-
-//             if(
-//                 isset($aArgs['keyword']) &&
-//                 isset($aArgs['start_date']) &&
-//                 isset($aArgs['end_date']) &&
-//                 isset($aArgs['date_range']) &&
-//                 isset($aArgs['field_search'])
-//             )
-//             {
-
-//             }else{
-//                 $this->writeJs($sRedirect);
-//                 $iQryStrStatus +=1;
-//             }
 
             /** for FIELD SEARCH **/
             if(isset($aArgs['field_search']))
