@@ -98,5 +98,5 @@ a.sdk_simpleschedule_prev, a.sdk_simpleschedule_next {float:left;height:30px;dis
 
 .window_info{
     padding:0;
-    font-size:11px !important;font-family:arial !important;
+    font-size:10px !important;font-family:arial !important;color:#333333;
 }
