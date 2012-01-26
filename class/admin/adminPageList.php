@@ -169,9 +169,9 @@ class adminPageList extends Controller_Admin
 			isset($aArgs['field_search']))
 			?
 				" $sHasWhere
-				  ((DATE_FORMAT( start_day,  '%Y/%m/%d' ) >= '" . $aArgs['start_date'] . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  <= '" . $aArgs['end_date'] . "')
+				  ((DATE_FORMAT( start_day,  '%Y/%m/%d' ) >= '" . $this->filter_data($aArgs['start_date']) . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  <= '" . $this->filter_data($aArgs['end_date']) . "')
 					OR
-				  (DATE_FORMAT( start_day,  '%Y/%m/%d' ) <= '" . $aArgs['start_date'] . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  >= '" . $aArgs['end_date']."')
+				  (DATE_FORMAT( start_day,  '%Y/%m/%d' ) <= '" . $this->filter_data($aArgs['start_date']) . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  >= '" . $this->filter_data($aArgs['end_date'])."')
 				  )
 				  AND " . $aArgs['field_search'] . " LIKE '%".$this->filter_data(trim($aArgs['keyword']))."%'"
 			: '';

@@ -79,7 +79,7 @@ var adminPageView = {
             'width' : 420,
             'classname': 'ly_set ly_editor'
         });
-        
+        $(".search_result").remove() 
        googleMapApi.initialize('asd');
 	}
 

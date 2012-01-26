@@ -12,6 +12,7 @@ var googleMapApi = {
     korea : new google.maps.LatLng( 37.56654,  126.97797),
 
     initialize : function(url){
+        
         var initLat;
         var initLng;
         this.sServerUrl = url
@@ -45,6 +46,8 @@ var googleMapApi = {
 
         /** Location the current location of the user on the map **/
         this.getCurrentLocation();   
+        
+        $("#map_search_address").css('border','solid 1px #CCCCCC');
 
 
     },setMarkerLocation : function(location){
@@ -148,9 +151,10 @@ var googleMapApi = {
           var address = $("#map_search_address").val();
           
           if($.trim(address)==''){
-            $("#pg_scheduleradv_search_box").css('border','solid 2px #dc4e22');
+            $("#map_search_address").css('border','solid 2px #dc4e22');
+            return false;
           }else{
-            $("#pg_scheduleradv_search_box").css('border','solid 1px #CCCCCC');
+            $("#map_search_address").css('border','solid 1px #CCCCCC');
             this.geocoder.geocode( { 'address': address}, function(results, status) {
                 
                     searchResult="";

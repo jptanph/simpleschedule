@@ -15,8 +15,8 @@ class frontPageSimpleSchedule extends Controller_Front
         $sHtml .= "<div id='{$this->_sHtmlPrefix}container'>";
         $sHtml .= "    <div id='{$this->_sHtmlPrefix}calendar'></div>";
         $sHtml .= "    <div id='{$this->_sHtmlPrefix}expand'>";
-        $sHtml .= "    <div class='pg_scheduleradv_overlay3'>";
-        $sHtml .= "    <div class='pg_scheduleradv_overlay4'>";
+        $sHtml .= "    <div class='{$this->_sHtmlPrefix}overlay3'>";
+        $sHtml .= "    <div class='{$this->_sHtmlPrefix}overlay4'>";
         $sHtml .= "    <div class='pg_scheduleradv_loader'></div>";
         $sHtml .= "    </div>";
         $sHtml .= "    </div>";

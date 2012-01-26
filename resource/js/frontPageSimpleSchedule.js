@@ -218,10 +218,10 @@ var frontPageSimpleSchedule = {
                      
                       $(".sdk_simpleschedule_taskcontent").remove();
                       $("#sdk_simpleschedule_schedInfo"+idx).html(sHtml);
-                      googleMapApi.viewFrontMap(value.latitude,value.longitude);
-                  });
-
-                  
+                      if(value.map_location){
+                          googleMapApi.viewFrontMap(value.latitude,value.longitude);
+                      }
+                  });                  
                }
             }
             $.ajax(options);
