@@ -1,4 +1,4 @@
-CREATE TABLE `simpleschedule_data` (
+CREATE TABLE  IF NOT EXISTS `simpleschedule_data` (
   `idx` int(90) NOT NULL AUTO_INCREMENT,
   `title` varchar(90) NOT NULL DEFAULT '',
   `memo` varchar(500) NOT NULL DEFAULT '',
@@ -12,4 +12,4 @@ CREATE TABLE `simpleschedule_data` (
   `is_recursive` varchar(5) NOT NULL,
   `date_created` int(90) DEFAULT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+);
