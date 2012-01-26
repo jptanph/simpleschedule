@@ -1,4 +1,4 @@
-
+/** Googlemap api**/
 
 var googleMapApi = {
     initialLocation:'',
