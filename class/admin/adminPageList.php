@@ -115,7 +115,14 @@ class adminPageList extends Controller_Admin
             /** FOR ROWS**/
             if(isset($aArgs['row']))
             {
-                if(!is_numeric($aArgs['row']))
+                if(
+                    !is_numeric($aArgs['row']) ||
+                    $aArgs['row'] !=='10' &&
+                    $aArgs['row'] !=='20' &&
+                    $aArgs['row'] !=='30' &&
+                    $aArgs['row'] !=='50' &&
+                    $aArgs['row'] !=='100'
+                )
                 {
                     $this->writeJs($sRedirect);
                     $iQryStrStatus +=1;
