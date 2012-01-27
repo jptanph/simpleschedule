@@ -2,7 +2,7 @@
 
 require_once('builder/builderInterface.php');
 
-class adminPageList extends Controller_Admin
+class adminPageContents extends Controller_Admin
 {
     private $_sPrefix;
 
@@ -16,7 +16,7 @@ class adminPageList extends Controller_Admin
         /** usbuilder initializer.**/
 
         /** common urls.**/
-        $sUrlList = usbuilder()->getUrl('adminPageList');
+        $sUrlList = usbuilder()->getUrl('adminPageContents');
         $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
         $sUrlView = usbuilder()->getUrl('adminPageView');
         /** common urls.**/

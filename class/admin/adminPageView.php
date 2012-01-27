@@ -17,7 +17,7 @@ class adminPageView extends Controller_Admin
          /** usbuilder initializer.**/
 
          $sImagePath = '/_sdk/img/simpleschedule/';
-         $sUrl = usbuilder()->getUrl('adminPageList');
+         $sUrl = usbuilder()->getUrl('adminPageContents');
          $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
          $sRedirect =  usbuilder()->jsMove($sUrl);
 
@@ -43,7 +43,7 @@ class adminPageView extends Controller_Admin
                  $this->externalJS("http://code.google.com/apis/gears/gears_init.js");
                  $this->importJs('googleMapApi');
 
-                 $this->importCss('adminPageList');
+                 $this->importCss('adminPageContents');
                  $this->importCss('jqueryCalendar');
                  $this->importJs('jqueryCalendar');
                  $this->importJs(__CLASS__);

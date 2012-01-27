@@ -3,7 +3,7 @@ $(document).ready(function(){
     var options = { 'years_between' : [2000,2030],'format' : 'yyyy/mm/dd' };
     $("#simpleschedule_start_date, #simpleschedule_end_date").BuilderCalendar(options);
 });
-var adminPageList = {
+var adminPageContents = {
     arrayIdx : [],
     selectAll : function(id){
         
@@ -29,13 +29,13 @@ var adminPageList = {
             
             }else{
                 
-                adminPageList.arrayIdx.splice(0,adminPageList.arrayIdx.length);
+                adminPageContents.arrayIdx.splice(0,adminPageContents.arrayIdx.length);
                 
                 $("input[name='idx_val[]']").each(function(index,value){
                     iIdx = $(this).attr("value");
                     if($(this).is(":checked")==true){
-                        if($.inArray(value.value,adminPageList.arrayIdx)==-1){
-                            adminPageList.arrayIdx.push(iIdx);
+                        if($.inArray(value.value,adminPageContents.arrayIdx)==-1){
+                            adminPageContents.arrayIdx.push(iIdx);
                         }
                     }
                 });
@@ -80,13 +80,13 @@ var adminPageList = {
         }
         
        if(error==0){
-    	   window.location.href = usbuilder.getUrl('adminPageList') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val()+sQryStr+"&search="+search_flag.val();
+    	   window.location.href = usbuilder.getUrl('adminPageContents') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val()+sQryStr+"&search="+search_flag.val();
        }
        
     },execSelectRow : function($sQryStr){
         popup.close("simplesample_delete_popup");
         var show_rows = $("#show_rows");
-        window.location.href=usbuilder.getUrl('adminPageList') + '&row='+show_rows.val()+$sQryStr;
+        window.location.href=usbuilder.getUrl('adminPageContents') + '&row='+show_rows.val()+$sQryStr;
     },execDelete : function(){
         
         var options  = {
@@ -94,11 +94,11 @@ var adminPageList = {
             type:'post',
             dataType:'json',
             data : {
-                 idx : adminPageList.arrayIdx
+                 idx : adminPageContents.arrayIdx
             },success : function(server_response){
                 
                oValidator.generalPurpose.getMessage(true, "Deleted successfully");
-               window.location.href=usbuilder.getUrl('adminPageList'); 
+               window.location.href=usbuilder.getUrl('adminPageContents'); 
             }
         }
         

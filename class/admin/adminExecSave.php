@@ -7,7 +7,7 @@ class adminExecSave extends Controller_AdminExec
     {
         $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
         $this->writeJs($sInitScript);
-        $sUrl = usbuilder()->getUrl('adminPageList');
+        $sUrl = usbuilder()->getUrl('adminPageContents');
 
         $model = new modelAdmin();
 

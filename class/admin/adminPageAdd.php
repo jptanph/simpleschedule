@@ -17,9 +17,9 @@ class adminPageAdd extends Controller_Admin
 
         usbuilder()->validator(array('form' => $this->_sPrefix . 'add_form'));
         $sImagePath = '/_sdk/img/simpleschedule/';
-        $sUrl = usbuilder()->getUrl('adminPageList');
+        $sUrl = usbuilder()->getUrl('adminPageContents');
         $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
-        $this->importCss('adminPageList');
+        $this->importCss('adminPageContents');
         $this->importCss('jqueryCalendar');
 
         $this->externalJS("http://maps.google.com/maps/api/js?sensor=true");

@@ -6,7 +6,7 @@
                 <tr>
                     <td><span  class="title">Show by</span></td>
                     <td>
-                        <select class="optionbox" id="date_range" onchange="adminPageList.execDateRange();">
+                        <select class="optionbox" id="date_range" onchange="adminPageContents.execDateRange();">
                             <option value="customSearch">Customized Search</option>
                             <option value="today" <?php if($sDateRange=='today'){?> selected="selected" <?php }?>>Today</option>
                             <option value="currentWeek" <?php if($sDateRange=='currentWeek'){?> selected="selected" <?php }?>>Current Week</option>
@@ -15,8 +15,8 @@
                             <option value="all" <?php if($sDateRange=='all'){?> selected="selected" <?php }?>>All</option>
                         </select>
                     </td>
-                    <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>" onclick="adminPageList.customSearch()" title="Start Date"/><a href="#"><label for="<?php echo $sPrefix ?>start_date" style="cursor:pointer;"><img  title="Start Date" src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
-               		<td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" onclick="adminPageList.customSearch()" title="End Date" /><a href="#"><label for="<?php echo $sPrefix ?>end_date" style="cursor:pointer;"><img  title="End Date" src="<?php echo $sImagePath;?>calendar_icon.png" /></a></label></td>
+                    <td><span  class="title">Start Date:</span> <input type="text" class="input_text" readonly="readonly"  id="<?php echo $sPrefix ?>start_date" value="<?php echo $sFirstDay;?>" onclick="adminPageContents.customSearch()" title="Start Date"/><a href="#"><label for="<?php echo $sPrefix ?>start_date" style="cursor:pointer;"><img  title="Start Date" src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
+               		<td><span  class="title">End Date: </span><input type="text" id="<?php echo $sPrefix ?>end_date" class="input_text" readonly="readonly" value="<?php echo $sLastDay;?>" onclick="adminPageContents.customSearch()" title="End Date" /><a href="#"><label for="<?php echo $sPrefix ?>end_date" style="cursor:pointer;"><img  title="End Date" src="<?php echo $sImagePath;?>calendar_icon.png" /></a></label></td>
             </tr>
             <tr>
                 <td><span  class="title">Search Keyword</span></td>
@@ -25,7 +25,7 @@
                         <option value="memo" id="1" <?php if($sFieldSearch=='memo'){?> selected=="selected" <?php } ?>>Memo</option>
                         <option value="title" id="2" <?php if($sFieldSearch=='' || $sFieldSearch=='title'){?> selected="selected" <?php } ?>>Title</option>
                     </select></td>
-                <td colspan="2"><input type="hidden" value="init" id="search" name="search"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageList.execSearch('<?php echo $sQryShow?>');" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#none" onclick="adminPageList.execReset();" class="add_link" title="Reset to default">Reset</a></td>
+                <td colspan="2"><input type="hidden" value="init" id="search" name="search"><input id="keyword" value="<?php echo $sKeyword;?>" type="text" title="keyword, title or memo" class="input_search"/> <a href="#none" onclick="adminPageContents.execSearch('<?php echo $sQryShow?>');" class="btn_nor_01 btn_width_st1" title="Search Keyword" style="width:50px;padding-left:0;padding-bottom:6px;text-align:center;">Search</a><a href="#none" onclick="adminPageContents.execReset();" class="add_link" title="Reset to default">Reset</a></td>
             </tr>
         </table>
     </td>
@@ -41,11 +41,11 @@
     </ul>
     <ul class="row_2">
         <li>
-            <a href="#none" style="height:13px;"  onclick="adminPageList.deleteRow();" class="btn_nor_01 btn_width_st1" title="Delete selected schedule">Delete</a>
+            <a href="#none" style="height:13px;"  onclick="adminPageContents.deleteRow();" class="btn_nor_01 btn_width_st1" title="Delete selected schedule">Delete</a>
         </li>
         <li class="show">
             <label for="show_row">Show Rows</label>
-            <select id="show_rows" onchange="adminPageList.execSelectRow('<?php echo $sQryShow.$sQrySEDate.$sQryKeyword.$sQryFieldSearch.$sQryDateRange.$sQrySort;?>');" >
+            <select id="show_rows" onchange="adminPageContents.execSelectRow('<?php echo $sQryShow.$sQrySEDate.$sQryKeyword.$sQryFieldSearch.$sQryDateRange.$sQrySort;?>');" >
                 <option value="10" <?php if($sRows=='10'){?>selected="selected"<?php }?>>10</option>
                 <option value="20" <?php if($sRows=='20' || $sRows==''){?>selected="selected"<?php }?>>20</option>
                 <option value="30" <?php if($sRows=='30'){?>selected="selected"<?php }?>>30</option>
@@ -67,7 +67,7 @@
 </colgroup>
 <thead>
 <tr>
-    <th class="chk"><input onclick="adminPageList.selectAll(this.id)" type="checkbox" title="" class="input_chk" id="<?php echo $sPrefix?>select_all"/></th>
+    <th class="chk"><input onclick="adminPageContents.selectAll(this.id)" type="checkbox" title="" class="input_chk" id="<?php echo $sPrefix?>select_all"/></th>
     <th>No.</th>
     <th>
         <a href="<?php echo $sUrlList?>&sort=title&type=<?php if($sSort!='title'){?>asc<?php }elseif($sSort=='title'){ echo $sSortType;}?><?php echo $sQryRow.$sQryShow.$sQryKeyword.$sQrySEDate.$sQryDateRange.$sQryFieldSearch.$sQryPage;?>" class="<?php if($sSort=='title'){ echo $sSortType; }?>">Title</a>
@@ -80,7 +80,7 @@
 <?php if($aList){ ?>
     <?php foreach($aList as $rows){ ?>
     <tr onmouseover="this.className='over'" onmouseout="this.className=''">
-        <td><input onclick="adminPageList.checkThis()" type="checkbox" name="idx_val[]" title="" value="<?php echo $rows['idx'];?>" class="input_chk" /></td>
+        <td><input onclick="adminPageContents.checkThis()" type="checkbox" name="idx_val[]" title="" value="<?php echo $rows['idx'];?>" class="input_chk" /></td>
         <td><?php echo $rows['row'];?></td>
         <td class="table_subtitle"><a href="<?php echo $sUrlView?>&idx=<?php echo $rows['idx']; ?>" title="Edit Schedule"><?php echo $rows['title'];?></a></td>
         <td><?php echo $rows['status'];?></td>
@@ -108,7 +108,7 @@
             <a href="#none" class="btn_nor_01 btn_width_st1" title="Apply selected action">Apply</a>
         </li>-->
         <li>
-            <a href="#none" class="btn_nor_01 btn_width_st1" style="height:13px;" onclick="adminPageList.deleteRow();"  title="Delete selected schedule">Delete</a>
+            <a href="#none" class="btn_nor_01 btn_width_st1" style="height:13px;" onclick="adminPageContents.deleteRow();"  title="Delete selected schedule">Delete</a>
         </li>
         <li class="show">
             <a href="<?php echo $sUrlAdd; ?>" class="btn_nor_01 btn_width_st2" title="Add New Schedule" style="width:119px;height:13px">Add New Schedule</a>
@@ -124,7 +124,7 @@
         Are you sure you want to delete the record?
         <br />
         <br />
-        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageList.execDelete()"> Delete <a/>
+        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDelete()"> Delete <a/>
     </div>
 </div>
 <input type="hidden" id="total_schedule" value="<?php echo $iResult;?>">

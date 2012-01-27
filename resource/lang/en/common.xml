@@ -3,7 +3,7 @@
     <menu>  
         <var name="simpleschedule">Simple Schedule Add</var>
         <mostbutton>
-            <var param="SimpleschedulePageList">Add New Schedule</var>
+            <var param="SimpleschedulePageContents">Add New Schedule</var>
         </mostbutton>
     </menu>
     
