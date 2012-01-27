@@ -14,7 +14,9 @@ class modelAdmin extends Model
 		DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') as date_now,
         DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y-%m-%d %H:00:00') as status_date,
         DATE_FORMAT(DATE_ADD(start_day,INTERVAL start_time HOUR),'%Y/%m/%d %H:00') as start_date,
-        DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d %H:00') as end_date
+        DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d %H:00') as end_date,
+        DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d') as end_date1
+
         FROM " . SIMPLESCHEDULE_DATA . " $sShowType $sSearchWhere $sOrderBy $sLimit";
         return $this->query($sSql);
     }

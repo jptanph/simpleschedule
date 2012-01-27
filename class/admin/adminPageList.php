@@ -229,7 +229,7 @@ class adminPageList extends Controller_Admin
             'is_recursive' => $rows['is_recursive'],
             'date_created' => $rows['date_created'],
             'start_date' => $rows['start_date'],
-            'end_date' => $rows['end_date'],
+            'end_date'=>(($rows['end_time']==24) ? $rows['end_date1'] . ' ' . '24:00' : $rows['end_date']),
        		'status' => ((strtotime($rows['status_date'])<=strtotime($rows['date_now'])) ? 'Finished' : 'Expected')
            );
            $incRow++;
