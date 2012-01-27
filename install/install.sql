@@ -1,4 +1,4 @@
-CREATE TABLE  IF NOT EXISTS `simpleschedule_data` (
+CREATE TABLE  IF NOT EXISTS `simpleschedule_contents` (
   `idx` int(90) NOT NULL AUTO_INCREMENT,
   `title` varchar(90) NOT NULL DEFAULT '',
   `memo` varchar(500) NOT NULL DEFAULT '',
