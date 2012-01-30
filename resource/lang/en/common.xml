@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <lang>
     <menu>  
-        <var name="simpleschedule">Simple Schedule Add</var>
+        <var name="simpleschedule">Simple Schedule</var>
         <mostbutton>
             <var param="SimpleschedulePageContents">Add New Schedule</var>
         </mostbutton>
