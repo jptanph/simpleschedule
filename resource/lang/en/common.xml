@@ -5,8 +5,7 @@
         <mostbutton>
             <var param="SimpleschedulePageContents">Add New Schedule</var>
         </mostbutton>
-    </menu>
-    
+    </menu>    
     <var name="lang">subject</var>
     <var name="name">Subject</var>
 </lang>

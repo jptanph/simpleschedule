@@ -1,8 +1,6 @@
 
 jQuery(document).ready(function($){
-    
     frontPageSimpleSchedule.initCalendar();
-
 });
 
 var frontPageSimpleSchedule = {
