@@ -139,7 +139,11 @@ var adminPageContents = {
            popup.close("simplesample_delete_popup");
        }
        
+       popup.close("simplesample_delete_popup");
+       
     },mostAction : function(){
         window.location.href = usbuilder.getUrl('adminPageAdd');
-    }     
+    },execReset : function(){
+        popup.close('easycomment_delete_multiple_comment');
+    }
 }
