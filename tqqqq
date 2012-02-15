@@ -1,0 +1,373 @@
+commit 31cf548afd5f961953c40b8cfa74f0c348ebb7db
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Feb 15 07:52:51 2012 +0800
+
+    * update for config.admin.menu.xml.
+
+commit 351246fb34b04396be109d71fe80c9c5c354d8bf
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Feb 15 07:48:10 2012 +0800
+
+    * first commit for 20120214.
+    * check for modified files.
+    * common.php has been added.
+
+commit 8d1eb6ecaf2afdd76520ad128b54975461deb7f3
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Mon Feb 13 14:10:23 2012 +0800
+
+    * first commit for 20120213.* first commit for 20120213.* first commit for 20120213.* first commit for 20120213.* first commit for 20120213.* first commit for 20120213.* first commit for 20120213.* first commit for 20120213.
+
+commit 22129c98400c75df0daaf6d219564bb8611730a9
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Feb 1 15:07:15 2012 +0800
+
+    *title of the schedule has been centered
+
+commit 35103b8d068a82ec8b521f15c3c3b2ae06084f42
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Feb 1 14:42:47 2012 +0800
+
+    *add execResetSelect for content page
+
+commit c6920f4e499abdf20c3b51c0e30982c577420482
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 31 09:35:06 2012 +0800
+
+    *first commit
+
+commit 0cdd7181cff74bc9df230540e0e4973b7993fe82
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Mon Jan 30 09:34:13 2012 +0800
+
+    *edit for config.admin.menu.xml
+    *edit for common.xml
+
+commit ffcdccf1379dd5259acdf7c7a465f45c96fcd4a8
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Mon Jan 30 07:47:41 2012 +0800
+
+    *update for front table rename data - > contents
+
+commit 156db778196976f594dd0dfba60c44c9e846a178
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 27 10:32:41 2012 +0800
+
+    * rename table name in install.sql file
+
+commit d2c778080b5b337af7380e5b08f86cfd2a5ce428
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 27 10:30:35 2012 +0800
+
+    * rename files that has List->Contents
+
+commit 77c18e0bf2489238f8e3584bdb3f53e0b2cd9228
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 27 09:48:55 2012 +0800
+
+    *check for simpleschedule module.
+
+commit 3dae3778a224df889851153cd76842994aac156b
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 17:25:53 2012 +0800
+
+    *last commit for 20122601
+
+commit b66c61a7aea877b07843d5ea2e4d348211b9b50e
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 16:46:21 2012 +0800
+
+    * install file has been updated.
+
+commit 5df9481c1548a67affa2decc69e15d1ceaf904c3
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 16:22:11 2012 +0800
+
+    * vaidation for inspect element row(10,20,30,50,100)
+    * if the user enters wrong value on row example(7,11,23,etc) the page will be redirected to adminPageList()
+
+commit d30a1e69f1c0f006f4138e9bd733faf77f666b1e
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 16:00:33 2012 +0800
+
+    just commit.
+
+commit 67165745d6d99a841ee112f23d0c51dd5247b83e
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 15:44:44 2012 +0800
+
+    * redirection script has been added
+    * if search functionality is initialized and the user
+    * enter invalid values through url(query string)
+    * the the page will be redirected to thea adminPageList module.
+
+commit 5b241b02dfdcbe6790e8bcf4018fc6d9f590b2f6
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 13:49:11 2012 +0800
+
+    *fixed for front page if no map location dont call googlemap.init
+
+commit 41304e182108f2c5778ddc99b35ebd805dc96b36
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 12:46:46 2012 +0800
+
+    * update start_time.val(),end_time.val() has been fixed.
+
+commit 804497af373ea784ab1f99b25a43db6649584265
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 11:24:32 2012 +0800
+
+    * content page has been updated, redirection script has been added
+    	*if the user try enter information through url(query string)
+              redirection script will be executed if the url contains invalid values.
+    * update issue has been fixed missing( where idx=foo statement on update clause)
+
+commit 72ae14ea630b885af0a501296abab6a7ea8c7982
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 09:25:34 2012 +0800
+
+    * add for commit adminPageContent.js(rename)
+
+commit 88d195f17e464416720ad605f6502c581b0b162e
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 09:23:06 2012 +0800
+
+    * edit css for map info window.
+    * edit front appearance for bldph106
+
+commit a1adb814c9808353c4a13c11479fd78753e55c7f
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 26 07:42:38 2012 +0800
+
+    * first commit for 2012-26-01
+
+commit 7fef62d67c1f2389bcc00a289e484a975e85b712
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 17:35:52 2012 +0800
+
+    *config(xml) and lang(xml) for button has been added.
+
+commit d5f9f18594a174b263a4c78c4385c160d8bffa4e
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 17:03:41 2012 +0800
+
+    *added deleted files for git record
+
+commit 00be5763c036eebfea1a011f04d5fdaf1204f9c6
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 16:56:42 2012 +0800
+
+    *last commit for 20122501
+
+commit 476c4fd2b61990292613606a1dfbec6f730ee9ca
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 16:29:09 2012 +0800
+
+    *googlemap for front page has been added.
+
+commit 3266e76061bf63e42a0e56ae9d2ae0e8ebbb0cb9
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 16:01:21 2012 +0800
+
+    * rename admin API class file for determining what is api for front and api for admin
+
+commit 1570e45b0797859ab6d96f14ae6445e379bee491
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 15:35:27 2012 +0800
+
+    *view list information has been updated and already showing the memo.
+
+commit 4434d212f3c5fb59f31c660b0921d867765200d6
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 14:43:24 2012 +0800
+
+    * list of schedule per day has been listed and updated.
+
+commit f63966716fc7f3af3f544059cd4b5776836614c8
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 14:26:21 2012 +0800
+
+    *front (view schedule has been updated)
+
+commit 55e6f8e1fd7402a281b41c3ffce970268655f0d4
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 13:01:52 2012 +0800
+
+    * front calendar has been displayed.
+    * request from the api has been fixed.
+
+commit f25d62a667f182bd9e7c2c5d5e9651ca909a915f
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 11:26:32 2012 +0800
+
+    * getting calendars information has been separated.
+    * apiCalendar is just returning data to be used by the javascript to generate calendar information.
+
+commit f12bcc2022ab8570e9b238b97fb48b10f1d6cc36
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 10:18:51 2012 +0800
+
+    * display css,image,background for test.
+
+commit 362c158b83d1a25a9d47c3196e534596af362cf0
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 09:34:54 2012 +0800
+
+    *create front page class for displaying the simpleschedule
+
+commit 477a4ae730c741322fc6f228ca2d1e0fa74d97f1
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 08:56:14 2012 +0800
+
+    *last update functionality edited.
+
+commit a716dc922c1428a330988fb1d242c951bcd072f6
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 08:08:17 2012 +0800
+
+    *fixed update functionality for updating the data to the database.
+
+commit 84644781903dd18da5f123c9a0aaa85092953352
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 25 07:51:39 2012 +0800
+
+    *first commit for 20122501
+
+commit 24e154d2a47c28f37513c6fe048f651c0939ce99
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 17:52:14 2012 +0800
+
+    * update functionality has been updated for validation the updates for the schedules.
+
+commit d4e627dffe24b9f5e60b5543bfd24bafb0c0d0c4
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 16:56:09 2012 +0800
+
+    *update file class has been created.
+
+commit 75cc34ebb49ba3b5864d5e89b88786521dcd2d05
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 16:44:24 2012 +0800
+
+    * update google map has been added.
+
+commit 3a504616f8273a64fb3bb66cf8d8ef89f9fe03d5
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 14:51:48 2012 +0800
+
+    * unix timestamp converted to integer when inserted.
+
+commit 2c9fa3d7a5e7d9d7596c2457854b5b76c6340076
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 14:36:16 2012 +0800
+
+    * google map marker has been fixed.
+
+commit d2fed2c02dc3a8ef1b55b17dbef5a88212e7e88e
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 12:41:48 2012 +0800
+
+    * last commit is unix time stamp for date created.
+
+commit cbf89e1659fe1d83b6a848c795fdd0dd63f5bd2f
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 11:34:49 2012 +0800
+
+    *query string variable has been added.
+    *expected,finished,total
+
+commit ac09ca1e98a13228180ca5e9ad188a8f45b51140
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 08:33:15 2012 +0800
+
+    show type has been added.
+
+commit 755890a6b0f408ab7e4a413b2f5299cce8e8ab4b
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Tue Jan 24 08:21:48 2012 +0800
+
+    search functionality has been added
+
+commit ab6029381c689d882a8ff25deb43de64258a361b
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 20 18:43:15 2012 +0800
+
+    latest code
+
+commit b35fcdd8908c10edd874b66d6675a347c876273a
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 20 16:45:03 2012 +0800
+
+    view page has been added
+
+commit 619c5e5d07633f3f3c2cc19fe8d1bbc0d0d5a96c
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 20 16:24:26 2012 +0800
+
+    reset search popclose when other function is called.
+
+commit 8ede6a0d83b1589f2f23e4937cfc8e549511801c
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 20 15:55:24 2012 +0800
+
+    other search functionality is added
+
+commit 6bed6788162458d01eca69fea736f879192ee5e9
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Fri Jan 20 14:20:15 2012 +0800
+
+    asdasd
+
+commit 74deab94e5c68302d7558d1f3388ab306a3329f2
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 19 17:54:37 2012 +0800
+
+    commit
+
+commit a55e354b2b4c9c39cd563beaf2ae5c8199b282e0
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 19 16:37:05 2012 +0800
+
+    asdasdasd
+
+commit e18f7df684ff1bda526928c2054f637a51eabc5c
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 19 14:50:31 2012 +0800
+
+    commit
+
+commit 4a574a708c456d00b682ce524ddb4d29e4e78cb7
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 19 12:54:58 2012 +0800
+
+    3rd commit
+
+commit 331738d2ab3c3d0cf35f0d985eb1e401d52b5b60
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 19 11:18:15 2012 +0800
+
+    asdf
+
+commit b6f246f12787e049de086eb531fac5d966f4dd8a
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Thu Jan 19 10:34:34 2012 +0800
+
+    commit
+
+commit 26bb03c50bb5312592893a4fdab5122f1ef8743f
+Author: sdk_john <sdk_john@simplexi.com>
+Date:   Wed Jan 18 17:27:28 2012 +0800
+
+    january 18 2012|scheduler
+
+commit 86376b09c1444f4b6699800b08865e341ddd29e7
+Author: Your Name <you@example.com>
+Date:   Wed Jan 18 10:41:22 2012 +0900
+
+    First commit
+
+commit 4736ac4304dd68b7a4e65cd65f11cdab2aaf7f65
+Author: Your Name <you@example.com>
+Date:   Mon Dec 19 11:39:54 2011 +0900
+
+    Init...
