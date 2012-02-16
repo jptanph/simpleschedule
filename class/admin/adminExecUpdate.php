@@ -8,8 +8,7 @@ class adminExecUpdate extends Controller_AdminExec
 
         $sUrl = usbuilder()->getUrl('adminPageView');
 
-        $model = new modelAdmin();
-        $bIsUpdate = $model->execUpdate($aArgs);
+        $bIsUpdate = common()->modelAdmin()->execUpdate($aArgs);
 
         if($bIsUpdate===false){
             usbuilder()->message('Saved failed!', 'warning');

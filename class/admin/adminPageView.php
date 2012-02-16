@@ -20,15 +20,13 @@ class adminPageView extends Controller_Admin
 
          usbuilder()->validator(array('form' => $this->_sPrefix . 'edit_form'));
 
-         $model = new modelAdmin();
-
          if(!is_numeric($aArgs['idx']))
          {
             usbuilder()->jsMove($sUrl);
          }
          else
          {
-             $aResult = $model->execViewRecord($aArgs['idx']);
+             $aResult = common()->modelAdmin()->execViewRecord($aArgs['idx']);
 
              if(!$aResult)
              {

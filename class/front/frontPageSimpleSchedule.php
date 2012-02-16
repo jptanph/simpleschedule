@@ -7,8 +7,7 @@ class frontPageSimpleSchedule extends Controller_Front
     protected function run($aArgs)
     {
         $this->_sHtmlPrefix = "sdk_simpleschedule_";
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
+        usbuilder()->init($this, $aArgs);
 
         $sHtml = '';
         $sHtml .= "<div id='{$this->_sHtmlPrefix}holder'>";

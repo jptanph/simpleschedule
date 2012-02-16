@@ -1,10 +1,11 @@
 <?php
-
+require_once('builder/builderInterface.php');
 class apiAdminValidateUpdate extends Controller_Api
 {
 
 	public function post($aArgs)
 	{
+	    usbuilder()->init($this, $aArgs);
 		$conflict = 0;
         $sStartTime  = str_pad($aArgs['start_time'],2,'0',STR_PAD_LEFT) . ':00:00';
         $sEndTime = str_pad($aArgs['end_time'],2,'0',STR_PAD_LEFT) . ':00:00';
@@ -12,8 +13,7 @@ class apiAdminValidateUpdate extends Controller_Api
         $sStartDate = str_replace('/','-',$aArgs['start_date'] . ' ' . $sStartTime);
         $sEndDate = str_replace('/','-',$aArgs['end_date'] . ' ' . $sEndTime);
 
-		$model = new modelAdmin();
-		$aData = $model->execCheckUpdate($aArgs['idx']);
+		$aData = common()->modelAdmin()->execCheckUpdate($aArgs['idx']);
 
 		foreach($aData as $rows)
 		{

@@ -5,11 +5,12 @@ class apiAdminDeleteContent extends Controller_Api
 
     protected function post($aArgs)
     {
-        $model = new modelAdmin();
+        usbuilder()->init($this, $aArgs);
+
 
         foreach($aArgs['idx'] as $rows)
         {
-            $model->execDelete($rows);
+            common()->modelAdmin()->execDelete($rows);
         }
     }
 }

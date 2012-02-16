@@ -6,6 +6,7 @@ $(document).ready(function(){
 var adminPageView = {
 		
 	execUpdate : function(){
+        sdk_message.hide();
 	    var idx = $("#idx");
 	    var start_date = $("#start_date");
         var end_date = $("#end_date");

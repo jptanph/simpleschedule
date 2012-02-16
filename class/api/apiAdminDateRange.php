@@ -5,7 +5,7 @@ class apiAdminDateRange extends Controller_Api
 {
 	public function post($aArgs)
 	{
-		$model = new modelAdmin();
+        usbuilder()->init($this, $aArgs);
 		$aDate = array();
 		$sDate = '';
 		$eDate = '';
@@ -34,7 +34,7 @@ class apiAdminDateRange extends Controller_Api
 				break;
 
 			case'all':
-				$aResult = $model->execDateRange();
+				$aResult = common()->modelAdmin()->execDateRange();
 
 				$sDate =  $aResult['min_sday'];
 				$eDate =  $aResult['max_eday'];

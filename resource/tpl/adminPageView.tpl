@@ -1,3 +1,4 @@
+<div id="sdk_message_box"></div>
 
 <h3>Edit Schedule</h3>
 <p class="require"><span class="neccesary">*</span> Required</p>

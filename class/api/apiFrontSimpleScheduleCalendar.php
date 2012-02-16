@@ -5,7 +5,7 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 {
     public function post($aArgs)
     {
-        $model = new modelFront();
+        usbuilder()->init($this, $aArgs);
 
 		if($aArgs["iMonth"]==''){
 			/** If empty set the date to current month */
@@ -72,7 +72,7 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 				$iDay = str_pad($iDay,2,'0',STR_PAD_LEFT);
 				$todayDate = $today."-".$iDay;
 
-				$aSelectDay = $model->execGetDays($todayDate);
+				$aSelectDay = common()->modelFront()->execGetDays($todayDate);
 
 				/** Stores the total schedule in an array and passed on request in JSON Format **/
 				foreach($aSelectDay as $val){

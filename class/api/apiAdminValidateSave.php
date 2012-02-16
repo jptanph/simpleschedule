@@ -6,7 +6,7 @@ class apiAdminValidateSave extends Controller_Api
 {
     protected function post($aArgs)
     {
-        $model = new modelAdmin();
+        usbuilder()->init($this, $aArgs);
 
         $iConflict = 0;
 
@@ -15,7 +15,7 @@ class apiAdminValidateSave extends Controller_Api
 
         $sStartDate = str_replace('/','-',$aArgs['start_date'] . ' ' . $sStartTime);
         $sEndDate = str_replace('/','-',$aArgs['end_date'] . ' ' . $sEndTime);
-        $aResult = $model->execCheckSave();
+        $aResult = common()->modelAdmin()->execCheckSave();
 
         foreach($aResult as $rows)
 		{
