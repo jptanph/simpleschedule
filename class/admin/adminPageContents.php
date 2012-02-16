@@ -11,8 +11,7 @@ class adminPageContents extends Controller_Admin
         $iQryStrStatus = 0;
 
         /** usbuilder initializer.**/
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
+        $sInitScript = usbuilder()->init($this, $aArgs);
         /** usbuilder initializer.**/
 
         /** common urls.**/
@@ -22,10 +21,10 @@ class adminPageContents extends Controller_Admin
         /** common urls.**/
 
         /** FOR PAGE REDIRECTION (IF THE FOLLOWING VARIABLES BELOW IS INVALID.).**/
-            $sRedirect =  usbuilder()->jsMove($sUrlList);
+
             if(isset($aArgs['search'])){
                 if($aArgs['search']!=='init'){
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
                     $iQryStrStatus +=1;
                 }else{
                     if(
@@ -36,7 +35,7 @@ class adminPageContents extends Controller_Admin
                         !isset($aArgs['field_search'])
                     )
                     {
-                        $this->writeJs($sRedirect);
+                        usbuilder()->jsMove($sUrlList);
                         $iQryStrStatus +=1;
                     }
                 }
@@ -46,7 +45,7 @@ class adminPageContents extends Controller_Admin
             {
                 if(trim($aArgs['field_search'])!=='title' && trim($aArgs['field_search'])!=='memo')
                 {
-                   $this->writeJs($sRedirect);
+                   usbuilder()->jsMove($sUrlList);
                    $iQryStrStatus +=1;
                 }
                 else
@@ -68,7 +67,7 @@ class adminPageContents extends Controller_Admin
                     trim($aArgs['date_range'])!=='all'
                     )
                 {
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
                     $iQryStrStatus +=1;
                 }
                 else
@@ -83,7 +82,7 @@ class adminPageContents extends Controller_Admin
             {
                 if($aArgs['type']!=='asc' && $aArgs['type'] !=='des')
                 {
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
                     $iQryStrStatus +=1;
                 }
 
@@ -94,7 +93,8 @@ class adminPageContents extends Controller_Admin
                 )
                 {
 
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
+
                     $iQryStrStatus +=1;
                 }
             }
@@ -106,7 +106,8 @@ class adminPageContents extends Controller_Admin
             {
                 if($aArgs['show'] !=='expected' && $aArgs['show']!=='finished')
                 {
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
+
                     $iQryStrStatus +=1;
                 }
             }
@@ -124,7 +125,8 @@ class adminPageContents extends Controller_Admin
                     $aArgs['row'] !=='100'
                 )
                 {
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
+
                     $iQryStrStatus +=1;
                 }
             }
@@ -135,7 +137,8 @@ class adminPageContents extends Controller_Admin
             {
                 if(!$this->checkDateFormat($aArgs['start_date']) && $this->checkDateFormat($aArgs['end_date']))
                 {
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlList);
+
                     $iQryStrStatus +=1;
                 }
             }

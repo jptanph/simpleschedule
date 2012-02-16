@@ -10,16 +10,13 @@ class adminPageView extends Controller_Admin
      {
          $this->_sPrefix = 'simpleschedule_';
          /** usbuilder initializer.**/
-         $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-         $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'edit_form','adminExecUpdate');
-         $this->writeJs($sInitScript);
-         $this->writeJs($sFormScript);
+         usbuilder()->init($this, $aArgs);
+         usbuilder()->getFormAction($this->_sPrefix . 'edit_form','adminExecUpdate');
          /** usbuilder initializer.**/
 
          $sImagePath = '/_sdk/img/simpleschedule/';
          $sUrl = usbuilder()->getUrl('adminPageContents');
          $sUrlAdd = usbuilder()->getUrl('adminPageAdd');
-         $sRedirect =  usbuilder()->jsMove($sUrl);
 
          usbuilder()->validator(array('form' => $this->_sPrefix . 'edit_form'));
 
@@ -27,7 +24,7 @@ class adminPageView extends Controller_Admin
 
          if(!is_numeric($aArgs['idx']))
          {
-             $this->writeJs($sRedirect);
+            usbuilder()->jsMove($sUrl);
          }
          else
          {
@@ -35,7 +32,7 @@ class adminPageView extends Controller_Admin
 
              if(!$aResult)
              {
-                 $this->writeJs($sRedirect);
+                 usbuilder()->jsMove($sUrl);
              }
              else
              {

@@ -1,3 +1,4 @@
+<div id="sdk_message_box"></div>
 <!-- table header -->
 <table border="1" cellpadding="0" cellspacing="0" class="table_hor_03">
     <tr>

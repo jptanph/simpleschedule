@@ -4,8 +4,8 @@ class adminExecUpdate extends Controller_AdminExec
 {
     protected function run($aArgs)
     {
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
+        usbuilder()->init($this, $aArgs);
+
         $sUrl = usbuilder()->getUrl('adminPageView');
 
         $model = new modelAdmin();
@@ -16,7 +16,6 @@ class adminExecUpdate extends Controller_AdminExec
         }else{
             usbuilder()->message('Saved succesfully!', 'success');
         }
-        $sJsMove = usbuilder()->jsMove($sUrl . '&idx=' . $aArgs['idx']);
-        $this->writeJS($sJsMove);
+        usbuilder()->jsMove($sUrl . '&idx=' . $aArgs['idx']);
     }
 }

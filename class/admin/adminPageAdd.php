@@ -9,10 +9,8 @@ class adminPageAdd extends Controller_Admin
     {
          $this->_sPrefix = 'simpleschedule_';
          /** usbuilder initializer.**/
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'add_form','adminExecSave');
-        $this->writeJs($sInitScript);
-        $this->writeJs($sFormScript);
+        usbuilder()->init($this, $aArgs);
+        usbuilder()->getFormAction($this->_sPrefix . 'add_form','adminExecSave');
         /** usbuilder initializer.**/
 
         usbuilder()->validator(array('form' => $this->_sPrefix . 'add_form'));

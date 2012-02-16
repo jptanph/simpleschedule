@@ -5,8 +5,7 @@ class adminExecSave extends Controller_AdminExec
 {
     protected function run($aArgs)
     {
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
+        usbuilder()->init($this, $aArgs);
         $sUrl = usbuilder()->getUrl('adminPageContents');
 
         $model = new modelAdmin();
@@ -23,7 +22,6 @@ class adminExecSave extends Controller_AdminExec
         }else{
             usbuilder()->message('Saved succesfully!', 'success');
         }
-        $sJsMove = usbuilder()->jsMove($sUrl);
-        $this->writeJS($sJsMove);
+        usbuilder()->jsMove($sUrl);
     }
 }
