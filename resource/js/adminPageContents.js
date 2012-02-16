@@ -12,7 +12,9 @@ var adminPageContents = {
             $(this).attr('checked',is_checked);
         });
         if($("input[name='idx_val[]']:checked").length==0){
-            popup.close("simplesample_delete_popup");
+            sdk_popup.close("simplesample_delete_popup");
+        }else{
+            sdk_message.hide();
         }
     },deleteRow : function(){    
         var is_checked = $("input[name='idx_val[]']:checked").length;
@@ -20,12 +22,15 @@ var adminPageContents = {
         
         if(parseInt(total_schedule.val())==0){
             
-            oValidator.generalPurpose.getMessage(false, "No record(s) to delete.");
+            //oValidator.generalPurpose.getMessage(false, "No record(s) to delete.");
+            sdk_message.show('No record(s) to delete.', 'warning');
+
 
         }else{
             if(is_checked==0){
             
-                oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
+                //oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
+                sdk_message.show("Please select the record(s) you'd like to delete.", 'warning');             
             
             }else{
                 
@@ -41,7 +46,7 @@ var adminPageContents = {
                 });
                 
                 $("#validation_message").hide();
-                popup.load('simplesample_delete_popup').skin('admin').layer({
+                sdk_popup.load('simplesample_delete_popup').skin('admin').layer({
                     'title' : 'Delete',
                     'width' : 260,
                     'classname': 'ly_set ly_editor'
@@ -84,7 +89,7 @@ var adminPageContents = {
        }
        
     },execSelectRow : function($sQryStr){
-        popup.close("simplesample_delete_popup");
+        sdk_popup.close("simplesample_delete_popup");
         var show_rows = $("#show_rows");
         window.location.href=usbuilder.getUrl('adminPageContents') + '&row='+show_rows.val()+$sQryStr;
     },execDelete : function(){
@@ -98,6 +103,7 @@ var adminPageContents = {
             },success : function(server_response){
                 
                oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+               sdk_message.show("Deleted successfully", 'success');  
                window.location.href=usbuilder.getUrl('adminPageContents'); 
             }
         }
@@ -107,7 +113,7 @@ var adminPageContents = {
         
     },execDateRange : function(){
        
-        popup.close("simplesample_delete_popup");
+        sdk_popup.close("simplesample_delete_popup");
     	var date_range = ($("#date_range").val()==undefined) ? 'currentMonth' : $("#date_range").val();
     	
         var options  = {
@@ -125,25 +131,25 @@ var adminPageContents = {
         
     },execReset : function(){
         
-        popup.close("simplesample_delete_popup");
+        sdk_popup.close("simplesample_delete_popup");
     	$("#keyword").val('');
     	$("select#date_range").val('currentMonth');
     	$("select#field_type_search").val('title')
     	this.execDateRange();
     	
     },customSearch : function(){
-        popup.close("simplesample_delete_popup");
+        sdk_popup.close("simplesample_delete_popup");
     	$("select#date_range").val('customSearch');
     },checkThis : function(){
        if($("input[name='idx_val[]']:checked").length==0){
-           popup.close("simplesample_delete_popup");
+           sdk_popup.close("simplesample_delete_popup");
        }
        
-       popup.close("simplesample_delete_popup");
+       sdk_popup.close("simplesample_delete_popup");
        
     },mostAction : function(){
         window.location.href = usbuilder.getUrl('adminPageAdd');
     },execReset : function(){
-        popup.close('easycomment_delete_multiple_comment');
+        sdk_popup.close('easycomment_delete_multiple_comment');
     }
 }
