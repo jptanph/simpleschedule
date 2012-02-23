@@ -2,10 +2,11 @@
 <lang>
     <menu>  
         <var name="simpleschedule">Simple Schedule</var>
+        <var name="menu_contents">Simple Schedule Contents</var>
         <mostbutton>
-            <var param="SimpleschedulePageContents">Add New Schedule</var>
+            <var param="SimpleschedulePageContents">Add New Contents</var>
         </mostbutton>
-    </menu>    
+    </menu>
     <var name="lang">subject</var>
     <var name="name">Subject</var>
 </lang>

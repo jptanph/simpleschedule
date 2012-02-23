@@ -1,5 +1,6 @@
 CREATE TABLE  IF NOT EXISTS `simpleschedule_contents` (
   `idx` int(90) NOT NULL AUTO_INCREMENT,
+  `seq` int(90) NOT NULL,
   `title` varchar(90) NOT NULL DEFAULT '',
   `memo` varchar(500) NOT NULL DEFAULT '',
   `map_location` varchar(300) NOT NULL DEFAULT '',

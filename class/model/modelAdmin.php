@@ -159,4 +159,12 @@ class modelAdmin extends Model
         return filter_var($s,FILTER_SANITIZE_MAGIC_QUOTES);
     }
 
+    public function deleteContentsBySeq($aSeq)
+    {
+        $sSeqs = implode(',', $aSeq);
+        $sQuery = "DELETE FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE seq in($sSeqs)";
+        $mResult = $this->query($sQuery);
+        return $mResult;
+    }
+
 }
