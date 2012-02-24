@@ -3,6 +3,7 @@
 <p class="require"><span class="neccesary">*</span> Required</p>
 <!-- input area -->
 <form id="<?php echo $sPrefix?>add_form" method="POST" class="<?php echo $sPrefix?>add_form" name="<?php echo $sPrefix?>add_form">
+    <input type="hidden" name='seq' value='<?php echo $iSeq;?>'>
 	<input type="hidden" name="lg_field" id="lg_field">
 	<input type="hidden" name="lt_field" id="lt_field">
 

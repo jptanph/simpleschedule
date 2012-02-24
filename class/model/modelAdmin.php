@@ -89,7 +89,7 @@ class modelAdmin extends Model
     	return $this->query($sSql);
     }
 
-    public function execViewRecord($iIdx)
+    public function execViewRecord($aData)
     {
 		$aData = array();
 		$sSql = "SELECT
@@ -103,7 +103,7 @@ class modelAdmin extends Model
 		end_time,
 		DATE_FORMAT(start_day,'%Y/%m/%d') as start_day,
 		DATE_FORMAT(end_day,'%Y/%m/%d') as end_day
-		FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE idx = " . $iIdx;
+		FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND seq = " . $aData['seq'];
 		return $this->query($sSql);
     }
 
@@ -129,9 +129,10 @@ class modelAdmin extends Model
     public function insertRecord($aData)
     {
         $sSql = " INSERT INTO " . SIMPLESCHEDULE_CONTENTS .
-        "(title,memo,map_location,latitude,longitude,start_day,start_time,end_day,end_time,date_created)
+        "(seq,title,memo,map_location,latitude,longitude,start_day,start_time,end_day,end_time,date_created)
         VALUES
         (
+        {$aData['seq']},
         '".$this->filter_data($aData['title'])."',
         '".$this->filter_data($aData['memo'])."',
         '".$this->filter_data($aData['location'])."',

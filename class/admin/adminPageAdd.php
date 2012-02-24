@@ -25,6 +25,7 @@ class adminPageAdd extends Controller_Admin
         $this->importjs('googleMapApi');
         $this->importJs('jqueryCalendar');
         $this->importJs(__CLASS__);
+        $this->assign('iSeq',$aArgs['seq']);
         $this->assign('sDate',date('Y/m/d'));
         $this->assign('sPrefix',$this->_sPrefix);
         $this->assign('sUrl',$sUrl);
