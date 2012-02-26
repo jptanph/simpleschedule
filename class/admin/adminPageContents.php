@@ -21,7 +21,6 @@ class adminPageContents extends Controller_Admin
         /** common urls.**/
 
         /** FOR PAGE REDIRECTION (IF THE FOLLOWING VARIABLES BELOW IS INVALID.).**/
-
             if(isset($aArgs['search'])){
                 if($aArgs['search']!=='init'){
                     usbuilder()->jsMove($sUrlList);
