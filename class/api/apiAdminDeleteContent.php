@@ -10,7 +10,7 @@ class apiAdminDeleteContent extends Controller_Api
 
         foreach($aArgs['idx'] as $rows)
         {
-            common()->modelAdmin()->execDelete($rows);
+            common()->modelAdmin()->execDelete($rows,$aArgs);
         }
     }
 }

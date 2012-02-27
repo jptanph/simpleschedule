@@ -91,22 +91,25 @@ var adminPageContents = {
        }
        
     },execSelectRow : function($sQryStr){
+        
         sdk_popup.close("simplesample_delete_popup");
         var show_rows = $("#show_rows");
-        window.location.href=usbuilder.getUrl('adminPageContents') + '&row='+show_rows.val()+$sQryStr;
-    },execDelete : function(){
+        var seq = $("#simpleschedule_seq")
+        window.location.href=usbuilder.getUrl('adminPageContents') + "&seq=" + seq.val() + '&row='+show_rows.val()+$sQryStr;
         
+    },execDelete : function(){
+        var seq = $("#simpleschedule_seq");
         var options  = {
             url :usbuilder.getUrl("apiAdminDeleteContent"),
             type:'post',
             dataType:'json',
             data : {
-                 idx : adminPageContents.arrayIdx
+                 idx : adminPageContents.arrayIdx,
+                 seq : seq.val()
             },success : function(server_response){
-                
-               oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+              
                sdk_message.show("Deleted successfully", 'success');  
-               window.location.href=usbuilder.getUrl('adminPageContents'); 
+               window.location.href=usbuilder.getUrl('adminPageContents') + "&seq="+seq.val(); 
             }
         }
         
@@ -140,9 +143,12 @@ var adminPageContents = {
     	this.execDateRange();
     	
     },customSearch : function(){
+        
         sdk_popup.close("simplesample_delete_popup");
     	$("select#date_range").val('customSearch');
+   
     },checkThis : function(){
+      
        if($("input[name='idx_val[]']:checked").length==0){
            sdk_popup.close("simplesample_delete_popup");
        }
@@ -150,8 +156,12 @@ var adminPageContents = {
        sdk_popup.close("simplesample_delete_popup");
        
     },mostAction : function(){
+        
         window.location.href = usbuilder.getUrl('adminPageAdd');
+        
     },execReset : function(){
+        
         sdk_popup.close('easycomment_delete_multiple_comment');
+        
     }
 }

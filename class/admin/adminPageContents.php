@@ -163,16 +163,16 @@ class adminPageContents extends Controller_Admin
             $sQryPage = (isset($aArgs['page'])) ? "&page=".$aArgs['page'] : '';
             /** query string generator here.**/
 
-            $sHasWhere = isset($aArgs['show']) ? '' :  ' WHERE ';
+            $sHasWhere = isset($aArgs['show']) ? ' AND ' :  ' AND ';
             $sHasShow  = (isset($aArgs['keyword']) &&
                     isset($aArgs['start_date']) &&
                     isset($aArgs['end_date']) &&
-                    isset($aArgs['field_search'])) ? ' WHERE ' : ' WHERE ';
+                    isset($aArgs['field_search'])) ? '  ' : '  ';
 
             $sHasAnd  = (isset($aArgs['keyword']) &&
                     isset($aArgs['start_date']) &&
                     isset($aArgs['end_date']) &&
-                    isset($aArgs['field_search'])) ? ' AND ' : '';
+                    isset($aArgs['field_search'])) ? '  ' : '';
 
             $sSE = '';
             if($aArgs['sort']=='end_day' || $aArgs['sort']=='start_day'){
@@ -193,21 +193,21 @@ class adminPageContents extends Controller_Admin
                 isset($aArgs['keyword']) &&
     			isset($aArgs['start_date']) &&
     			isset($aArgs['end_date']) &&
-    			isset($aArgs['field_search']))
+    			isset($aArgs['field_search'])) &&
+    			isset($aArgs['seq'])
     			?
     				" $sHasWhere
     				  ((DATE_FORMAT( start_day,  '%Y/%m/%d' ) >= '" . $this->filter_data($aArgs['start_date']) . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  <= '" . $this->filter_data($aArgs['end_date']) . "')
     					OR
     				  (DATE_FORMAT( start_day,  '%Y/%m/%d' ) <= '" . $this->filter_data($aArgs['start_date']) . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  >= '" . $this->filter_data($aArgs['end_date'])."')
     				  )
-    				  AND " . $aArgs['field_search'] . " LIKE '%".$this->filter_data(trim($aArgs['keyword']))."%' AND seq = {$aArgs['seq']}"
-    			: " WHERE seq = {$aArgs['seq']}";
+    				  AND " . $aArgs['field_search'] . " LIKE '%".$this->filter_data(trim($aArgs['keyword']))."%' "
+    			: " ";
     		$sShow = (isset($aArgs['show'])) ? $aArgs['show'] : '';
     		$sShowType = $this->_showType($sShow,$sHasShow,$sHasAnd,$aArgs);
 
             $this->_sPrefix = 'simpleschedule_';
             $aData = array();
-
             $aList = common()->modelAdmin()->getList($sOrderBy,$sLimit,$sSearchWhere,$sShowType);
             $aCountList = common()->modelAdmin()->getCountList($sSearchWhere,$sShowType);
 
@@ -286,17 +286,16 @@ class adminPageContents extends Controller_Admin
     	$sSqlViewType = '';
     	if($sViewType=='finished')
     	{
-    		$sSqlViewType = " $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd ";
+    		$sSqlViewType = "  WHERE seq = {$aArgs['seq']} AND $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd AND seq={$aArgs['seq']}";
     	}
     	elseif($sViewType=='expected')
     	{
-    		$sSqlViewType = " $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd ";
+    		$sSqlViewType = " WHERE seq = {$aArgs['seq']} AND $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd  AND seq={$aArgs['seq']}";
     	}
     	else
     	{
-    		$sSqlViewType = " ";
+    		$sSqlViewType = " WHERE seq = {$aArgs['seq']}";
     	}
-
     	return $sSqlViewType;
     }
 

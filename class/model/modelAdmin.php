@@ -18,6 +18,7 @@ class modelAdmin extends Model
         DATE_FORMAT(DATE_ADD(end_day,INTERVAL end_time HOUR),'%Y/%m/%d') as end_date1
 
         FROM " . SIMPLESCHEDULE_CONTENTS . " $sShowType $sSearchWhere $sOrderBy $sLimit";
+//         usbuilder()->vd($sSql);
         return $this->query($sSql);
     }
 
@@ -33,9 +34,9 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
-    public function execDelete($iIdx)
+    public function execDelete($iIdx,$aArgs)
     {
-        $sSql = "DELETE FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE idx = " . $iIdx;
+        $sSql = "DELETE FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE idx = " . $iIdx . " AND seq = {$aArgs['seq']}";
         $this->query($sSql);
     }
 
@@ -121,31 +122,31 @@ class modelAdmin extends Model
            end_day = '" . $aData['end_date'] . "',
            end_time = '" . $aData['end_time'] . "'
 
-           WHERE idx = ".$aData['idx']."
+           WHERE idx = ".$aData['idx']." AND seq = {$aData['seq']}
        ";
        return $this->query($sSql);
     }
 
     public function insertRecord($aData)
     {
-        $sSql = " INSERT INTO " . SIMPLESCHEDULE_CONTENTS .
-        "(seq,title,memo,map_location,latitude,longitude,start_day,start_time,end_day,end_time,date_created)
-        VALUES
-        (
-        {$aData['seq']},
-        '".$this->filter_data($aData['title'])."',
-        '".$this->filter_data($aData['memo'])."',
-        '".$this->filter_data($aData['location'])."',
-        '{$aData['lt_field']}',
-        '{$aData['lg_field']}',
-        '{$aData['start_date']}',
-        '{$aData['start_time']}',
-        '{$aData['end_date']}',
-        '{$aData['end_time']}',
-        UNIX_TIMESTAMP(NOW())
-    )";
+            $sSql = " INSERT INTO " . SIMPLESCHEDULE_CONTENTS .
+            "(seq,title,memo,map_location,latitude,longitude,start_day,start_time,end_day,end_time,date_created)
+            VALUES
+            (
+            {$aData['seq']},
+            '".$this->filter_data($aData['title'])."',
+            '".$this->filter_data($aData['memo'])."',
+            '".$this->filter_data($aData['location'])."',
+            '{$aData['lt_field']}',
+            '{$aData['lg_field']}',
+            '{$aData['start_date']}',
+            '{$aData['start_time']}',
+            '{$aData['end_date']}',
+            '{$aData['end_time']}',
+            UNIX_TIMESTAMP(NOW())
+        )";
 
-    return $this->query($sSql);
+        return $this->query($sSql);
     }
     public function filter_data($sData)
     {

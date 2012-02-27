@@ -50,7 +50,6 @@ class adminPageView extends Controller_Admin
                  $this->assign('sImagePath',$sImagePath);
                  $this->assign('sPrefix',$this->_sPrefix);
                  $this->view(__CLASS__);
-
              }
         }
      }

@@ -1,6 +1,6 @@
 <div id="sdk_message_box"></div>
 
-<h3>Edit Schedule</h3>
+<h3>Edit Schedue</h3>
 <p class="require"><span class="neccesary">*</span> Required</p>
 <!-- input area -->
 <?php foreach($aResult as $rows){?>

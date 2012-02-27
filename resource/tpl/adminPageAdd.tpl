@@ -2,11 +2,13 @@
 <h3>Add New Schedule</h3>
 <p class="require"><span class="neccesary">*</span> Required</p>
 <!-- input area -->
+<div id="sdk_message_box"></div>
+
 <form id="<?php echo $sPrefix?>add_form" method="POST" class="<?php echo $sPrefix?>add_form" name="<?php echo $sPrefix?>add_form">
     <input type="hidden" name='seq' value='<?php echo $iSeq;?>'>
 	<input type="hidden" name="lg_field" id="lg_field">
 	<input type="hidden" name="lt_field" id="lt_field">
-	<input type='text' name='seq' id='seq' value="<?php echo $iSeq;?>" />
+	<input type='hidden' name='seq' id='seq' value="<?php echo $iSeq;?>" />
 
 	<table border="1" cellspacing="0" class="table_input_vr">
 	<colgroup>

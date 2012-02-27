@@ -20,6 +20,7 @@ class adminExecSave extends Controller_AdminExec
         }else{
             usbuilder()->message('Saved succesfully!', 'success');
         }
+        usbuilder()->message('Saved succesfully!', 'success');
         usbuilder()->jsMove($sUrl);
     }
 }
