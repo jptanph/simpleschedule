@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adminmenus>
-    <menu lang="menu_contents" param="SimpleschedulePageContents">
+    <menu lang="menu_contents" param="SimpleschedulePageContents" use_most_action='Y'>
         <page lang="menu_contents" param="SimpleschedulePageAdd" />
         <page lang="menu_contents" param="SimpleschedulePageView" />
     </menu>

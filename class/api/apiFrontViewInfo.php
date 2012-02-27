@@ -6,6 +6,6 @@ class apiFrontViewInfo extends Controller_Api
     public function post($aArgs)
     {
         usbuilder()->init($this, $aArgs);
-        return common()->modelFront()->execViewInfo($aArgs['idx']);
+        return common()->modelFront()->execViewInfo($aArgs['idx'],$aArgs['seq']);
     }
 }
