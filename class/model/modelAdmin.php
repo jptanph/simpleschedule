@@ -89,7 +89,7 @@ class modelAdmin extends Model
     	return $this->query($sSql);
     }
 
-    public function execViewRecord($aData)
+    public function execViewRecord($aArgs)
     {
 		$aData = array();
 		$sSql = "SELECT
@@ -103,7 +103,7 @@ class modelAdmin extends Model
 		end_time,
 		DATE_FORMAT(start_day,'%Y/%m/%d') as start_day,
 		DATE_FORMAT(end_day,'%Y/%m/%d') as end_day
-		FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND seq = " . $aData['seq'];
+		FROM " . SIMPLESCHEDULE_CONTENTS . " WHERE idx = " . $aArgs['idx'] . " AND seq = " . $aArgs['seq'];
 		return $this->query($sSql);
     }
 

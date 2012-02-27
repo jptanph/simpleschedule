@@ -26,11 +26,11 @@ class adminPageView extends Controller_Admin
          }
          else
          {
-             $aResult = common()->modelAdmin()->execViewRecord($aArgs['idx']);
+             $aResult = common()->modelAdmin()->execViewRecord($aArgs);
 
              if(!$aResult)
              {
-                 usbuilder()->jsMove($sUrl);
+                usbuilder()->jsMove($sUrl);
              }
              else
              {

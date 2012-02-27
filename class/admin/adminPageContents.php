@@ -152,7 +152,7 @@ class adminPageContents extends Controller_Admin
             $iRow = ($iPage - 1) * $iLimit;
 
 
-            /** query string generator here.**/
+         /** query string generator here.**/
             $sQryRow = isset($aArgs['row']) ? '&row=' . $aArgs['row'] : '';
             $sQryShow = isset($aArgs['show']) ? '&show=' . $aArgs['show'] : '';
             $sQrySE = (isset($aArgs['start_date']) && isset($aArgs['end_date'])) ? "&start_date=" . $aArgs['start_date'] . '&end_date=' . $aArgs['end_date'] : '';
@@ -200,10 +200,10 @@ class adminPageContents extends Controller_Admin
     					OR
     				  (DATE_FORMAT( start_day,  '%Y/%m/%d' ) <= '" . $this->filter_data($aArgs['start_date']) . "' AND DATE_FORMAT( end_day,  '%Y/%m/%d' )  >= '" . $this->filter_data($aArgs['end_date'])."')
     				  )
-    				  AND " . $aArgs['field_search'] . " LIKE '%".$this->filter_data(trim($aArgs['keyword']))."%'"
-    			: '';
+    				  AND " . $aArgs['field_search'] . " LIKE '%".$this->filter_data(trim($aArgs['keyword']))."%' AND seq = {$aArgs['seq']}"
+    			: " WHERE seq = {$aArgs['seq']}";
     		$sShow = (isset($aArgs['show'])) ? $aArgs['show'] : '';
-    		$sShowType = $this->_showType($sShow,$sHasShow,$sHasAnd);
+    		$sShowType = $this->_showType($sShow,$sHasShow,$sHasAnd,$aArgs);
 
             $this->_sPrefix = 'simpleschedule_';
             $aData = array();
@@ -259,6 +259,7 @@ class adminPageContents extends Controller_Admin
             $this->assign('sQryPage',$sQryPage);
             /** query strings assigns.**/
 
+            $this->assign('sSeq',$aArgs['seq']);
             $this->assign('sFirstDay',($aArgs['start_date']) ? $this->filter_data($aArgs['start_date']) : date("Y/m/") . '01');
             $this->assign('sLastDay',($aArgs['end_date']) ? $this->filter_data($aArgs['end_date']) : date("Y/m/t"));
             $this->assign('sPrefix', $this->_sPrefix);
@@ -280,16 +281,22 @@ class adminPageContents extends Controller_Admin
         }
     }
 
-    private function _showType($sViewType,$sHasShow,$sHasAnd)
+    private function _showType($sViewType,$sHasShow,$sHasAnd,$aArgs)
     {
     	$sSqlViewType = '';
-    	if($sViewType=='finished'){
+    	if($sViewType=='finished')
+    	{
     		$sSqlViewType = " $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) < DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd ";
-    	}elseif($sViewType=='expected'){
-    		$sSqlViewType = " $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd ";
-    	}else{
-    		$sSqlViewType = '';
     	}
+    	elseif($sViewType=='expected')
+    	{
+    		$sSqlViewType = " $sHasShow DATE_ADD(end_day,INTERVAL end_time HOUR) > DATE_FORMAT(NOW(),'%Y-%m-%d %H:00:00') $sHasAnd ";
+    	}
+    	else
+    	{
+    		$sSqlViewType = " ";
+    	}
+
     	return $sSqlViewType;
     }
 

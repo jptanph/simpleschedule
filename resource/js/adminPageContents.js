@@ -62,6 +62,7 @@ var adminPageContents = {
         var date_range = $("#date_range");
         var field_search = $("#field_type_search");
         var search_flag= $("#search");
+        var seq = $("#simpleschedule_seq");
         
         var error = 0;
         if($.trim(start_date.val())==''){
@@ -83,9 +84,10 @@ var adminPageContents = {
         	end_date.css('border','solid 2px #DC4E22');
         	error += 1;
         }
-        
+
        if(error==0){
-    	   window.location.href = usbuilder.getUrl('adminPageContents') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val()+sQryStr+"&search="+search_flag.val();
+    	   var s = usbuilder.getUrl('adminPageContents') + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val()+sQryStr+"&search="+search_flag.val()+'&seq=' + seq.val();
+           window.location.href = usbuilder.getUrl('adminPageContents') + '&seq=' + seq.val() + '&keyword=' +keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&date_range='+date_range.val()+'&field_search='+field_search.val()+sQryStr+"&search="+search_flag.val();
        }
        
     },execSelectRow : function($sQryStr){
