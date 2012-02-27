@@ -157,7 +157,8 @@ var adminPageContents = {
        
     },mostAction : function(){
         
-        window.location.href = usbuilder.getUrl('adminPageAdd');
+        var seq = $("#simpleschedule_seq");        
+        window.location.href = usbuilder.getUrl('adminPageAdd') + '&seq=' + seq.val();
         
     },execReset : function(){
         

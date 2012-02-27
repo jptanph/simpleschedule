@@ -64,7 +64,7 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 
 		    $aSeq = common()->modelFront()->execCheckSeq($rows);
 
-		    if( $aSeq['seq'] == $rows )
+		    if( $aSeq['seq'] == $rows || $rows)
 		    {
 
         		for( $i=0; $i< ( $maxday+$startday ); $i++ ){
