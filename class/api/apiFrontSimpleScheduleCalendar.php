@@ -59,47 +59,32 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 		/** Assign total schedule in each day of the month **/
 		$iM = str_pad($iMonth,2,'0',STR_PAD_LEFT);
 		$today = $iYear."-".$iM;
-		$iIncJ = 0;
-		foreach($aArgs['sequence'] as $rows){
 
-		    $aSeq = common()->modelFront()->execCheckSeq($rows);
+		for( $i=0; $i< ( $maxday+$startday ); $i++ ){
 
-		    if( $aSeq['seq'] == $rows || $rows)
-		    {
+			if(($i % 7) == 0 ){
+				/** Catch only invalid days **/
+			}
+			if($i < $startday){
+				/** Catch only invalid days **/
+			}else{
+				$iDay = ($i - $startday + 1);
+				$iDay = str_pad($iDay,2,'0',STR_PAD_LEFT);
+				$todayDate = $today."-".$iDay;
 
-        		for( $i=0; $i< ( $maxday+$startday ); $i++ ){
+				$aSelectDay = common()->modelFront()->execGetDays($todayDate);
 
-        			if(($i % 7) == 0 )
-        			{
-        				/** Catch only invalid days **/
-        			}
-        			if($i < $startday)
-        			{
-        				/** Catch only invalid days **/
-        			}
-        			else
-        			{
-        				$iDay = ($i - $startday + 1);
-        				$iDay = str_pad($iDay,2,'0',STR_PAD_LEFT);
-        				$todayDate = $today."-".$iDay;
-
-        				$aSelectDay = common()->modelFront()->execGetDays($todayDate,$rows);
-
-        				/** Stores the total schedule in an array and passed on request in JSON Format **/
-        				foreach($aSelectDay as $val)
-        				{
-        					$totalSchedule = ($val['total_schedule']!=0) ? $val['total_schedule'] : '';
-        					$aSchedule[$iIncJ][] = array("schedDate"=>$todayDate,"totalSchedule"=>$totalSchedule,'seq'=>$rows);
-        				}
-        				if(($i % 7) == 6 )
-        				{
-        				/** Catch only invalid days **/
-        				}
-        			}
-        		}
-		    }
-		    $iIncJ++;
+				/** Stores the total schedule in an array and passed on request in JSON Format **/
+				foreach($aSelectDay as $val){
+					$totalSchedule = ($val['total_schedule']!=0) ? $val['total_schedule'] : '';
+					$aSchedule[] = array("schedDate"=>$todayDate,"totalSchedule"=>$totalSchedule);
+				}
+				if(($i % 7) == 6 ){
+				/** Catch only invalid days **/
+				}
+			}
 		}
+
 		/** Creates the last empty days of the month <td>30</td><td>31</td><td>&nsbp;</td><td>&nsbp;</td>**/
 		$lastDay = ((7-$countLastDay)==7) ? 0 : (7-$countLastDay) ;
 
