@@ -8,9 +8,9 @@ class frontPageSimpleSchedule extends Controller_Front
     {
         $this->_sHtmlPrefix = "sdk_simpleschedule_";
         usbuilder()->init($this, $aArgs);
-
+        $iSequence = $this->getSequence();
         $sHtml = '';
-        $sHtml .= "<div id='{$this->_sHtmlPrefix}holder'>";
+        $sHtml .= "<input type='hidden' value='$iSequence' id='simpleschedule_seq'/><div id='{$this->_sHtmlPrefix}holder'>";
         $sHtml .= "<div id='{$this->_sHtmlPrefix}container'>";
         $sHtml .= "    <div id='{$this->_sHtmlPrefix}calendar'></div>";
         $sHtml .= "    <div id='{$this->_sHtmlPrefix}expand'>";

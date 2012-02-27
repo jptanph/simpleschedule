@@ -72,7 +72,7 @@ class apiFrontSimpleScheduleCalendar extends Controller_Api
 				$iDay = str_pad($iDay,2,'0',STR_PAD_LEFT);
 				$todayDate = $today."-".$iDay;
 
-				$aSelectDay = common()->modelFront()->execGetDays($todayDate);
+				$aSelectDay = common()->modelFront()->execGetDays($todayDate,$aArgs['seq']);
 
 				/** Stores the total schedule in an array and passed on request in JSON Format **/
 				foreach($aSelectDay as $val){

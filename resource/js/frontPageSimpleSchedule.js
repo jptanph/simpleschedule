@@ -3,6 +3,7 @@ jQuery(document).ready(function($){
 });
 
 var frontPageSimpleSchedule = {
+    iSeq : 0,
     latestIdx : 0,
     isViewed : 0,
     listViewIdx:0,        
@@ -24,7 +25,9 @@ var frontPageSimpleSchedule = {
         var calendar='';
         var monthName = '';
         var sServerUrl = $("#sServerUrl").val();
-
+        var seq = $("#simpleschedule_seq").val();
+        this.iSeq = (!this.iSeq ) ? seq  : this.iSeq;
+        $("#simpleschedule_seq").remove();
         $(".sdk_simpleschedule_overlaycontainer").empty();
         //$(".sdk_simpleschedule_output").empty();
         
@@ -35,7 +38,8 @@ var frontPageSimpleSchedule = {
                 dataType:'json',
                 data : {
                     iMonth :month,
-                    iYear : year
+                    iYear : year,
+                    seq : frontPageSimpleSchedule.iSeq
                 },success : function(requestContent){
                     
                     $.each(requestContent.Data,function(index,value){
@@ -108,7 +112,7 @@ var frontPageSimpleSchedule = {
                                                 totSchedule = "<div class='sdk_simpleschedule_taskcount'><p class='sdk_simpleschedule_count'>"+( (value.sSchedInfo[k]['totalSchedule']==0) ? '' : value.sSchedInfo[k]['totalSchedule'])+"</p></div>"
                                             }
                                         }
-                                        calendar += "<td align='center' valign='middle' height='20px'><a href='#none' class='"+isToday+"' onclick=\"frontPageSimpleSchedule.viewSchedule('"+currentDate+"-"+filterDay+"') ; return false\">"+day+" "+totSchedule+"</a></td>\n";
+                                        calendar += "<td align='center' valign='middle' height='20px'><a href='#none' class='"+isToday+"' onclick=\"frontPageSimpleSchedule.viewSchedule('"+currentDate+"-"+filterDay+"'," + frontPageSimpleSchedule.iSeq + ") ; return false\">"+day+" "+totSchedule+"</a></td>\n";
                                     }
                                 }   
 
@@ -125,7 +129,7 @@ var frontPageSimpleSchedule = {
         }
         $.ajax(options)
         
-    },viewSchedule : function(sDate){
+    },viewSchedule : function(sDate,seq){
         this.latestIdx = 0;
         var sHtml = '';
         var options = {
@@ -133,7 +137,8 @@ var frontPageSimpleSchedule = {
             type:'post',
             dataType:'json',
             data : {
-                sSchedDate:sDate
+                sSchedDate:sDate,
+                seq : seq
             },success : function(requestContent){
                 sHtml += "<div class='sdk_simpleschedule_overlay1'>";
                 sHtml += "<div class='sdk_simpleschedule_overlay2'>";
@@ -161,7 +166,7 @@ var frontPageSimpleSchedule = {
                         sHtml +="</strong><span class='sdk_simpleschedule_tasktitle'><label>"+value.title+"</label></span></a>";    
                     
                     }else{
-                        sHtml +="<a href='#none' style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+"' onmouseup='frontPageSimpleSchedule.viewList("+value.idx+")'><strong class='sdk_simpleschedule_taskdate'>";
+                        sHtml +="<a href='#none' style='text-decoration:none' id='sdk_simpleschedule_links"+value.idx+"' onmouseup='frontPageSimpleSchedule.viewList("+value.idx+"," + seq  + ")'><strong class='sdk_simpleschedule_taskdate'>";
                         if( value.end_time < 10){
                             sHtml += '0'+value.end_time+":00";
                          }else{
@@ -182,7 +187,7 @@ var frontPageSimpleSchedule = {
             }
         }
         $.ajax(options)
-    },viewList : function(idx){
+    },viewList : function(idx,seq){
         var sHtml = '';
         if(idx==this.latestIdx){                
             // $("#pg_scheduleradv_schedInfo"+this.latestIdx).show();
@@ -193,7 +198,8 @@ var frontPageSimpleSchedule = {
             var options = {
                url : usbuilder.getUrl('apiFrontViewInfo'),
                data : {
-                  idx : idx
+                  idx : idx,
+                  seq : seq
                },
                dataType : 'json',
                type : 'post',
