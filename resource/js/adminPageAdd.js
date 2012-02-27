@@ -11,6 +11,7 @@ var adminPageAdd = {
       var end_date = $("#end_date");
       var start_time = $("#start_time");         
       var end_time = $("#end_time");
+      var seq = $("#seq");
       var error = 0;
     
          popup.close("simpleschedule_google_map");
@@ -59,7 +60,8 @@ var adminPageAdd = {
                      start_date : start_date.val(),
                      start_time : start_time.val(),
                      end_date : end_date.val(),
-                     end_time : end_time.val()
+                     end_time : end_time.val(),
+                     seq : seq.val()
                  },success : function(server_response){
                      if(server_response.Data==0){
                          document.simpleschedule_add_form.submit();

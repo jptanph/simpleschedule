@@ -6,6 +6,7 @@
     <input type="hidden" name='seq' value='<?php echo $iSeq;?>'>
 	<input type="hidden" name="lg_field" id="lg_field">
 	<input type="hidden" name="lt_field" id="lt_field">
+	<input type='text' name='seq' id='seq' value="<?php echo $iSeq;?>" />
 
 	<table border="1" cellspacing="0" class="table_input_vr">
 	<colgroup>

@@ -43,6 +43,7 @@ class adminPageView extends Controller_Admin
                  $this->importJs('jqueryCalendar');
                  $this->importJs(__CLASS__);
 
+                 $this->assign('iSeq',$aArgs['seq']);
                  $this->assign('sUrl',$sUrl);
                  $this->assign('sUrlAdd',$sUrlAdd);
                  $this->assign('aResult',$aResult);

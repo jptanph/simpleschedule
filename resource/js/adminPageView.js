@@ -12,6 +12,8 @@ var adminPageView = {
         var end_date = $("#end_date");
         var start_time = $("#start_time");         
         var end_time = $("#end_time");
+        var seq = $("#seq");
+        
         var error = 0;
         popup.close('simpleschedule_google_map');
         if(Date.parse(start_date.val()) > Date.parse(end_date.val())){
@@ -60,7 +62,8 @@ var adminPageView = {
                     start_date : start_date.val(),
                     start_time : start_time.val(),
                     end_date : end_date.val(),
-                    end_time : end_time.val()
+                    end_time : end_time.val(),
+                    seq : seq.val()
                 },success : function(server_response){
                     if(server_response.Data==0){
                         document.simpleschedule_edit_form.submit();

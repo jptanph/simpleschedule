@@ -13,7 +13,7 @@ class apiAdminValidateUpdate extends Controller_Api
         $sStartDate = str_replace('/','-',$aArgs['start_date'] . ' ' . $sStartTime);
         $sEndDate = str_replace('/','-',$aArgs['end_date'] . ' ' . $sEndTime);
 
-		$aData = common()->modelAdmin()->execCheckUpdate($aArgs['idx']);
+		$aData = common()->modelAdmin()->execCheckUpdate($aArgs);
 
 		foreach($aData as $rows)
 		{

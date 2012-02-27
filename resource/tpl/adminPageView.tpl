@@ -9,6 +9,7 @@
     <input type="hidden" value="<?php echo $rows['latitude'];?>" id="pg_scheduleradv_lat" name="latitude">
     <input type="hidden" value="<?php echo $rows['longitude'];?>" id="pg_scheduleradv_lng" name="longitude"/>
     <input type="hidden" value="<?php echo $rows['idx']; ?>" id="idx" name="idx">
+    <input type='hidden' value="<?php echo $iSeq;?>" name='seq' id='seq'/>
 
     <table border="1" cellspacing="0" class="table_input_vr">
     <colgroup>
